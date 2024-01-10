@@ -66,5 +66,3 @@ tags: [cap,essentials]
         - In Cassandra each and every node can handle read and write request.
         - The Node that can take care of READ or WRITE request is called Co-Ordinator Node.
         - One node can handle one or more request.
-
-###
