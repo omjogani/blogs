@@ -37,7 +37,7 @@ It's Client/Server Architecture. Client (Browser) sends HTTP Request to the Serv
 ## HTTP 1.0
 - It was launched in 1996. at that time max capacity of RAM is 64 MB or around.
 
-![HTTP1.0](https://private-user-images.githubusercontent.com/72139914/295882044-d24fae3a-d1ab-4ce2-a1ef-1f1c39632155.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDQ5NzAwNzksIm5iZiI6MTcwNDk2OTc3OSwicGF0aCI6Ii83MjEzOTkxNC8yOTU4ODIwNDQtZDI0ZmFlM2EtZDFhYi00Y2UyLWExZWYtMWYxYzM5NjMyMTU1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMTElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTExVDEwNDI1OVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWVlYzg3MDA0NWExNzY5Y2FmNzQ2NWFmZTEzNjM4NDc4NjUxNmJlMjM5Yzc5YzJhZDQwYmM0M2EwZDZiNDM3MzMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.4ulHVo1gYwsFvp4aK0U5tRcmVAGOKhnTjRNxp47A974)
+![HTTP1.0](https://github.com/omjogani/blogs/assets/72139914/d24fae3a-d1ab-4ce2-a1ef-1f1c39632155)
 
 - TCP connection was expansive at that time. for each request we open connection with handshaking, then request-response takes place and close the connection.
 - If we want to fire another request we again need to open that expansive TCP connection and request-response and close the connection. It's tedious & slow process to work with.
@@ -46,7 +46,7 @@ It's Client/Server Architecture. Client (Browser) sends HTTP Request to the Serv
 ## HTTP 1.1
 - In 1997, HTTP 1.1 was launched. It is the only protocol that survive around 20 Years. then HTTP 2.0 takes place.
 
-![HTTP1.1](https://private-user-images.githubusercontent.com/72139914/295899974-947396d6-4539-40bc-b96d-d5b15d9a9096.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDQ5NzQ0MDMsIm5iZiI6MTcwNDk3NDEwMywicGF0aCI6Ii83MjEzOTkxNC8yOTU4OTk5NzQtOTQ3Mzk2ZDYtNDUzOS00MGJjLWI5NmQtZDViMTVkOWE5MDk2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMTElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTExVDExNTUwM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBjZDY2MjJlZWViNmNkMTM5MTgyM2VjYWM0Yjg0MzE2ZjI3NWY1NGZmYTgwNjRhOTU5M2YyMWIwNGUzYzNiNTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.__r_b1ECen2oFsx-uDLzOCHgt0pvLBjPmD0lPGA0tas)
+![HTTP1.1](https://github.com/omjogani/blogs/assets/72139914/947396d6-4539-40bc-b96d-d5b15d9a9096)
 
 - It solves a major issue which was there in HTTP 1.0 which was it needs to establish the connection for each request.
 - In HTTP 1.1 It solve the issue by persisting that connection between Client & Server.
