@@ -53,3 +53,7 @@ It's Client/Server Architecture. Client (Browser) sends HTTP Request to the Serv
 - For Persistent It uses caches, etag. That ultimately helps to reduce down latency.
 - It also provide streaming with chunked transfer.
 
+## HTTP 2
+
+
+## HTTP 3
