@@ -1,6 +1,6 @@
 ---
 title: Bencoding Algorithm - Torrent
-date: 2023-10-05 10:00:00 -500
+date: 2023-11-01 10:00:00 -500
 categories: [algorithm]
 tags: [algorithm, torrent, bencoding]
 ---
