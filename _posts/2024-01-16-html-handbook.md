@@ -190,3 +190,173 @@ This is <mark>highlighted</mark> Text.
 
 **[`<mark>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark)** : Used to mark or highlight the text in HTML Document.
 
+---
+
+### Quote Tags
+```html
+<q cite="Reference Link / Person">
+    Talk is cheap, show me your code!
+</q>
+
+<blockquote cite="Reference Link / Person">
+    Coding like poetry should be short and concise!
+</blockquote>
+```
+<q>Talk is cheap, show me you code!</q>
+<blockquote>Coding like poetry should be short and concise!</blockquote>
+
+---
+
+**[`<p>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q)** : Used to indicate the Text as Quote with cite.
+
+**[`<blockquote>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote)** : Used to indicate the Text as Quote with Block & cite.
+
+---
+
+### Abbreviation Tag
+```html
+<p>
+    <abbr>HTML</abbr> is cool markup language!
+</p>
+```
+
+**[`<abbr>`]()** : Used to indicate part of text as abbreviation text to basically display the context of the text.
+
+---
+
+### Link (Anchor) Tag
+```html
+<a href="https://omjogani.github.com/blogs/">My Blogs</a>
+```
+
+**[`<a>`]()** : Used to provide link in HTML Document. It has attribute called `target` which essentially define where to display linked URL. Earlier we were using `frame` and `frameset` where `_parent` and `_top` was useful but nowadays we make use of `_self` which is default and `_blank` to open link in new page.
+
+We can also define the ID of the element in `href` to quickly navigate to that HTML Tag.
+
+---
+
+### Image Tag
+```html
+<img src="https://picsum.photos/200/300" alt="Random Image">
+```
+
+**[`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)** : Used to display image. It has `alt` attribute which is used to tell user context behind the user when Image is not loaded by any reason.
+
+There are 2 additional attributes of image called `height` and `width`. Used to represent the height and width of image.
+
+```html
+<picture>
+    <source media="(min-width: 460px)" srcset="https://picsum.photos/200/300?grayscale">
+    <source media="(min-width: 650px)" srcset="https://picsum.photos/200/300?blur=2">
+    <img src="https://picsum.photos/200/300" alt="Random Image">
+</picture>
+```
+
+**[`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture)** : It contains zero or more `<source>` tags as children.
+
+**[`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)** : Used to define one or more media resources for pictures, audio, video etc. Say, if we want to load different images as per the device like for mobile device we want to load low quality image and for desktop we want to load high quality image. We can do that using `source` tag and `media` attribute.
+
+### Map Tag
+```html
+<img src="./image.png" alt="Random Image">
+
+<map name="image-map">
+    <area onclick="func()" target="" alt="" title="" href="...link..." coords="961,537,131" shape="circle">
+</map>
+```
+
+**[`<map>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map)** : Used to define certain section of Image and on click of that image we can call different action like we can navigate to any link or run function of JavaScript.
+
+---
+
+## Colors in HTML
+### Hexadecimal Color Format
+RR - Red (00 - FF) \
+GG - Green (00 - FF) \
+BB - Blue (00 - FF)
+
+```html
+<h1 style="color: #87CEEB;">Sky Blue Text</h1>
+```
+
+### HSL Color Format
+H - Hue (0 - 360) \
+S - Saturation (0% - 100%) \
+L - Lightness (0% - 100%) 
+
+```html
+<h1 style="color: hsl(197, 71%, 73%);">Sky Blue Text</h1>
+```
+
+### RGB Color Format
+R - Red (0 - 255) \
+G - Green (0 - 255) \
+B - Blue (0 - 255) 
+
+Hence 256 x 256 x 256 = 16777216 Colors possible.
+```html
+<h1 style="color: rgb(137, 207, 235);">Sky Blue Text</h1>
+```
+
+Additionally we can add `A` as opacity in RGB then it would be RGBA.
+
+```html
+<h1 style="color: rgba(137, 207, 235, .5);">Sky Blue Text with Half Opacity</h1>
+```
+---
+
+## Styling in HTML
+### Inline CSS
+We provide css styling in HTML tag it self with `style` attribute.
+
+```html
+<h1 style="color: #87CEEB;">Example of Inline CSS</h1>
+```
+It has highest priority of applying css. Weather you mentioned CSS `color` property in Internal or External CSS. It will get overridden for this h1 with Inline CSS.
+
+### Internal CSS
+We provide styling of HTML tags in `<style> ... </style>` in `<head>` section.
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Internal CSS</title>
+    <!-- Internal CSS -->
+    <style>
+        h1 {
+            color: #87CEEB;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sky Blue Text</h1>
+</body>
+</html>
+```
+
+### External CSS
+When we have lots of styling code and we want to keep it separate in a CSS file. We can use External CSS.
+
+We basically link external CSS file to our HTML code such that it can be applied to our HTML Tags.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>External CSS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sky Blue Text</h1>
+</body>
+</html>
+```
+
+```css
+/* style.css */
+h1 {
+    color: #87CEEB;
+}
+```
+
+>If you have both Internal and External CSS in your HTML then order of placing the CSS will be matter. If last CSS have property defined in first CSS then it will get overridden by last CSS.
