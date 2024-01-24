@@ -184,7 +184,7 @@ console.log("Hello World");
     
     - Else We can directly assign default value in parameter it self.
     
-    ```
+    ```tsx
     function calculateTax(income: number, texYear = 2022): number {
         if(texYear < 2022){
             return income * 1.2;
@@ -582,3 +582,5 @@ console.log("Hello World");
     - Whenever we use private property then that variable or method won’t be available outside of that class.
     - It restrict then environment to use that specific property. By default all the properties are public.
     - GOOD CODE: Don’t use private properties for storing passwords and other secure information, although you can do that but it’s not good way to do that, there are some other ways for handling this situations.
+
+## Generics
