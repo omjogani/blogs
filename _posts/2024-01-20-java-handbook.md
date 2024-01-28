@@ -14,7 +14,9 @@ Java is consider as fully object oriented. It seems controversial topic because 
 Java program is WORA (Write once run anywhere).
 
 ## How Java works?
-// image
+
+![JavaIntro-modified](https://github.com/omjogani/blogs/assets/72139914/b41a4e35-bedb-4dac-83f9-fb7fd58727fc)
+
 
 When Java program compiles by `javac` compiler the Java code converted into `byte code` that is then understood by the JVM and then `byte code` is converted into `machine code`.
 
@@ -24,7 +26,7 @@ Java Virtual Machine is platform dependent that means it needs to be install on 
 
 JVM is used to convert `byte code` to `machine code`.
 
-JVM consist of JIT (Just-In-Time) which is used to improve the performance by compiler the `byte code` to `machine code`.
+JVM consist of JIT (Just-In-Time) which is used to improve the performance by compiling the `byte code` to `machine code`.
 
 ### JRE (Java Runtime Environment)
 Java Runtime Environment consists of collection of library and other components for Java Program.
