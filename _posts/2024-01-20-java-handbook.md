@@ -824,3 +824,14 @@ public class Main {
     }
 }
 ```
+--- 
+
+>TODOS
+## Records
+
+## Sealed Classes
+
+## Lambda Functions
+
+## Streams 
+
