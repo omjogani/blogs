@@ -1143,4 +1143,34 @@ int result = nums.stream()
 
 ## Records
 
+When we have all the class member variables as final then we can define record instead of class.
+
+Generally, We use records to hold the data. eg. Request & Response Holder, as well as Database Response holder etc.
+
+```java
+public record Person(String name, int age) {
+    public Person {
+        if (name == "") {
+            System.out.println("Name is Empty");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String []args) {
+        Person person = new Person("Om", 20);
+    }
+}
+```
+
 ## Sealed Classes
+
+Sealed Class is used to restrict the access of the class. We specify the classes to which We want to give access to our class.
+
+```java
+public sealed class PremiumVehicle permits Audi, BMW, RR {
+    /* ...body... */
+}
+```
+
+The class `PremiumVehicle` is only accessible by `Audi, BMW, RR`. None other than those class can access the `PremiumVehicle`.
