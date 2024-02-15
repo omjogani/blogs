@@ -5,7 +5,6 @@ categories: [java, handbook]
 tags: [java]
 ---
 
-
 # Java Handbook
 
 Java is a high-level, class-based, object-oriented programming language. It is a compiled language.
@@ -820,18 +819,358 @@ public class Main {
 
     // with anonymous class & lambda expression
     PokemonOperation op = () -> {
-        retrun pokemons;
+        return pokemons;
     }
 }
 ```
---- 
 
->TODOS
+### Types of Interfaces
+
+- **Normal Interface**: Basic Interface consist of two or more interfaces.
+
+- **FunctionalInterface**: Allow only one method.
+
+- **Marker Interface**: It is a blank interface, used for serializations.
+
+## Exception
+
+There are 2 types of Errors in Java.
+
+1. Compile Time Errors
+2. Run Time Errors
+
+It's not possible to handle the errors like IO Errors etc.
+
+There are 2 Types of Exceptions
+
+1. Checked Exceptions: It is one of the type of Exception where It's mandatory to handle. eg. SQLException.
+
+2. Unchecked Exceptions: It is one of those Exception which let you make your own choice weather to handle the Exception or not.
+
+### Exception Handling
+
+```java
+try {
+    /* ...Critical Statements...*/
+} catch (Exception exception) {
+    /* ...Exception Handler Code... */
+}
+```
+
+It can have multiple catch after `try` block such that we can catch multiple Exceptions. If We want to handle Specific Exception, It can be done by replacing `Exception` with Specific Exception or Custom Exception. eg. ArithmeticException
+
+It's always good idea to have `Exception` as last `catch` Block, because in any case if Exception is not handled with Specific Exception then It would be handle by `Exception` which is Super class of all the Exception.
+
+Object => Throwable => Error, Exceptions.
+
+### Throw
+
+It is used to throw Exception manually.
+
+```java
+try {
+    int a = 10;
+    int b = 20;
+    if(b == 0) {
+        throw new ArithmeticException("Can't Divide by Zero");
+    }
+    int c = a / b;
+} catch (Exception e) {
+    System.out.println("Exception Thrown!");
+}
+```
+
+### Custom Exception
+
+All the Exceptions are thrown with It's super class called `Exception`. So, in order to have our custom exception we are required to extends `Exception` or `RuntimeException` Class.
+
+```java
+class MyException extends RuntimeException {
+    public MyException(String message) {
+        super(message);
+    }
+}
+```
+
+Now we can throw our Custom Exception as `throw new MyException("Invalid Stuff");`
+
+### Throws
+
+`Throws` is used to let parent method handle the Exception.
+
+```java
+void show() throws Exception {
+    // Hey Parent, Handle my Exception
+}
+```
+
+Any Exception thrown in above method will be handle by It's Parent Method. It's possible to handle chain of throws and the root method will handle the Exception.
+
+### Try with Resources
+
+Sometimes We need to close the resource we are working with. eg. SQL Connection, FileDescriptor etc.
+
+We can make use of `finally` block which will always execute no matter Exception occurs or not. but There is a better way.
+
+```java
+// Using Finally Block
+try {
+    // Open SQL Connection
+} catch(SQLException e) {
+    // Handle Exception while opening connection
+} finally {
+    // Close SQL Connection
+}
+
+// Using try() Syntax
+try(/*Open SQL Connection*/) {
+
+} catch() {
+
+}
+```
+
+If We use `try()` syntax then we don't need to close the connection manually. It will get close automatically.
+
+## Threads
+
+A Thread is a lightweight process. There are couple of ways to create threads in Java.
+
+```java
+class A extends Thread {
+    public void run() {
+
+    }
+}
+class B extends Thread {
+    public void run() {
+
+    }
+}
+
+class Main {
+    public static void main(String []args) {
+        A obj1 = new A();
+        obj1.start();
+
+        B obj2 = new B();
+        obj2.start();
+    }
+}
+```
+
+Thread also has some priority which is between 1 to 10. The Default Priority of Thread is 5. It's changeable too.
+
+```java
+obj1.setPriority(9);
+```
+
+For setting Maximum Priority we can use `Thread.MAX_PRIORITY` and for minimum priority `Thread.MIN_PRIORITY`.
+
+We can also make the thread sleep with `Thread.sleep(100);` The Thread will sleep for 100 Milliseconds.
+
+### Thread using Runnable
+
+```java
+class A implements Runnable {
+    public void run() {
+
+    }
+}
+
+class B implements Runnable {
+    public void run() {
+
+    }
+}
+
+class Main {
+    public static void main(String []args) {
+        A obj1 = new A();
+        B obj2 = new B();
+
+        Thread t1 = new Thread(obj1);
+        Thread t2 = new Thread(obj2);
+        t1.start();
+        t2.start();
+    }
+}
+```
+
+### Race Condition
+
+While working with Thread There might be condition where multiple threads are in race to access the resource and eventually leads to infinity waiting that is called `Race Condition`.
+
+We might loose the data while working with same resources with multiple threads.
+
+We use `synchronized` keyword to Race Condition this problem.
+
+```java
+class Counter {
+    private int count = 0;
+    public synchronized void increment() {
+        count++;
+    }
+}
+```
+
+## Collections
+
+`Collections` in java provides architecture to store and work with different types of objects. It provides many interfaces like ArrayList, List, Stack, Queue, Priority Queue, Tree, HashSet, Set, Map etc.
+
+- **List**: ArrayList, LinkedList
+- **Queue**: DeQueue
+- **Set**: HashSet, LinkedHashSet
+- **Map**: HashMap
+
+### List Example
+
+```java
+Collection<Integer> nums = new ArrayList<Integer>();
+List<Integer> numList= new ArrayList<Integer>();
+```
+
+### Set Example
+
+```java
+Set<Integer> numSet = new HashSet<Integer>();
+// for sorted list
+Set<Integer> numSetSorted = new TreeSet<Integer>();
+
+while(numSet.hasNext()){
+    System.out.println(numSet.next());
+}
+```
+
+### Map Example
+
+```java
+Map<String, Integer> data = new HashMap<String, Integer>();
+data.put("Om", 20);
+System.out.println(data.get("Om")); // 20
+System.out.println(data.keySet()); // [Om, ...]
+
+// for sorted Data
+List<Integer> numList = ArrayList<Integer>();
+Collection.sort(numList);
+// OR
+Collection.sort(numList, com); // custom compare function
+```
+
+Example of custom Comparator Function
+
+```java
+Comparator<Integer> com = new Comparator<Integer>() {
+    public int compare (Integer i , Integer j) {
+        if (i % 10 > j % 10) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+```
+
+## Stream API
+
+While using Collection sometimes we have to perform some Operations on our Collection. We can use loops to iterate the Collection and perform the actions on the Collection, but It makes code unreadable and messy, for better readability and easy to work on we can apply Stream on the Collections.
+
+We can add a layer as filters, map or reduce and add some terminal operations at the end to access the applied result.
+
+### To Print the ArrayList
+
+```java
+List<Integer> num = new ArrayList<Integer>();
+num.add(5);
+num.add(3);
+num.add(6);
+num.forEach(n -> System.out.println(n));
+```
+
+### Consumers
+
+It is used to accept the result and it can call when we run accept method of the consumer.
+
+```java
+Consumer<List<Integer>> listNumber = listOfInt -> {
+    for(Integer i: listOfInt) {
+        System.out.println(i);
+    }
+}
+
+listNumber.accept(Array.asList(1,2,3,4));
+```
+
+#### `andThen()` of Consumer
+
+```java
+Consumer<List<Integer>> listNumber1 = listOfInt -> {
+    for(Integer i: listOfInt) {
+        System.out.println(i);
+    }
+}
+
+Consumer<List<Integer>> listNumber2 = listOfInt -> {
+    for(Integer i: listOfInt) {
+        System.out.println(i + 1);
+    }
+}
+
+listNumber1.andThen(listNumber2).accept(Array.asList(1,2,3,4));
+```
+
+First it will run listNumber1 then It runs listNumber2 with given List.
+
+> Stream can only be used once. Once you use it, It will get expired but It's possible to convert existing stream to the new Stream, as like wise we can perform multiple nested operations.
+
+```java
+List<Integer> numList = new ArrayList<Integer>();
+Stream<Integer> s1 = numList.stream();
+Stream<Integer> s2 = s1.filter(n -> n % 10);
+// can't use s1 any more
+```
+
+Once `s1` is used, we can't use s1 any more but we can create another stream out of it which is `s2` and can s2 further.
+
+Alternatively we can use . operator to perform multiple operation within one stream.
+
+```java
+int result = nums.stream()
+    .filter(n -> n % 2 == 0)
+    .map(n -> n * 2)
+    .toList();
+```
+
 ## Records
+
+When we have all the class member variables as final then we can define record instead of class.
+
+Generally, We use records to hold the data. eg. Request & Response Holder, as well as Database Response holder etc.
+
+```java
+public record Person(String name, int age) {
+    public Person {
+        if (name == "") {
+            System.out.println("Name is Empty");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String []args) {
+        Person person = new Person("Om", 20);
+    }
+}
+```
 
 ## Sealed Classes
 
-## Lambda Functions
+Sealed Class is used to restrict the access of the class. We specify the classes to which We want to give access to our class.
 
-## Streams 
+```java
+public sealed class PremiumVehicle permits Audi, BMW, RR {
+    /* ...body... */
+}
+```
 
+The class `PremiumVehicle` is only accessible by `Audi, BMW, RR`. None other than those class can access the `PremiumVehicle`.
