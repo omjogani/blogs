@@ -801,7 +801,7 @@ e.g.
 
 ## Functional Interface
 
-A interface which has exactly one method is called functional interface. It is annotated with `@FunctionalInterface`. We can use lamda function if We've used Functional Interface.
+A interface which has exactly one method is called functional interface. It is annotated with `@FunctionalInterface`. We can use lambda function if We've used Functional Interface.
 
 ```java
 @FunctionalInterface
@@ -810,7 +810,7 @@ interface PokemonOperation {
 }
 
 public class Main {
-    // with anonymous class & without lamda expression
+    // with anonymous class & without lambda expression
     PokemonOperation po = new PokemonOperation(){
         public List<Pokemon> getAllPokemons() {
             return pokemons;
@@ -818,7 +818,7 @@ public class Main {
     }
 
 
-    // with anonymous class & lamda expression
+    // with anonymous class & lambda expression
     PokemonOperation op = () -> {
         retrun pokemons;
     }
