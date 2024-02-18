@@ -86,7 +86,7 @@ Literals are specific representation of the values in Java. Such as...
 
 ```java
 int money = 10_00_000; // refers to 10M or 1000000
-boolean value = 1; // value = true
+boolean value = 1; // error
 ```
 
 ### Type Casting and Conversion
@@ -478,10 +478,10 @@ class Vehicle {
 class Bike extends Vehicle{
     public void move() {
         System.out.println("Bike move");
-    }
+    }s
 }
 class Main {
-    public class main(String[] args) {
+    public static void main(String[] args) {
         Bike bike = new Vehicle();
         bike.move(); // call `move` of Vehicle Class
         bike = new Bike();
@@ -507,7 +507,7 @@ class Bike {
     }
 }
 class Main {
-    public class main(String[] args) {
+    public static void main(String[] args) {
         Bike bike = new Bike();
         bike.details();
     }
@@ -524,7 +524,7 @@ class Vehicle {
 }
 
 class Main {
-    public class main(String[] args) {
+    public static void main(String[] args) {
         Bike bike = new Bike() {
             public void details() {
                 System.out.println("Bike Details");
@@ -563,7 +563,7 @@ class Bike {
     }
 }
 class Main {
-    public class main(String[] args) {
+    public static void main(String[] args) {
         Bike bike = new Bike();
         bike.move();
     }
@@ -655,7 +655,7 @@ class Bike {
     }
 }
 class Main {
-    public class main(String[] args) {
+    public static void main(String[] args) {
         Vehicle vehicle = (Vehicle) new Bike(); // UpCasting
         Bike bike = (Bike) vehicle; // DownCasting
     }
@@ -696,7 +696,7 @@ class Transport {
 }
 
 class Main {
-    public class main(String[] args) {
+    public static void main(String[] args) {
         Transport trans = new Transport();
         trans.show();
         Transport.Vehicle vehicle = trans.new Vehicle();
