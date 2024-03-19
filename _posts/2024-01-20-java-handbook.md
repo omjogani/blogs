@@ -1,7 +1,7 @@
 ---
 title: Java Handbook
 date: 2024-01-20 10:00:00 -500
-categories: [java, handbook]
+categories: [handbooks, java]
 tags: [java]
 ---
 

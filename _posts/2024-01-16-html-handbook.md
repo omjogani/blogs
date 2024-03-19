@@ -1,40 +1,43 @@
 ---
 title: HTML Handbook
 date: 2024-01-16 10:00:00 -500
-categories: [webdevelopment, handbook]
-tags: [html, webdevelopment, handbook]
+categories: [handbooks, webdevelopment]
+tags: [webdevelopment]
 ---
 
 # HTML Cheatsheet
 
 ## History behind `index` file
+
 Generally, We name our HTML file as `index.html` that is because earlier [Apache2](https://httpd.apache.org/) was used everywhere which will server the HTML pages.
 
-Apache2 render the HTML file named `index.html` by default. From then we started using `index.html` and there was also `default.html` but it's not used nowadays. 
+Apache2 render the HTML file named `index.html` by default. From then we started using `index.html` and there was also `default.html` but it's not used nowadays.
 
 For writing HTML code faster we can use [Emmet](https://emmet.io/). VSCODE and other famous IDE gives it by default.
 
 ## Core Structure of HTML
-All the tags in HTML are case insensitive. So, `<html>` and `<HTML>` are same. 
+
+All the tags in HTML are case insensitive. So, `<html>` and `<HTML>` are same.
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body></body>
 </html>
 ```
+
 **`<!DOCTYPE html>`** : It tells the browser that this document file is `html` file.
 
 **`<html lang="en">`** : While HTML grown world wide we use `lang` to tell browser that it's written in English or any other language.
 
-There are two child in `<html>` tag. 
+There are two child in `<html>` tag.
+
 1. `<head>`
 2. `<body>`
 
@@ -47,19 +50,22 @@ Best resource for meta tags - [Meta tags and Attributes that Google Supports](ht
 ```html
 <h1 title="main heading">Heading</h1>
 ```
+
 In above code, entire line is called `element`, Where `h1` is tag & `title` is attribute.
 
 ---
 
 ## HTML Tags
+
 ### Heading & Paragraphs
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Heading & Paragraphs</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Heading One</h1>
     <h2>Heading Two</h2>
     <h3>Heading Three</h3>
@@ -67,10 +73,12 @@ In above code, entire line is called `element`, Where `h1` is tag & `title` is a
     <h5>Heading Five</h5>
     <h6>Heading Six</h6>
 
-    <hr>
-    <p>This is the paragraph text.
-    <br>
-    Content of the paragraph text.</p>
+    <hr />
+    <p>
+      This is the paragraph text.
+      <br />
+      Content of the paragraph text.
+    </p>
 
     <pre>
         line 1
@@ -79,7 +87,7 @@ In above code, entire line is called `element`, Where `h1` is tag & `title` is a
         line 3
         line 4
     </pre>
-</body>
+  </body>
 </html>
 ```
 
@@ -94,24 +102,27 @@ In above code, entire line is called `element`, Where `h1` is tag & `title` is a
 **[`<pre>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre)** : Used to represents preformatted text which is to be presented exactly as written in the HTML Document.
 
 ## Formatting Style & Global Attributes
+
 ### Commenting
+
 - Single line Comment
+
 ```html
 <!-- <h1> Commented Text </h1> -->
 ```
 
 - Multiline Comment
-    
-    ```html
-    <!-- <h1>Commented Text</h1>
-    <h1>Commented Text 2</h1>
-    <h1>Commented Text 3</h1> -->
-    ```
+  ```html
+  <!-- <h1>Commented Text</h1>
+  <h1>Commented Text 2</h1>
+  <h1>Commented Text 3</h1> -->
+  ```
 
 ### Bold Text
+
 ```html
-<p> This is <b> just bold </b> Text. </p>
-<p> This is <strong> important </strong> Text.</p>
+<p>This is <b> just bold </b> Text.</p>
+<p>This is <strong> important </strong> Text.</p>
 ```
 
 This is **just bold** Text. \
@@ -128,12 +139,12 @@ This is **important** Text.
 ### Italicize Text
 
 ```html
-<p> This is <i> Italic </i> Text. </p>
-<p> This is <em> Emphasis </em> Text. </p>
-```  
+<p>This is <i> Italic </i> Text.</p>
+<p>This is <em> Emphasis </em> Text.</p>
+```
 
-This is *Italic* Text. \
-This is *Emphasis* Text.
+This is _Italic_ Text. \
+This is _Emphasis_ Text.
 
 ---
 
@@ -144,15 +155,15 @@ This is *Emphasis* Text.
 ---
 
 ### Subscript & Superscript
+
 ```html
-<p>
-    Water: H<sub>2</sub>O also known as "Water"
-</p>
+<p>Water: H<sub>2</sub>O also known as "Water"</p>
 
 <p>
   <var>a<sup>2</sup></var> + <var>b<sup>2</sup></var> = <var>c<sup>2</sup></var>
 </p>
 ```
+
 Water: H<sub>2</sub>O also known as "Water" \
 a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
 
@@ -165,22 +176,20 @@ a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
 ---
 
 ### Del, Small & Mark Tags
+
 ```html
-<p>
-    This is <del>deleted</del> Text.
-</p>
+<p>This is <del>deleted</del> Text.</p>
 
 <p>
-    <small>This is smaller content...</small>
+  <small>This is smaller content...</small>
 </p>
 
-<p>
-    This is <mark>highlighted</mark> Text.
-</p>
+<p>This is <mark>highlighted</mark> Text.</p>
 ```
+
 This is <del>deleted</del> Text. \
 <small>This is smaller content...</small> \
-This is <mark>highlighted</mark> Text. 
+This is <mark>highlighted</mark> Text.
 
 ---
 
@@ -193,16 +202,17 @@ This is <mark>highlighted</mark> Text.
 ---
 
 ### Quote Tags
+
 ```html
-<q cite="Reference Link / Person">
-    Talk is cheap, show me your code!
-</q>
+<q cite="Reference Link / Person"> Talk is cheap, show me your code! </q>
 
 <blockquote cite="Reference Link / Person">
-    Coding like poetry should be short and concise!
+  Coding like poetry should be short and concise!
 </blockquote>
 ```
+
 <q>Talk is cheap, show me you code!</q>
+
 <blockquote>Coding like poetry should be short and concise!</blockquote>
 
 ---
@@ -214,10 +224,9 @@ This is <mark>highlighted</mark> Text.
 ---
 
 ### Abbreviation Tag
+
 ```html
-<p>
-    <abbr>HTML</abbr> is cool markup language!
-</p>
+<p><abbr>HTML</abbr> is cool markup language!</p>
 ```
 
 **[`<abbr>`]()** : Used to indicate part of text as abbreviation text to basically display the context of the text.
@@ -225,6 +234,7 @@ This is <mark>highlighted</mark> Text.
 ---
 
 ### Link (Anchor) Tag
+
 ```html
 <a href="https://omjogani.github.com/blogs/">My Blogs</a>
 ```
@@ -236,8 +246,9 @@ We can also define the ID of the element in `href` to quickly navigate to that H
 ---
 
 ### Image Tag
+
 ```html
-<img src="https://picsum.photos/200/300" alt="Random Image">
+<img src="https://picsum.photos/200/300" alt="Random Image" />
 ```
 
 **[`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)** : Used to display image. It has `alt` attribute which is used to tell user context behind the user when Image is not loaded by any reason.
@@ -246,9 +257,15 @@ There are 2 additional attributes of image called `height` and `width`. Used to 
 
 ```html
 <picture>
-    <source media="(min-width: 460px)" srcset="https://picsum.photos/200/300?grayscale">
-    <source media="(min-width: 650px)" srcset="https://picsum.photos/200/300?blur=2">
-    <img src="https://picsum.photos/200/300" alt="Random Image">
+  <source
+    media="(min-width: 460px)"
+    srcset="https://picsum.photos/200/300?grayscale"
+  />
+  <source
+    media="(min-width: 650px)"
+    srcset="https://picsum.photos/200/300?blur=2"
+  />
+  <img src="https://picsum.photos/200/300" alt="Random Image" />
 </picture>
 ```
 
@@ -257,11 +274,20 @@ There are 2 additional attributes of image called `height` and `width`. Used to 
 **[`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)** : Used to define one or more media resources for pictures, audio, video etc. Say, if we want to load different images as per the device like for mobile device we want to load low quality image and for desktop we want to load high quality image. We can do that using `source` tag and `media` attribute.
 
 ### Map Tag
+
 ```html
-<img src="./image.png" alt="Random Image">
+<img src="./image.png" alt="Random Image" />
 
 <map name="image-map">
-    <area onclick="func()" target="" alt="" title="" href="...link..." coords="961,537,131" shape="circle">
+  <area
+    onclick="func()"
+    target=""
+    alt=""
+    title=""
+    href="...link..."
+    coords="961,537,131"
+    shape="circle"
+  />
 </map>
 ```
 
@@ -270,7 +296,9 @@ There are 2 additional attributes of image called `height` and `width`. Used to 
 ---
 
 ## Colors in HTML
+
 ### Hexadecimal Color Format
+
 RR - Red (00 - FF) \
 GG - Green (00 - FF) \
 BB - Blue (00 - FF)
@@ -280,20 +308,23 @@ BB - Blue (00 - FF)
 ```
 
 ### HSL Color Format
+
 H - Hue (0 - 360) \
 S - Saturation (0% - 100%) \
-L - Lightness (0% - 100%) 
+L - Lightness (0% - 100%)
 
 ```html
 <h1 style="color: hsl(197, 71%, 73%);">Sky Blue Text</h1>
 ```
 
 ### RGB Color Format
+
 R - Red (0 - 255) \
 G - Green (0 - 255) \
-B - Blue (0 - 255) 
+B - Blue (0 - 255)
 
 Hence 256 x 256 x 256 = 16777216 Colors possible.
+
 ```html
 <h1 style="color: rgb(137, 207, 235);">Sky Blue Text</h1>
 ```
@@ -303,38 +334,45 @@ Additionally we can add `A` as opacity in RGB then it would be RGBA.
 ```html
 <h1 style="color: rgba(137, 207, 235, .5);">Sky Blue Text with Half Opacity</h1>
 ```
+
 ---
 
 ## Styling in HTML
+
 ### Inline CSS
+
 We provide css styling in HTML tag it self with `style` attribute.
 
 ```html
 <h1 style="color: #87CEEB;">Example of Inline CSS</h1>
 ```
+
 It has highest priority of applying css. Weather you mentioned CSS `color` property in Internal or External CSS. It will get overridden for this h1 with Inline CSS.
 
 ### Internal CSS
+
 We provide styling of HTML tags in `<style> ... </style>` in `<head>` section.
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Internal CSS</title>
     <!-- Internal CSS -->
     <style>
-        h1 {
-            color: #87CEEB;
-        }
+      h1 {
+        color: #87ceeb;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Sky Blue Text</h1>
-</body>
+  </body>
 </html>
 ```
 
 ### External CSS
+
 When we have lots of styling code and we want to keep it separate in a CSS file. We can use External CSS.
 
 We basically link external CSS file to our HTML code such that it can be applied to our HTML Tags.
@@ -342,21 +380,21 @@ We basically link external CSS file to our HTML code such that it can be applied
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>External CSS</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <h1>Sky Blue Text</h1>
-</body>
+  </body>
 </html>
 ```
 
 ```css
 /* style.css */
 h1 {
-    color: #87CEEB;
+  color: #87ceeb;
 }
 ```
 
->If you have both Internal and External CSS in your HTML then order of placing the CSS will be matter. If last CSS have property defined in first CSS then it will get overridden by last CSS.
+> If you have both Internal and External CSS in your HTML then order of placing the CSS will be matter. If last CSS have property defined in first CSS then it will get overridden by last CSS.
