@@ -1,8 +1,8 @@
 ---
 title: HTML Handbook
 date: 2024-01-16 10:00:00 -500
-categories: [handbooks, webdevelopment]
-tags: [webdevelopment]
+categories: [handbooks, web-development]
+tags: [web-development]
 ---
 
 # HTML Cheatsheet

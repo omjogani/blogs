@@ -1,7 +1,7 @@
 ---
 title: RSpec Testing Handbook
 date: 2024-03-12 10:00:00 -500
-categories: [handbooks, ruby-on-rails]
+categories: [handbooks, rspec-testing]
 tags: [ruby-on-rails, testing]
 ---
 
