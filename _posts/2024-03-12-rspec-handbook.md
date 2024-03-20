@@ -249,51 +249,6 @@ end
 
 While Implementing Custom Matcher we're required to implement 2 methods `matches?` and `failure_message`. Because when test case trying to compare it uses `matches?` method and in case of failure it looks for `failure_message` method.
 
-## RSpec Test Doubles
-
-Test Doubles are used to mimic the behavior of the actual method. Test Doubles are typically used when we want to isolate the behavior of method it can be dependency over other method or any. Here is the example...
-`car.rb`
-
-```ruby
-class Car
-  attr_accessor :fuel_level
-  def initialize(fuel)
-    @fuel_level = fuel
-  end
-
-  def fill_up(pump)
-    @fuel_level = pump.dispense_fuel
-  end
-end
-
-class Pump
-  def dispense_fuel
-    10
-  end
-end
-```
-
-`car_spec.rb`
-
-```ruby
-require 'car'
-
-describe Car do
-  describe '#full_up' do
-    it 'the car should have maximum fuel' do
-      c = Car.new(50)
-      p = double("Pump", dispense_fuel: 100)
-
-      c.fill_up(p)
-      expect(c.fuel_level).to eq(100)
-    end
-  end
-end
-```
-
-While `dispense_fuel` returns 10 in `car.rb` and we're expecting 100 it would still pass. That's because of **double**. It mimics the behavior of `dispense_fuel` method and return the value specified in the test.
-It sometimes leads to several issues. Let's say you made some changes in Pump such that It impacts the Car but still all the test of the Car will pass and bugs or issue will be negated. Suppose If `dispense_fuel` method is not exist then also test won't complain it will still pass. That's why we have to be cautious while using `test double`.
-
 ## Let & Before Hooks
 
 Example
@@ -389,4 +344,183 @@ let!(:symbol) { ... }
 Let with exclamation is by default available to all the block weather you used that variable or not, doesn't matter it's available for all the blocks.
 As per the requirement or scenario we can make use of either `let()` or `let!()`.
 
-# Mocking in RSpec
+## Mocking in RSpec
+
+Mocking is a technique to clone the behavior of objects and method temporarily. There are some reason we are required to clone the behavior.
+
+1. Focus on current test instead of dependencies associated with the code.
+2. When outcome is non-deterministic value such as random function.
+3. To avoid invoking code which degrade the performance of the test.
+
+There are few techniques of mocking.
+
+1. Test Doubles
+2. Method Stubs
+3. Message Expectations
+
+### RSpec Test Doubles
+
+Test Doubles are used to mimic the behavior of the actual method. Test Doubles are typically used when we want to isolate the behavior of method it can be dependency over other method or any. Here is the example...
+`car.rb`
+
+```ruby
+class Car
+  attr_accessor :fuel_level
+  def initialize(fuel)
+    @fuel_level = fuel
+  end
+
+  def fill_up(pump)
+    @fuel_level = pump.dispense_fuel
+  end
+end
+
+class Pump
+  def dispense_fuel
+    10
+  end
+end
+```
+
+`car_spec.rb`
+
+```ruby
+require 'car'
+
+describe Car do
+  describe '#full_up' do
+    it 'the car should have maximum fuel' do
+      c = Car.new(50)
+      p = double("Pump", dispense_fuel: 100)
+
+      c.fill_up(p)
+      expect(c.fuel_level).to eq(100)
+    end
+  end
+end
+```
+
+While `dispense_fuel` returns 10 in `car.rb` and we're expecting 100 it would still pass. That's because of **double**. It mimics the behavior of `dispense_fuel` method and return the value specified in the test.
+It sometimes leads to several issues. Let's say you made some changes in Pump such that It impacts the Car but still all the test of the Car will pass and bugs or issue will be negated. Suppose If `dispense_fuel` method is not exist then also test won't complain it will still pass. That's why we have to be cautious while using `test double`.
+
+### Method Stubs
+
+Method Stubbing is a technique to return a known value in response to a message. It can replace either existing method or methods which are not even exist. It can be implemented using **allow()** and **receive()** method.
+`car.rb`
+
+```ruby
+class Car
+  attr_accessor :fuel_level
+  def initialize(fuel)
+    @fuel_level = fuel
+  end
+
+  def fill_up(pump)
+    @fuel_level = pump.dispense_fuel
+  end
+end
+
+class Pump
+  def dispense_fuel
+    10
+  end
+end
+```
+
+`car_spec.rb`
+
+```ruby
+require 'car'
+
+describe Car do
+  describe '#fill_up' do
+    it 'the car should have maximum fuel' do
+      c = Car.new(50)
+      p = Pump.new
+
+      allow(p).to receive(:dispense_fuel).and_return(100)
+
+      c.fill_up(p)
+      expect(c.fuel_level).to eq(100)
+    end
+  end
+end
+```
+
+In above example, it will mock the behavior of `dispense_fuel()` method and return 100 instead of calling actual method. `and_return()` is optional, if you provide it will return provided value otherwise it will return nil.
+
+`allow()` is not consider as strict matcher because even stubbed object or method is not invoked, it would ignore that. But sometimes we also make sure that stubbed object or method is getting invoked that's where we use `expect()` instead of `allow()`.
+
+### Example
+
+```ruby
+# Change
+# FROM => @fuel_level = pump.dispense_fuel
+# TO => @fuel_level = 100
+
+def fill_up(pump)
+  @fuel_level = 100
+end
+```
+
+Still, if you run above test case it would pass. because allow() is not taking care about weather stubbed method is getting invoked or not. It just work.
+
+### Message Expectations
+
+Message Expectation states an expectation that an object should receive a specific message before completion of that specific test case.
+It is like strict matcher because once you define some expectation which must be satisfied before exiting from that test case. If it failed to satisfy the expectation, test case will going to fail.
+We can solve above issue mentioned in Method Sub's Example where we must have to make sure that `dispense_fuel()` is invoked.
+`car.rb`
+
+```ruby
+class Car
+  attr_accessor :fuel_level
+  def initialize(fuel)
+    @fuel_level = fuel
+  end
+
+  def fill_up(pump)
+    @fuel_level = pump.dispense_fuel
+  end
+end
+
+class Pump
+  def dispense_fuel
+    10
+  end
+end
+```
+
+`car_spec.rb`
+
+```ruby
+require 'car'
+
+describe Car do
+  describe '#fill_up' do
+    it 'car should have maximum fuel' do
+      c = Car.new(50)
+      p = Pump.new
+      expect(p).to receive(:dispense_fuel).and_return(100)
+
+      c.fill_up(p)
+      expect(c.fuel_level).to eq(100)
+    end
+  end
+end
+```
+
+Now, We're forced to call the method `pump.dispense_fuel()`, otherwise test will fail. and When we satisfy the requirement we're good to go.
+Additionally we can have some method to check more stuff as following...
+
+```ruby
+allow(p).to receive(:dispense_fuel).at_least(:once).and_return(100)
+
+expect(p).to receive(:dispense_fuel).exactly(1).times.and_return(100)
+
+# value specified in with denotes argument of dispense_fuel
+expect(p).to receive(:dispense_fuel).with(true).and_return(100)
+
+# just check involvement
+expect(article).to receive(:title_length).and_call_original
+```
