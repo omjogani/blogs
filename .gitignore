@@ -20,3 +20,6 @@ package-lock.json
 
 # Misc
 assets/js/dist
+
+# added pages-deploy.yml file for future reference
+pages-deploy.yml
