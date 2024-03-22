@@ -38,10 +38,7 @@ To pass above mentioned test we have to create a class Bouncer and It must satis
 ```ruby
 class Bouncer
   def bounce(bouncee)
-    if bouncee == 'xx'
-      return true
-    end
-    false
+    bouncee == 'xx'
   end
 end
 ```
