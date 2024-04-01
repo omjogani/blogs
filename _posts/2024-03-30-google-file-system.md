@@ -29,8 +29,9 @@ Google File System is a **Distributed File System**. Data is stored across thous
 	eg. DB Backups, Archival data, Streaming writes (appends) logs.
 	Hence, we need fast appends and atomicity guarantees (Multiple clients append to same file).
   
-  >NOTE: Understanding access pattern of our system is really important. You can't have it all.
+>NOTE: Understanding access pattern of our system is really important. You can't have it all.
 - Design the most optimal (best) system, under the given constraints and relaxations.
+
 ## Design Assumptions
 1. Underlying hardware is cheap, commodity and bound to fail.
 2. Small files are supported but NO need to optimize for that.
