@@ -1,5 +1,5 @@
 ---
-title: Google File System Note
+title: Google File System (Oct 2003) Notes
 date: 2024-03-30 10:00:00 -500
 categories: [paper, google-file-system]
 tags: [google-file-system]
