@@ -15,7 +15,7 @@ Universally Unique Identifiers also known as UUIDs. It allows you to generate a 
 
 Let's break down UUID for better visibility.
 
-![UUID.jpg](https://github.com/omjogani/blogs/assets/72139914/048183bd-a9ee-4468-879c-81f6bbee24ab)
+![UUID.jpg](https://github.com/omjogani/blogs/assets/72139914/797d0a58-f2cb-4dc9-a7b5-e676f3e4290f)
 
 ### Pros
 
@@ -36,7 +36,7 @@ Universally Unique Lexicographically Sortable Identifier also known as ULID. It 
 
 Let's break down ULID to grab granular details.
 
-![ULID.png](https://github.com/omjogani/blogs/assets/72139914/01164038-5579-41a4-99b1-44aace12a5ef)
+![ULID.png](https://github.com/omjogani/blogs/assets/72139914/0d2d14e7-ef6d-4148-b6c6-9657df92beb7)
 
 It uses a UNIX Timestamp in milliseconds and a Cryptographically secure source of randomness to generate 2nd part of ULID (Randomness).
 
@@ -62,7 +62,7 @@ It is configurable to at max 32 characters long, the default length is 24 charac
 
 Let's break it down to understand it better
 
-![CUID.png](https://github.com/omjogani/blogs/assets/72139914/72ad5134-5d52-47a3-9d79-c0be0662cfeb)
+![CUID.png](https://github.com/omjogani/blogs/assets/72139914/ccd6bc41-7a99-4462-a125-ad020bb3635d)
 
 It uses a combination of UNIX Time in Millisecond + Salt + Session Count + Fingerprint and Hash these values with SHA3 Hashing Algorithm prefix by random alphabet.
 
@@ -88,7 +88,7 @@ It is possible to configure the length of NanoId, similar to CUID.
 
 Let's break it down to understand how it works
 
-![NanoID.png](https://github.com/omjogani/blogs/assets/72139914/bbd6aeb4-fe8d-4110-9b1c-8c6b3b3d94d7)
+![NanoID.png](https://github.com/omjogani/blogs/assets/72139914/92cff368-5400-4e40-8411-019620c354ae)
 
 ### Operation in NanoID
 
@@ -132,7 +132,7 @@ and so on...
 | Adoption (Community)    | YES  | NO   | YES  | YES     |
 
 > Note: For highly critical systems where security is a top priority, CUID might be a better choice because it’s harder to guess the next ID. It uses SHA3 and CSPRNG to make IDs more random and unpredictable. If security isn’t the biggest concern, NanoID or other IDs can be good options.
-{: .prompt-tip }
+> {: .prompt-tip }
 
 ## Conclusion
 
