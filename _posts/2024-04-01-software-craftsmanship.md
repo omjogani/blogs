@@ -921,3 +921,26 @@ But this is vague statement, We can search on internet about the ratio of failin
 When it's coming to discussion regarding the not following practices, We should ask, should we go instead that gives us the same or more value than that? We should propose the solution that makes software product better.
 
 From Developers to Manager everybody should be accountable to their decision, people should understand the values it brings to the table.
+
+### Pragmatism
+
+Technologies, methodologies, and practices are constantly emerging and evolving. There is always a better way of doing things.
+
+Being pragmatic is one of the best qualities that a software craftsman can have.
+
+We should constantly look for ways of doing our job better and satisfying our customers.
+If that means TDD, we should use TDD. If there is something else that is helping more than TDD then adopt that.
+
+Dogmatic thinking is bad. We should constantly ask ourselves why we are doing what we do. Is there anything we can do better?
+
+
+**Q: How do we know that one practice is better than other?**
+
+Ans: Compare the value they both bring to the project, then compare how long their feedback loops are.
+
+
+As many agile methodology have taught us, we inspect and adapt.
+
+If we find a practice that is better than what we do today, we adopt this better practice.
+
+As software craftsmen, we should always keep an open mind and choose the best technologies, tools, processes, methodologies, and practices for the job.
