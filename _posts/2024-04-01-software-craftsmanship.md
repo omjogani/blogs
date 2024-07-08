@@ -933,14 +933,65 @@ If that means TDD, we should use TDD. If there is something else that is helping
 
 Dogmatic thinking is bad. We should constantly ask ourselves why we are doing what we do. Is there anything we can do better?
 
-
 **Q: How do we know that one practice is better than other?**
 
 Ans: Compare the value they both bring to the project, then compare how long their feedback loops are.
-
 
 As many agile methodology have taught us, we inspect and adapt.
 
 If we find a practice that is better than what we do today, we adopt this better practice.
 
 As software craftsmen, we should always keep an open mind and choose the best technologies, tools, processes, methodologies, and practices for the job.
+
+## 8. The Long Road
+
+Everybody wants to be good at something. The motivation may very a little but one thing is true for all of us: Mastering something gives us pleasure.
+
+### A Tale from a Brazilian Teenager
+
+When Author was living in small town in Brazilian Side country. He had a dream to visit London. But due to his financial condition It wasn't possible. London fascinated author such that it was became a dream to visit and work in London for author.
+
+The problems were, He wasn't neither able to speak English nor had UK passport.
+
+He finished his schooling and decided which career path to follow. Due to financial conditions he had limited options to choose, from those limited options he choose Software Engineering career. He could not afford to study in good university due to financial problems.
+
+After few years working as a Software Engineer. He finally could afford to start very long and expensive Italian citizenship process. It was required old documents of relative for the process and Author spent good amount of money to follow the same.
+
+In 2000, Author visited UK on holidays at that time He was 23 years old. He wanted to confirm that London is that good and fascinating as he though of?
+
+He had traveled nearby places, talked to software people over there and found that He was facing problems speaking in English and not able to understand what they're saying.
+
+Author mostly worked on Delphi, and found that it is almost not found in London, Whole market was of Java.
+
+Author came back to his country and start learning Java and had private teacher who taught him English. After he decided to take few Java certifications as well that were attached in CV.
+
+At this point he realized how important his career was for them. He was preparing himself to have successful career in London. He came out from comfort zone and took ownership of his career.
+
+He finally moved to London when he was 27 years old professional software developer.
+
+### Focus and Determination
+
+There is a well said, "**_You’ve got to be careful if you don’t know where you’re going because you might not get there._**", We always values and control our careers, It may or may not lead us to mastery.
+
+It's obvious that we might forget long-term goals and many thing can change. but consider career as multi-year project.
+
+Once we understand the ultimate goal, we can take the most important requirements, break them down into smaller pieces and iterate, evaluating the project goals and adapting when necessary.
+
+#### But What if We Don’t Know Where We Are Going?
+
+In this constantly evolving field, it's important to reevaluate our career decisions based on not just our passion but also all the events in our personal and professional lives.
+
+We always have to be active in creating opportunities for us. We just keep sitting in corner of room and waiting for opportunity, no one is aware about it and get you opportunity. We need to show people what we do and how well we're with what we're doing.
+
+Here are few things we can do in order to create opportunities.
+
+- Expand our technical knowledge
+- Attend user groups and tech community events
+- Network with other developers and business people.
+- Blog about things we are learning and doing
+- Contribute to open source projects.
+- Developer projects and make them publicly available
+- Attend Conferences
+- Present at a Conference.
+
+These are some of the things that helps to create opportunity.
