@@ -995,3 +995,25 @@ Here are few things we can do in order to create opportunities.
 - Present at a Conference.
 
 These are some of the things that helps to create opportunity.
+
+### Job as Investment
+
+Each one of us has a different dream, aspiration and different personal situation.
+
+The most important thing is to treat every single job as an investment, a step toward a bigger goal.
+
+We need to be clear about what we expect as a return and we need to measure it regularly throughout the length of that investment.
+
+Author started working for investment bank, people around them surprised to see author working for investment bank, Company was looking for someone who can build strong technical practices along with agile methodologies processes.
+
+Author wanted to fill some gaps in his career by doing relevant jobs. He was expecting good return on investment as experience in developing software at a very large scale, work with world wide teams etc.
+
+Knowledge is most common return on investment expected from a job. Developer choose job according to what they want to learn and they leave when they don't find learning.
+
+Our personal lives also play an important role in career decisions, sometimes we need more money and that's OK, we should pursue that. Sometime we need more stability and security according to specific condition in personal lives (new family).
+
+It's not right and wrong but some of the stuff worth keeping in mind:
+
+- Knowledge is forever
+- Money, Stability and Security are **_not_**.
+  We always carries knowledge and experience and try to be better Crafts person, finding jobs that can pay better, and great learning helps.
