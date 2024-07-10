@@ -1016,4 +1016,17 @@ It's not right and wrong but some of the stuff worth keeping in mind:
 
 - Knowledge is forever
 - Money, Stability and Security are **_not_**.
-  We always carries knowledge and experience and try to be better Crafts person, finding jobs that can pay better, and great learning helps.
+
+We always carries knowledge and experience and try to be better Crafts person, finding jobs that can pay better, and great learning helps.
+
+### Autonomy, Mastery, and Purpose
+
+- **Autonomy**: It is when we are in control of what we do, how we do it, and when we do it. That should always be the case in a true Agile context.
+- **Mastery**: It is when we are constantly learning and evolving - becoming better professional and better human beings.
+- **Purpose**: It is when we feel that our job is important and we are contributing to make things better - instead of just doing what we are told without understanding why.
+
+We want to assume that money is _off_ the table and that is important. Software Craftsmen always choose jobs where they have autonomy, mastery and purpose.
+
+According to Author, Autonomy and Mastery is non-negotiable. He will choose or leave job based on Autonomy and Mastery.
+
+Purpose is not always as clear-cut though. Whatever we're building we should also think about How user will going to use it. How can We make easy & beneficial for them.
