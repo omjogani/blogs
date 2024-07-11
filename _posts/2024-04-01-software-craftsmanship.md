@@ -1030,3 +1030,15 @@ We want to assume that money is _off_ the table and that is important. Software 
 According to Author, Autonomy and Mastery is non-negotiable. He will choose or leave job based on Autonomy and Mastery.
 
 Purpose is not always as clear-cut though. Whatever we're building we should also think about How user will going to use it. How can We make easy & beneficial for them.
+
+### Career Inside Companies
+
+It's always exciting to start new jobs when we choose them carefully. From the outside, every companies looked great. Our careers will always be more important than any specific job or company.
+
+Our careers are like long staircases and our jobs are the steps. But they are not even steps.
+
+If We're working for a company where we have autonomy, mastery and purpose and the job is aligned with our own career aspirations, then pursuing a career inside that company is the right thing to do.
+
+Generally, people focusing more on promotion and bonuses instead of becoming better professionals. They follow rules and orders given to them instead of thinking to make it better. They start focusing their own game instead of giving honest opinion and thinking about product. Ultimately they pray for country not to go through another recession.
+
+Incompetent people are scared to lose their jobs when they haven't focused on building skill and becoming better professionals. Software Craftsmen are never scared to loose their jobs. For them, a career inside a company is only viable if it is aligned with their own career aspirations. Software Craftsmen knows that their careers are long roads, where the journey is far more important than reaching the end of the line.
