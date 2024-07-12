@@ -1042,3 +1042,23 @@ If We're working for a company where we have autonomy, mastery and purpose and t
 Generally, people focusing more on promotion and bonuses instead of becoming better professionals. They follow rules and orders given to them instead of thinking to make it better. They start focusing their own game instead of giving honest opinion and thinking about product. Ultimately they pray for country not to go through another recession.
 
 Incompetent people are scared to lose their jobs when they haven't focused on building skill and becoming better professionals. Software Craftsmen are never scared to loose their jobs. For them, a career inside a company is only viable if it is aligned with their own career aspirations. Software Craftsmen knows that their careers are long roads, where the journey is far more important than reaching the end of the line.
+
+## 9. Recruitment
+
+This Chapter is all about attracting Software Craftsmen to our organizations and how to do proactive recruitment.
+
+### An Ordinary Job Description
+
+Having proper Job Description emphasized on requirements and need of developer.
+
+When Job Description includes we want candidate with strong Java skill with concurrency, multi-threading expertise, strong academic background, Solaris, Linux and all those fancy stuff.
+
+They have far bigger problems in their projects, processes, and culture, and that’s what they are really trying to fix.
+
+With this problem, Developer has previous experience working with investment bank can check all the mentioned requirements, May be possible now knowing how to do better at what they do.
+
+At the same time banks complaining about better people, they want to be more efficient, they want to deliver quality software.
+
+What they don't really understand is hiring process, they have to change it.
+
+They will need to change how they attract great developers, starting with their job specifications.
