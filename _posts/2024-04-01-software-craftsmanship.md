@@ -1062,3 +1062,45 @@ At the same time banks complaining about better people, they want to be more eff
 What they don't really understand is hiring process, they have to change it.
 
 They will need to change how they attract great developers, starting with their job specifications.
+
+Hiring only technical people with no other culture skill won't help because ultimately every skill helps in the job.
+
+If you're failing to express company's value and the attitude it expects from each candidate. Hiring people based on only technical knowledge will not help to drive technical and cultural changes.
+
+There is general perception that recruitment process take too long and companies need to take 10-30 interviews to hire 1 candidate. That's problem from interviewer side that they aren't able to define what it means to be a good developer.
+
+Author often visits different teams in different country and main agenda for doing this is to analyse and work closely with teams. Manager who are responsible for these teams often ask Author some questions like "How bad they are?". Who are the developers that doesn't fit and work as expected. Author never take any names. He mentioned overall situations instead of taking names. He said, This is not fault of developer but it's hiring manager who is not able to take good developer.
+
+If Author takes name of developer they will get fired and company will hire other developers. While author was also developer they don't wanted to betray with anyone. Regardless of how good or bad they are, they didn't magically appear here. They were hired.
+
+The identity and culture of an organization are defined by its people and not by emails sent by the chief executive officer (CEO). Delegating recruitment to HR, recruitment agencies, or vendors means delegating the identity and culture of your organization to people and companies that don’t necessarily understand or care about it.
+
+### Too Busy to Interview
+
+The biggest mistake of Interviewer make is saying "**We can't spend too much time interviewing people**". If you can't allocate enough time to interview, you can't really be serious about building a great team.
+
+Because the vast majority of business rely heavily on software, developers play a big part in the success or failure of business.
+
+Since hiring great developer is key, the quality of the interviewers is extremely important.
+
+If Interviewer has mindset that they can't evaluate a person who has same level as interviewer or above. They try to make excuses.
+
+Their mindset should be I can work with people with same level or above to be good as something.
+
+We must have solid criteria to filter out candidates, because interviewing 100 developers to hire four or five is not viable and wasting too much efforts.
+
+### No Job Descriptions
+
+Traditional skills and experience-based job descriptions “are anti-talent and anti-diversity, aside from being terrible predictors of future success.”
+
+- **Absolute numbers**: Defining candidate needs five years of experience in Java or certain degree required, doesn't make sense. Having Five years of experience is different than having one year experience five times.
+- **Keyword matching**: It's not good idea to match exact keywords in resume, HR department doesn't understand importance of mentioned skills.
+- **Listing technologies**: Talented developers may not send their resumes because they may not have experience with all the technologies listed. If it is badly necessary to list technologies then showing them at broader level helps.
+- **Wrong culture fit criteria**: Companies fail to state their values, expected attitude and responsibilities in their job descriptions. It should be described in a way that people can check mark it.
+- **Listing the wrong requirements**: Listing the responsibilities required for a job instead of skills, technologies, year of experience, industry background and academic requirements.
+- **Wrong filters**: Top developers do not apply for experienced-based job descriptions. They are usually more selective when choosing where they want to work. companies culture and type of responsibilities are more important than specific technology.
+- **No internal promotion**s: Normally people get promoted into bigger jobs because of their achievements, leadership and team skill instead of having 5 years of experience with Java.
+
+### What if a Job Description is needed?
+
+If Job Description is needed, the focus should be on detailing the expected attitude and responsibility, types of projects, technologies used(not required) and values and culture of the company.
