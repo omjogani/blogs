@@ -1069,7 +1069,7 @@ If you're failing to express company's value and the attitude it expects from ea
 
 There is general perception that recruitment process take too long and companies need to take 10-30 interviews to hire 1 candidate. That's problem from interviewer side that they aren't able to define what it means to be a good developer.
 
-Author often visits different teams in different country and main agenda for doing this is to analyse and work closely with teams. Manager who are responsible for these teams often ask Author some questions like "How bad they are?". Who are the developers that doesn't fit and work as expected. Author never take any names. He mentioned overall situations instead of taking names. He said, This is not fault of developer but it's hiring manager who is not able to take good developer.
+Author often visits different teams in different country and main agenda for doing this is to analyze and work closely with teams. Manager who are responsible for these teams often ask Author some questions like "How bad they are?". Who are the developers that doesn't fit and work as expected. Author never take any names. He mentioned overall situations instead of taking names. He said, This is not fault of developer but it's hiring manager who is not able to take good developer.
 
 If Author takes name of developer they will get fired and company will hire other developers. While author was also developer they don't wanted to betray with anyone. Regardless of how good or bad they are, they didn't magically appear here. They were hired.
 
@@ -1104,3 +1104,61 @@ Traditional skills and experience-based job descriptions “are anti-talent and 
 ### What if a Job Description is needed?
 
 If Job Description is needed, the focus should be on detailing the expected attitude and responsibility, types of projects, technologies used(not required) and values and culture of the company.
+
+Let's compare Job Descriptions
+
+#### **Job Description 1**
+
+Here they mentioned that they want candidate with strong Java Skill (5+ YOE) along with J2EE, SQL Skill (3+ YOE) and some other skills like Agile Methodologies(including TDD, JUnit etc.), Along with this description they mentioned some essential skills and beneficial skills but not essential.
+
+They also mentioned, There will be ample opportunities for the successful Java candidate to quickly expand on their baking and funds management experience, with plenty of business exposure.
+
+#### Review (Job Description 1)
+
+Here They mixed up Agile environment with TDD and JUnit. They mentioned, J2EE instead of JEE, does that mean they are using an old version of Java Enterprise Edition. They don't really care about Agile or Extreme Programming practices.
+
+At the end of Description they mentioned about opportunity to learn and promoted to management domain of finance.
+
+
+#### **Job Description 2**
+
+This Job Description mentioned brief intro about the company first and then little bit about you. It also mentioned small paragraph regarding TDD such as "We're strong advocate of TDD and we take it closely, you should be having prior experience working with TDD."
+
+They mentioned about the Role that How you're going to work with teams, How company conducts learning sessions, community events and conferences.
+
+They mentioned about Technologies they use and there is no hard bound to use specific technology. They also advocating Open Source a lot.
+
+#### Review (Job Description 2)
+
+This Job Description attract passionate and talented developers. It clearly state what they do, their values and they expect from any developer joining their organization.
+
+It also denotes that TDD, BDD, Refactoring, Pair Programming, CI/CD take precedence over specific technology.
+
+Job Description also clearly states learning and growing opportunities with attending conferences, community events and learning sessions.
+
+This Job Description was written by great and passionate developers and not by HR. and They proved that they understand how great developer feel when they wrote: "For you it's more than a job."
+
+#### A Job Is Not Just a Job
+
+For great developers, their job is not just a job, It's also their hobby and their passion. Companies that think in the same way great developers think, They can provide better environment where they can shine and have loads of fun.
+
+### Recommendations
+
+Recommendations should be encouraged but not financially rewarded otherwise it would leads to other direction. Good developers want to work with good developers hence They see the recommendations system as an opportunity to bring great developer to learn and grow professionally.
+
+Software Craftsmen understand that by recommending other good developer who also align with Software Craftsmen.
+
+### Community Involvement
+
+The best way for companies to hire talented developers is to be in contact with wider community.
+
+A CTO of a company represented Testing framework of company in a conference and due to that they got...
+
+- **Exposure to great developers**: Many were hired directly, save time, money and efforts.
+- **Opportunity for their developer to learn for free**: Many of them attended hands-on-coding sessions.
+- **Free technical advice**: Their developer have the opportunity to talk to other developers.
+- **Cheap Investment**: It takes just a few pizzas and their office space once or twice a month.
+
+While people used to meet on regular basis, it is easy for both developer and companies to identify opportunities and work together.
+
+It was great source of knowledge sharing, partnership, employee agreements, networking and what not.
