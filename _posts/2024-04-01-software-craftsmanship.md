@@ -1119,7 +1119,6 @@ Here They mixed up Agile environment with TDD and JUnit. They mentioned, J2EE in
 
 At the end of Description they mentioned about opportunity to learn and promoted to management domain of finance.
 
-
 #### **Job Description 2**
 
 This Job Description mentioned brief intro about the company first and then little bit about you. It also mentioned small paragraph regarding TDD such as "We're strong advocate of TDD and we take it closely, you should be having prior experience working with TDD."
@@ -1162,3 +1161,44 @@ A CTO of a company represented Testing framework of company in a conference and 
 While people used to meet on regular basis, it is easy for both developer and companies to identify opportunities and work together.
 
 It was great source of knowledge sharing, partnership, employee agreements, networking and what not.
+
+### Defining Effective Filtering Criteria
+
+Relying on recommendations and community involvement is not always enough. We need traditional methods like Job Description and boards.
+
+Large Organizations have to many Resumes and advertising a job position. It is totally impossible to interview each candidate. When Recruiter or HR in charge of the filtering, will usually do it by matching keywords and some random criteria. But when done by Hiring Managers they analyze the candidate's previous experience, companies the candidates worked for and size of company, role etc.
+
+Once author was recruiting for an investment bank. They were looking for experience developer to join their London team. Agency send him 50 resumes. It was not possible to interview lots of people.
+
+Author started thinking about the culture they were trying to create. They wanted passionate software craftsmen. Passion was the most important criterion compared technical skills and programming language. They want people who can constantly learn, grow, share their learning with others and active in their communities.
+
+Author send all resumes back to Agency and asked to filter out some developer who are good & talented developers. Author also shared keyword to match in terms of finding talented developers. The keyword was "Passion".
+
+**Q: What does it mean by good developer?**
+
+This is totally context dependent. Different teams, with different cultures, developing different applications, will have different views on what a good developer means.
+
+It is all depends on what we value the most in a candidate, in Author's case it was **_passion_**. It's not common in Resumes, From that point they started looking for...
+
+- GitHub Account
+- Blog
+- Open Source Contributions
+- Technical communities and user groups with which they were active
+- Summary of pet projects (README)
+- Twitter Account
+- List of Favorite technical books
+- Conferences where they either gave talks or attended.
+
+It may possible that some great developers might not have things described above, the alternate solutions is to take interview for all candidates.
+
+### Proactive Recruitment
+
+When Author along with some people started Codurance, One of their first client asked them for a very unusual service to interview 70 developers where they wanted to hire junior, senior, architects, permanent employees, contractors and so on. They also need business analysts, DevOps and testers.
+
+They needed to make sure they would get talented developers to join the company because the majority of these developers would work directly with their clients, developing bespoke software.
+
+Author's team managed to select some great developers for them. and they learned a big lesson: you should never allow your company to be in that situations. Recruiting when you are desperate will make you bring the wrong people to your organization and, although you may think that at least you were able to place these developers in projects, at some point these projects are going to end.
+
+Finding great developers take times and more likely when you desperately needed you won't find it that quickly.
+
+They straight away mentioned that we're not going to hire candidates directly. We will have process to pass in order to filter great developers.
