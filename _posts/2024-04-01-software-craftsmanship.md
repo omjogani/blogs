@@ -605,7 +605,7 @@ As time goes by, things become messier, bugs start to appear and features start 
 
 It's very common to see project where, a feature of size X takes N number of days to be implemented. Over time, as bad code is added to the application, another feature of size X takes longer than N number of days. The reason is simple, as the quality of code decreases, the amount of time to implement new feature, fix a bug, make a change increases.
 
-![[Pasted image 20240604102141.jpg]]
+![Pasted image 20240604102141](https://github.com/user-attachments/assets/4a359c26-b1d2-497d-a163-7b2a5b6f287e)
 
 Some people argue that they don't have time to do it properly, but it like they always find justice the amount of time and money spent on long testing and bug-fixing phases.
 
