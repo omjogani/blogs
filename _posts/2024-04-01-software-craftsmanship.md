@@ -1202,3 +1202,21 @@ Author's team managed to select some great developers for them. and they learned
 Finding great developers take times and more likely when you desperately needed you won't find it that quickly.
 
 They straight away mentioned that we're not going to hire candidates directly. We will have process to pass in order to filter great developers.
+
+## 10. Interviewing Software Craftsmen
+
+A good company needs great people, and great people want to work for a good company.
+
+### A Business Negotiation
+
+During an interview, It is important to understand that we are not begging for a job. We're doing business negotiation.
+
+Before signing any contract we need to analyze and measure the risks and rewards of that negotiation.
+
+Every Software Craftsmen has a reputation and anything that can damage that reputation must be considered as **_risk_**.
+
+It could be may be work as factory workers, saying no in technical decisions, coding against documentations, no contact with users and stockholders.
+
+On the other hand, if project is in trouble but developers have total autonomy to do whatever they can do the best to save project, working in close collaboration with the business, then this project can be a great opportunities for a craftsmen.
+
+A successful service provider is the one who understand that sometimes it's better to refuse a deal rather than having bad deal and that is a good partnership.
