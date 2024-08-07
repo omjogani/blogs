@@ -1220,3 +1220,29 @@ It could be may be work as factory workers, saying no in technical decisions, co
 On the other hand, if project is in trouble but developers have total autonomy to do whatever they can do the best to save project, working in close collaboration with the business, then this project can be a great opportunities for a craftsmen.
 
 A successful service provider is the one who understand that sometimes it's better to refuse a deal rather than having bad deal and that is a good partnership.
+
+### Identifying Productive Partnerships
+
+Companies and developers are looking for the same thing: **a productive partnership**.
+
+#### A Hiring Company's Perspective
+
+Company expects you to ask question and get interested in job role you're interviewing for.
+
+If candidate is not asking question that means He is just looking for a job, regardless of which one. but If candidate is asking lots of question that means he really cares about his career and finding the right company.
+
+Having favor candidates who ask questions, It doesn't mean they are better than the ones who don't ask questions but at least it shows they care enough about being in a place they will enjoy.
+
+Here are some of the things we should pay attention to:
+
+- How enthusiastic and passionate the candidates are?
+- In Technology, their previous projects and jobs and their own achievements
+- How they describe their failure?
+- Do they take any responsibility for thing that went wrong or do they just blame others?
+- Have they done anything in previous job to improve the things they were complaining about?
+- What sort of environment are the candidate looking for?
+- Can we match their expectations?
+
+We also need to make sure not only hiring but also keeping them after they have been hired. It's important that the candidates know what to expect before starting the job.
+
+Regardless of how we conduct interviews, when hiring talent, we should be looking for passion, ability to do the work well, and cultural fit.
