@@ -1246,3 +1246,106 @@ Here are some of the things we should pay attention to:
 We also need to make sure not only hiring but also keeping them after they have been hired. It's important that the candidates know what to expect before starting the job.
 
 Regardless of how we conduct interviews, when hiring talent, we should be looking for passion, ability to do the work well, and cultural fit.
+
+### A Candidate's Perspective
+
+For developers they must consider interviews as an opportunity to understand more about the company.
+
+Interviewer should be developer who will work with the candidates instead of managers, leads and all other people.
+
+Single interview process states that company is in hurry and can not take the time to hire the right people. Multi-phase interview process usually means that the company is more interested in analyzing different aspects of the candidate's profile.
+
+Questions asked in interview clearly states that what interviewer value the most and what can we expect when we join the team.
+
+It’s important to observe how the interviewer will react and respond to this question.
+
+If interviewer asked predefined question from any paper that means Interviewer is not willing to explore new ideas and engage in a debate.
+
+Judging developer with exact answer like APIs, Tools, Technologies is the wrong thing to do. Having a open conversation about real-world and concrete scenarios, exploring different approaches and solutions, and of course writing code together, are the best ways to determine a candidate's experience.
+
+Author shared a story where interviewer had a printed spreadsheet with all questions and expected answer written. While taking interview they were marking check in a cell and that way they were identifying that is candidate passionate about their profession.
+
+Now, You may validate that candidate knows few Java APIs and frameworks, but you won't have any idea to understand weather is he writing well crafted code.
+
+### Good Interviews
+
+A good interview is like a good and informal chat between passionate developers.
+
+When author was giving interview in one of investment bank company, interviewer said He has read some blogs written by author, some point He don't agree with and wanted to discuss the same thing. Discussion went for more than a hour. The most important, the things that none of them had ever though about before.
+
+It was the first round and author made his mind to work with that company, especially the person who was interviewing them.
+
+The point to be noted here is instead of discussing on topics based on experience or reading few articles or googling before the interviews won't be enough to prepare a candidate for an open conversation like that.
+
+### The Right Focus
+
+At company side we must analyze what we want to change, improve or adopt in new people hired.
+
+If we value Test-Driven Development (TDD), Clean Code, Refactoring, Pair Programming and Agile methodologies, they should be part of our interview process.
+
+Don't waste precious interview time talking about things that are not relevant. Focus on What is important and more valuable to the company.
+
+### Mind-Mapping a Conversation
+
+One technique that the Author find very useful is when conduction interviews, He takes few pieces of paper and a pen and ask very open questions such as What is well-crafted software for you?
+
+Generally answer of that question will be list of things like maintainability, testability, readability, performs well, satisfies requirements and so on.
+
+Now It opens lots of possibility to ask question from what candidate mentioned. You can always go back like "We talked about readability but you also mentioned testability, could you expand on that?".
+
+If conversation doesn't follow your way, you can ask more specific question like "What do you think about TDD?", That will leads to another interesting conversation.
+
+### Pair-Programming Interview
+
+It's huge mistake to hire a developer without seeing their coding. No technical interview is a replacement for a good pair-programming session.
+
+This Pair-Programming clearly shows
+
+- How quickly developer navigate to which tests to write - Shows Experience
+- Familiarity with Tools, IDEs, language, testing, shortcuts etc.
+- Choice of names for classes, methods, attributes
+- How clean and expression the code is
+- How the developer reacts when interviewer makes suggestions or comments
+- Their though process
+- How are they solving problems
+
+A common approach is to choose one of the various katas publicly available or to create our own katas.
+
+Another approach is to take and existing code (badly written and without test). Ask candidate to write test and make it better. It's important to have realistic expectations when conducting pair-programming interviews.
+
+It's quite possible that different languages have different testing/mocking techniques and candidate might stuck in between but important thing to notice is how candidate reacts to this situation. The expected reaction would be to have the candidate asking for help.
+
+Pair programming means pair programming and not standing over someone's shoulder and applying unnecessary pressure.
+
+Author interviewed an experienced candidate, Author was using Eclipse and Mockito. Candidate was more interested with Intellij and JMock. But his mindset was to learn something new. Within sometime he gave try to Eclipse and Mockito and notes shortcuts in some paper and got really good at it in some time. He showed passion when He became irritated because he didn't know the shortcuts. He showed he could learn new framework really quickly.
+He was conformable and humbled in asking question.
+
+### Bring Your Own Computer
+
+Asking candidate to bring their own computer shows his expertise in their own favorite tools.
+
+An interesting exercise is to ask the candidate to clone a project from GitHub. It shows familiarity with Git, is it installed in their system? Which tools does they prefer and How quickly they navigate to the system.
+
+We can ensure How efficient do they use their system? and How they interact with IDE, OS, Terminal and so much more.
+
+### Tailor-Made Interviews
+
+Before interviewing any candidate, We should ask our selves:
+
+- What are our values?
+- What sort of attitude do we expect from our colleagues?
+- What are the essential skills for the role offered?
+
+Answer to this question defines our acceptance criteria, we must use to hire someone.
+
+Author wanted to join a UK based company and He was interested in that company.
+
+When Interviewer process got started there were 2 phase, Online test and Interview with project lead. They noticed...
+
+- Bad way (online test) to being with interview
+- Not giving chance to developers to take interview with whom author will work
+- Irrelevant question (old horrible) that nobody is using at that time
+
+Acceptance criteria was to have next round if they score 90% or more. Author scored 87% and got the response as We will reach out to you. Author made decision to not continue with that company.
+
+The pre-selection process is extremely important. That’s where you filter candidates according to your core values.
