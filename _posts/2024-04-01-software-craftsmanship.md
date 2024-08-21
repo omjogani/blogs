@@ -1349,3 +1349,53 @@ When Interviewer process got started there were 2 phase, Online test and Intervi
 Acceptance criteria was to have next round if they score 90% or more. Author scored 87% and got the response as We will reach out to you. Author made decision to not continue with that company.
 
 The pre-selection process is extremely important. That’s where you filter candidates according to your core values.
+
+### Taking a Punt
+
+Author interviewed a candidate in his early twenties. He was looking at the CV and it was quite boring. There is no mentioned of TDD or Agile (which was quite common in CVs).
+
+Author would not usually pay much attention to this sort of CVs but he saw one line that made him curious "He had been a member of a Linux user group since he was 16 years old."
+
+Author invited him for an interview and get to know that in organization candidate was working TDD, Agile and Extreme Programming were not allowed.
+
+Candidate was trying out TDD and all that in his pet projects. Author asked how many pet projects do you have, He said five.
+
+Then discussion went on pet projects, Author found good skill on adapting new technology and liked his working style. Although He wasn't that good with TDD skills.
+
+He became one of the best engineer in that company. Moral of the story We should look for talent, attitude, passion and potential and not knowledge of specific technology.
+
+### Hiring for an Existing Team vs Hiring for a New Team
+
+When hiring for existing team, We should look for passion, attitude, potential and solid foundation on Software Engineering along with TDD, Pair Programming, Extreme Programming practices. Specific technology can be at second level of priority because If candidate has solid foundation They can learn any specific technology in no time.
+
+When hiring for new team member for new team, We should look for, besides the passion and good software development foundation, we should look for experienced developers with good track record of delivering projects. Dealing with client bureaucracy, business pressure, production issues and stakeholder's management.
+
+They must have some experience which can't be gain though pet projects, They must have deployed medium to large projects on production environment. They must have broad knowledge instead of knowledge of specific technology. They should be knowing build tools, databases, scripting, virtual machines and whatever needed for a project.
+
+### Pre-Interview Coding Exercises
+
+Asking candidates to submit some code before the face-to-face interview is a great way to pre-select candidates.
+
+Give some time to solve the problem, so that candidates can give their best and write well-crafted code.
+
+Let the candidate choose the language and tools. All we are caring about is if the candidate can code well, regardless of the language.
+
+Looking at submitted code is a far better way to filter candidates than looking at CVs or conducting phone interviews.
+
+### Everyone Should Know How to Interview
+
+Interview techniques are a skill we should master, both as interviewers and as candidates.
+
+A strong team is a team where each developer can conduct interviews, making sure he or she will find the talent the team expects.
+
+Experienced developers should always take less-experienced developers to the interviews with them.
+
+Pair interviewing and rotating interviewers is a good way to keep everyone involved.
+
+### Developers Must Interview Developers
+
+Sometimes, Frustrated developers were in companies where they could not choose their own teammates.
+
+Good developers don’t hire bad developers. They will try to find developers who are even better than they are; they know how important it is to have a great team—not just for the benefit of the company but for their own benefit as well.
+
+It's important that developers are taking interview of developers. That way it's easy to have great team spirit.
