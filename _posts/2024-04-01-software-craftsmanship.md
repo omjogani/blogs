@@ -1399,3 +1399,77 @@ Sometimes, Frustrated developers were in companies where they could not choose t
 Good developers don’t hire bad developers. They will try to find developers who are even better than they are; they know how important it is to have a great team—not just for the benefit of the company but for their own benefit as well.
 
 It's important that developers are taking interview of developers. That way it's easy to have great team spirit.
+
+## 11. Interview Anti-Patterns
+
+Paying attention to every detail during the selection process is one of the best ways to get insights into the culture and values of the hiring company.
+
+Talented and Experienced developers looks for autonomy, mastery and purpose and top of that it's clear for them what kind of client I want to work for and environment too. They make decision of accepting offer based on who are interviewing them.
+
+### Don't Be a Smart-Ass Interviewer
+
+**Don't try to make yourself smarter and better than the candidate.** Don't intimidate the candidate by putting her in a touch situation just for your pleasure.
+
+While recruiting for talent, we should be looking for a partner, a person who can join your team and help you to be better, and not a submissive developer who just follow your orders blindly.
+
+Just be honest and humble. Treat candidates like fellow professional developers. Most importantly listen to the candidate and keep your mind open. you may actually learn a few things.
+
+### Don't Use Brainteasers
+
+Avoid asking stupid questions that are totally unrelated to the job (Classic Aptitude questions) such as How many red ball can be fit in to square box.
+
+The ability to answer these stupid brainteasers has nothing to do with writing well-crafted code, being a good team player, or having a professional attitude.
+
+### Don’t Ask Questions to Which You Don’t Know the Answers
+
+Simply, Don't ask any question that you don't know the answer. Googling for answer and asking that question doesn't make any sense.
+
+Don' try to trick the candidate with confusing or misleading questions.
+
+### Don’t Try to Make the Candidate Look Like a Fool
+
+Author interviewed by a telecom company, they were excited because author had some previous experience working with telecom company.
+
+There were two co-interviewer taking interview, project lead and lead architect. Interview was going good. Project lead was asking good question and good intention. Author understood that he can work well with project lead.
+
+Then, Lead Architect started asking question regarding architecture design for previous company, Author stood up and explain high level architecture on white board. Lead Architect said it's very simple architecture. Author understood that it's not gonna be good partnership with him. He take some time and said, "Thank you, I will take this as great compliment. I'm glad we never needed anything more complex than that. It's serving 20 million users in 3 different country."
+
+He thanked both interviewer for opportunity and left.
+
+### Don't Block the Internet
+
+Sometimes, Interviewers don't allow candidates to use internet but Is it possible for interviewers to work without internet?
+
+It's an essential skill for any software developer to search and solve problems. Removing Internet access just doesn't make sense.
+
+If candidate is able to search and find answer, interviewer must change the way of asking questions.
+
+### Don't Code on a Piece of Paper
+
+According to Author asking to write code on a piece of paper is a very stupid idea when it comes to interviewing developers.
+
+There is a difference between being a teacher in high school asking students to produce algorithms in pseudo cod and hiring a professional software developer.
+
+When hiring professionals, we should look for developers who master their tools and techniques and who can produce well-crafted code through testing and refactoring.
+
+### Don't Use Algorithms
+
+It's common nowadays where interviewers are asking problem solving exercises, the motive behind that is "They want to test ability of solving problems".
+
+The reality is they can test the same thing by asking exercises that are closely related to the their projects.
+
+Algorithms are procedural and better implemented in a functional style. We don't create classes or model the business domain when implementing an algorithm.
+
+The real essence is What we need in work, we should ask the same thing in interview.
+
+If product/application is all about algorithms, then of course, we should definitely test for that.
+
+### Don't Conduct Phone Interviews
+
+Phone interviews are only needed when the pre-selection process is poor.
+
+It shows the interviewer is usually in rush to ask the questions she need to ask in order to decide if she will or will invite the candidate for a longer interview.
+
+It's challenging for non-native speaker, may be they can't express well without body language, paper, whiteboard.
+
+It is good only when it's the only option. Suppose candidates who are located in different countries and always favor a face-to-face interview.
