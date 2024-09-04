@@ -1473,3 +1473,107 @@ It shows the interviewer is usually in rush to ask the questions she need to ask
 It's challenging for non-native speaker, may be they can't express well without body language, paper, whiteboard.
 
 It is good only when it's the only option. Suppose candidates who are located in different countries and always favor a face-to-face interview.
+
+## 12. The Cost of Low Morale
+
+Low morale can be one of the main reason for a software failure.
+
+### The Agile Handover: Low Morale
+
+After the transformation of the agile, companies realized that their software delivering capability is still very poor. This realization is call the Agile _handover_.
+
+A common problem we find in all these companies is low morale. It's common to see people blaming other colleagues, manages and environment.
+
+Managers do talks about 5 years plan but the reality is nobody really know what needs to be done and still we have loads of people that are not directly involved with the project.
+
+Different teams asking for urgent features, those are quite often conflicting with each other. Normally requirements are too busy such that no one is ready to explain them in detail.
+
+Even team suggested a better way of working but nobody listened to that.
+
+Adopting Agile should be...
+
+- Synonymous with empowering people
+- Embracing change
+- Improving collaboration
+- Understanding the value of each piece of work and knowing why we are doing things
+- Synonymous with doing things right
+- Improving communication
+- Delivering value to customers
+- Shortening the feedback loop
+- Working effectively as team
+
+A true agile organization can easily provide what knowledge workers need the most of enjoying their jobs: autonomy, mastery and purpose.
+
+It's the general case where employees are not enjoying their job. It is common to see unhappy developers working like zombies, just waiting for clock to hit five o'clock. The question is here is "Are we really motivated and enjoying out jobs?".
+
+Although, Agile transformation really made it's impact from building software and delivering it. Agile coaches had very little success improving developer's technical skill; very few Agile coaches actually sit down with developers and write code. Due to that Developers quite quickly learned not to listen to these coaches that's because they don't know the impact when they talks about TDD and Extreme Practices.
+
+### The Cost of Employing 9-to-5 Developers
+
+When asking passionate developer about what to do with 9-to-5 developers, the first thing that comes to their minds is _fire_ them all.
+
+Lack of passion is not what really bothers passionate developers; what frustrates them is to be held back by other developers when they are trying to improve their application and the way they work.
+
+Author worked for an international media company and responsible for developing a new placement system for a 14-year-old internal system.
+
+Everything was going down due to unskilled developers, application was supported by them.
+
+There was a major issue between teams/developers, Author noticed that people rarely have interaction with other developers/team members.
+
+In standup, not all members join it actively and there was a notion of working for 2 weeks and not caring about iteration, delivery and prioritization.
+
+Situation was like "this feature here will probably take around six weeks to be developed. I'll let you guys know when it is done", some developers used to say.
+
+Author tried couple of things to make situation better, He organized dinner, drinks not only that, We tried paring with people and discussing about TDD and other new stuff. Turns out no one was interested in that, Developers say "Sorry Man! I'm not interested in rushing the task, I have life and I don't want to stress out, I don't really care and client either".
+
+Author was the only one who was writing tests, assuming that some day people will enjoy working with this. It went other way around, "We told you that it's waste of time" they say.
+
+Author was increasing frustration along the time and decided to leave the company OR change the team.
+
+The Software took 7 years and costed 10 million pound at the end. It could have done in 18 to 24 months and 2 million pound.
+
+Just with passionate developers and good business people, company could have same 5 years and 8 million pound and could have invested this 5 years in innovation and research.
+
+In projects like this, it is impossible for a single developer to change the world.
+
+### Constrained by Lack of Motivation
+
+Almost every company has problems, Every single employee without much efforts, could easily come up with a big list of thing they wished were better.
+
+If employees know what need s to be changed and how things could be improved, Why don't they do anything about it? Here are common reasons
+
+- They don't feel they are empowered to do it
+- They don't want to be the ones pushing it
+- Nah! too much hassle
+- They don't believe that things could be changed
+- They don't care, It's just a job
+
+The reason why many companies fail when trying to improve the way they work is low motivation. There is no way we can change organization when people in the company aren't motivated and don't care about their jobs.
+
+Always ensure that
+
+- Are they motivated to do a good job?
+- Do they really care about improving the way they work?
+- Are they constantly getting better?
+- Do they even believe in or like what the company does?
+
+### Injecting Passion
+
+Embedding Software Craftsmen in a team, Either hiring them permanently or bringing external craftsmen for a period of time, is the most efficient way to motivate existing developers. They are on a mission
+
+- To make things better
+- Deliver value to their clients
+- Inspire people around them
+- They aren't afraid to lead the way and drive changes
+
+A Software Craftsman can sit down and pair with developers, sharing their knowledge, experience and passion.
+
+#### How Author transformed Investment Bank Company?
+
+One of the first thing they did, They hired a few craftsmen to join them. The advantage of bringing a few more craftsmen to the team was that they became out allies not only to fix technical problems but also to inject passion and bring innovations.
+
+They started asking "has anyone learned anything since out last stand-up meeting?". Eventually started sharing blog, videos and book links in group.
+
+Things like that completely changed our environment. Developers were excited about technology again and were keen to get better.
+
+What before was a boring department in a large organization was now a cool group of people working very efficiently, always striving to get better.
