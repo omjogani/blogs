@@ -1577,3 +1577,84 @@ They started asking "has anyone learned anything since out last stand-up meeting
 Things like that completely changed our environment. Developers were excited about technology again and were keen to get better.
 
 What before was a boring department in a large organization was now a cool group of people working very efficiently, always striving to get better.
+
+## 13. Culture of Learning
+
+It is really important to create a culture of learning in companies, here are some things that is used in large to small companies.
+
+### Wrong Motivation
+
+Author was assigned to work on a project by a investment bank hired consultancy firm. They wanted to retrofit unit test to their code base.
+
+While Author was on bench, they can't really say no to them. They haven't asked developer to work from their office. Usually companies never allows their code to be accessed from outside their premises.
+
+For a few months some colleagues and Author wrote unit test for the existing code without even speaking to any of the developer who wrote it. The client was very clear: "You just need to write the test, Your target is to bring the test coverage up to 70 percent, you have to keep maintaining this mark".
+
+There were some weird behavior of code, Team wanted to talk to developers who wrote that code and they seems to be busy and not wanted to talk to them.
+
+Somehow, Author and his team able to achieve 70% test coverage, and after that deal of that project got closed.
+
+It was just to have bonus from other end and for that to fulfill they at least needed 70% tests coverage and they outsource for the same.
+
+Author would have easily said no and skipped it for it. but now it's even more dangerous, some people would trust those tests. Bad tests are worst then no tests at all.
+
+We will never change an organization by forcing people to adopt a new process or different practices. Instead, we should create a culture of learning, where people can find their own motivation to make things better.
+
+### Creating a Culture of Learning
+
+Creating a culture of learning is one of the most efficient ways of injecting passion into a company.
+
+When senior developers are not motivated, it leads to junior developer to not being excited about the software development.
+
+These young developers, as they join the industry, have to deal with crap and unnecessarily complex code produced by seniors, and at the end junior developers find PowerPoint presentation and Excel more attractive then writing code.
+
+On the other hand, if the same junior developer had been brought up in an environment where their seniors were always trying to find ways to get better at what they do, keep learning new stuff, it will truly aspiring to become software craftsmen.
+
+The better the developers are, the more innovative and agile the company can be.
+
+If the company becomes a place where developers are happy, many other good developers will be attracted to it.
+
+Let's explore some of the things developers can do to create such an environment.
+
+#### Start a Book Club
+
+Come together with your colleagues and start reading the book, see if other developers are interested in the discussion.
+
+If no one is interested, ask the other developers what sort of book they would like to explore, choose the book and go with that.
+
+If still no one is interested, start reading the book you want, but take the time to share what you are learning during informal conversations. May be some of the developers who initially were not interested will change their minds and join you.
+
+#### Have a Tech Lunch (Brown Bag Session)
+
+Ask your team if, once a week they would like to have lunch together while talking about technical stuff.
+
+It is not required to have proper structure but it can help in various ways such as technologies, approaches, techniques, books or whatever else people want to share and discuss.
+
+Let people also do short presentations if they want to. Tech lunches are very easy to setup because there is no presentation or organization needed. You just need a place and people bringing their own lunches.
+
+#### Have Group Discussions (Round-tables)
+
+Divide a wall or whiteboard in two. One side is for lightning talks; the other side is for topics to be discussed in a group. Ask participants to write down the title of the lightning talk they want to give (five minutes of lightning talk, 2 minutes of questions) or the topic they want to discuss as a group.
+
+The basic idea is to people can propose the topic on which they would like to discuss and present in brief to raise the discussion on the same.
+
+Other people can share their questions and thoughts on the it. and after sometime other people can have change to repeat the same.
+
+#### Switch Projects for an Iteration
+
+Within a company, it is common to have different development teams working on different applications or in different parts of the same system. After a period of time, projects fall into a routine. We rarely do previous decisions get reviewed.
+
+Assuming that developers are constantly pairing with each other, we can solve this problem by providing an opportunity for developers to switch projects for at least a full iteration. Ultimately it can leads to positive effects:
+
+- **Validation of the decisions:** The new person, after understanding the context in which the decisions were made, can confirm that it was a good decision.
+- **Knowledge Sharing:** The new developer learns how certain problems can be solved.
+- **Improvements:** The new developer can propose better way to solve those problem.
+- **Collective Learning:** After discussing the current solution, people from existing team can discuss better solution collectively.
+
+#### Switch Projects for a Few Hours
+
+We can have developers working in different teams to switch team for few hours or days. Developer can organize the switch themselves.
+
+Just go to other teams location and sit down with one of the developers and pair with them for a couple of hours.
+
+It helps build good understanding of how other teams are working and why and how they're utilizing the power of different technologies.
