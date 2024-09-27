@@ -1658,3 +1658,44 @@ We can have developers working in different teams to switch team for few hours o
 Just go to other teams location and sit down with one of the developers and pair with them for a couple of hours.
 
 It helps build good understanding of how other teams are working and why and how they're utilizing the power of different technologies.
+
+#### Conduct Group Code Review
+
+Group code reviews are another very interesting way to create a culture of learning. It is a way to learn from our peers.
+
+It's important to have code review **get it right**. it means...
+
+- Comments should never be personal.
+- It doesn't matter who wrote the code.
+- Never look at the commit history during a group code review. Focus on changing the future.
+- Comments should be objective and constructive, the focus is on how ti make the code better and not to say why it sucks.
+- Sometimes having facilitator helps, They ensure that everyone speaks and there is no finger-pointing.
+- Don't expect to make a lot of progress, if developers want to spend a lot of time discussing a single issue, let them do it.
+
+#### Have Hands-On Coding Sessions
+
+Hands-on coding sessions are sessions where developers get together to write code.
+
+Facilitator must know the exercise very well before the session, they can practice couple of time before the session.
+
+Developer will pair with whom they never paired to paired rarely. Facilitator should walk around and help developers normally he or she should ask challenging questions, not give them the answer or direct suggestions.
+
+The Facilitator should run small retrospective where every developer can share what they've learned new, what they've done.
+
+Developers thank their pairs when the session is over.
+
+Hands-on sessions are very helpful for injecting passion into out teams. It creates opportunity for developers to learn from each other and bring a bit of fun to the workplace.
+
+Few things to take care while organizing this sessions...
+
+- Don't make it about work. The focus is to practice and learn in a safe environment.
+- Allocate two hours for the session: one hour from the company's time and one hour from the developers own personal time.
+- Run the session in friendly and informal way for the very first time to encouraged to run future sessions.
+
+#### Favor Technology-Agnostic Thinking
+
+Try running technology-agnostic sessions. Although it is always easier to run technology-specific sessions, if developers are not interested in the technology they won't come.
+
+When running technology-agnostic sessions, developers are in control of which technologies they want to use, which will make the session more enjoyable, add few constraints such as you can't use `else` statement, you can't talk with peer, you've to commit code every 2 minutes.
+
+At the end, retrospective will be more interesting and informative, each developer will talk about the challenges they had while using the technology they've chosen.
