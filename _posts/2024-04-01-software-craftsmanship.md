@@ -1699,3 +1699,83 @@ Try running technology-agnostic sessions. Although it is always easier to run te
 When running technology-agnostic sessions, developers are in control of which technologies they want to use, which will make the session more enjoyable, add few constraints such as you can't use `else` statement, you can't talk with peer, you've to commit code every 2 minutes.
 
 At the end, retrospective will be more interesting and informative, each developer will talk about the challenges they had while using the technology they've chosen.
+
+#### Start Internal Communities of Practice (CoP)
+
+When you have few internal sessions on going, invite the developers who come more often to the session to help organize the sessions.
+
+You just need 2 people to start a community, internal or external, then you start attracting people over the time.
+
+You can share more about the community over lunch or coffee breaks in informal conversations.
+
+You need to make sure that we're not focusing on growing the community. Focus on having fun and running good sessions. The growth will come naturally.
+
+#### Encourage Pet-Project Time
+
+Pet Project means You are your own boss. You decide what feature to work on next, how you want to do it and most important, there are no deadlines.
+
+Passionate developers love to have a playground where they can try many new ideas, technologies, techniques and approaches.
+
+Extract the time for paring with someone on their pet project.
+
+#### Engage with External Technical Communities
+
+Look for technical communities in your town, invite your colleagues to go their meetings. See how you can contribute.
+
+Exposing yourself and your colleagues to so many passionate and amazingly talented developers from the external communities can be a great way to motivate you all.
+
+#### What if Others Don't Want to Join In?
+
+Different people, on different projects, in different companies, behave in different ways.
+
+You don't need to change every person to make the organization more effective or a better place. It leads to frustration for those leading it. Frustration leads to lack of motivation, which in turn will make us give up.
+
+##### Be an Example
+
+"I would love to do TDD but no one else in my team wants to do it." Developer complains. This is an excuse, not the attitude of a software craftsman.
+
+To solve this issue, one way is to inject passion into a team and help them embrace different ways of working.
+
+Having someone who is not necessarily experienced but has enthusiasm leading the way may be what is needed to ignite a whole team.
+
+##### Focus on Those Who Care
+
+Not everyone will be moved by your enthusiasm and willingness to change. Focus on the ones who are willing to change. Pair with them, Write tests and review each other's code.
+
+##### Don't Force
+
+Forcing developers to attend any of the learning initiative will just make things worse.
+
+If someone don't want to join them, don't just keep sending invites, let them go.
+
+Don't get disappointed or angry with developers who don't want to join in. Keep your own motivation up, regardless of how many people turn up.
+
+##### Don't Try to Changer Everyone
+
+If you're team of 10 people and no one doing TDD or Pairing and after a month 3-4 start doing TDD, be happy about it.
+
+You don't need to change everyone.
+
+##### Avoid Consensus Delays
+
+Trying to reach a consensus of when and where to run the sessions, instead just say, "Everyone, Me and John will be in the meeting room every Wednesday at 12:00 PM playing with Java, you're more than welcome to join us."
+
+##### Don't Ask for Authorization
+
+You don't need authorization from your boss to learn and practice on your own time. This is true in many companies. Even during working hours if you don't ask.
+
+Find an empty room and have the meeting at lunchtime, early in the morning, or late in the afternoon.
+
+##### Don't Complicate
+
+"Our office layout is not suitable for group activities, we don't have projector, etc." There are just complains and due to that sessions never happens.
+
+If this is the case, go to coffee shop, and manage and focus on goal instead of complaining about other misc stuff.
+
+##### Establish a Rhythm
+
+The secret to having a healthy community, and keeping the sessions going, is to have a rhythm.
+
+Regular meetings are also much easier to organize. Find a meeting room and schedule a recurring meeting inviting everyone.
+
+It is not difficult to bring a culture of learning into an organization. The only thing needed is a passionate developer willing to start it. Stop finding excuses and be this developer.
