@@ -1779,3 +1779,72 @@ The secret to having a healthy community, and keeping the sessions going, is to 
 Regular meetings are also much easier to organize. Find a meeting room and schedule a recurring meeting inviting everyone.
 
 It is not difficult to bring a culture of learning into an organization. The only thing needed is a passionate developer willing to start it. Stop finding excuses and be this developer.
+
+## 14. Driving Technical Changes
+
+ How do we bring technical practices to our team? It's easy to convince developer to adopt technical practices instead of managers.
+### Identifying Skepticism Patterns
+
+ The first thing Software Craftsman needs to do before trying to create culture of learning is to introduce new technical practices, tools, or processes to identify the skeptics they are facing.
+
+ Categories that skeptics of technical change tends to fall under: the Uninformed, the Heard, the Burned, the Time Crunched, the Boss and the Irrational. 
+#### The Uninformed
+
+ The main reason to not adopting certain tools or practices is lack of awareness. They don't know the impact it brings or even is that exist or not.
+
+ This group of developers don't read books or blogs or trying to understand what is going on outside their cubicle.
+#### The Herd
+
+ They feels that they are not experienced enough to make certain decisions, they lack confidence and leave the decision to smarter and more-experienced developers.
+
+ This group of developers are usually followers, not leaders.
+#### The Cynic
+
+ They like to argue and are constantly trying to prove that they are smarter than everyone else.
+
+ This group of developers think that *looking smarter* is more important that *being smarter*.
+
+ One of the reason they don't want to adopt tools or technical practices is they don't want to expose their own weakness.
+#### The Burned
+
+ They tried a certain practice or tool in past and it didn't work for them, since they haven't had a good experience, they don't want to try it again.
+
+ eg. following TDD, may be they found tests are too long or difficult to write.
+#### The Time Crunched
+
+ They are always busy and never have time for anything.
+
+ This group of developers are usually very shortsighted and unable to see the real cost of things.
+
+ The only thing they see is that they don't have time to change the way they work.
+#### The Boss
+
+ If the boss is not a technical person, they probably won't understand what you are talking about and will fail to see the advantages of what you are proposing.
+
+ Very few technical managers were actually great developers in the past, and even fewer were actually promoted because of their software development skills.
+#### The Irrational
+
+ The worst type. They will swing from one premise to another as they get defeated.
+
+ Common things are "This will cause performance issues, Framework has security issues", One after another, they will raise irrational points against the proposal and as soon as we defeat their point.
+
+
+ There are few more categories that author has identified.
+#### The Indifferent
+
+ The Indifferent simply doesn't care. Developers in this group don't necessarily go against anyone or anything.
+
+ It leads to lousy implementation of good ideas, eg. Bad tests are worst then no test.
+#### The Wronged
+
+ This is dangerous type. Developers in this group think the company has wronged them.
+
+ They always thinks that they are underpaid, not getting recognition they deserved, or are being unfairly treated.
+
+ They don't like company and never miss a opportunity to badmouth it.
+#### The Inept
+
+ They just don't get it. They are more aware than the Uninformed by the are not able to see things clearly.
+
+ This group of developers see software development only as a job, even when they try, it is clear that this job is not for them.
+#### The Ivory-Tower Architect
