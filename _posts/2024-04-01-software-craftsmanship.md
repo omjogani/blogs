@@ -1909,3 +1909,41 @@ Don't treat people as if they are stupid. Disrespect and aggression will immedia
 You may have a very good idea of how things should be done, but make no mistake. Everyone has an opinion and sees the same problems from different angles.
 
 Probably, There are many things you're not aware of. Listen and digest what everyone has to say about particular idea.
+
+### Where Do We Start?
+
+After a short period of time in a new project or organization, ideas for improvement start popping out. Eventually, it's hard to push our ideas forward. So where do we start?
+
+#### Establish Trust
+
+We can't change anything if people don't trust us. Trust can be built by consistently delivering quality software.
+
+Different people has different point of view to judge the quality of the software. Developers will say it means is code maintainable?, how we've named out functions, is code readable? etc.
+
+For Delivery Manager, Quality Software means software that satisfies the requirements, has no bugs, and was delivered on time.
+
+For Client, It may mean software that is in production, making them money, saving them money etc.
+
+Although essential, consistently delivering quality software is not enough to built trust, You need to expose yourself. You need to be visible. You need to show your passion that you're caring about the project.
+
+But showing your passion is not enough either, above all, to establish trust, you need to be good, people need to feel that you can do it. They need to feel you can lead them
+
+#### Gain Expertise
+
+When proposing changes, we always tell our teams that we will be a much better place if we did the things we are proposing. Skeptics will immediately say that is too risky, it will cost more time and much money.
+
+Before proposing anything, make sure you understand it, play with it, build something with it, talk to experts, and compare it to other alternatives.
+
+The more you understand and teach the stuff, It will easy to understand the skeptics and change behavior of some skeptics. If in case you fails, you will have more knowledge than you had before, Which makes you a better professional.
+
+#### Lead by Example
+
+When proposing changes is about attitude and practices like TDD, nothing will help you more than the ability to lead by example.
+
+Certain disciplines and practices take years to master it, You can't just share few internet links to understand clean code, planning iteration, inspiring people, software design etc.
+
+Developers may reject certain practices because they are too difficult to master or to become comfortable with. We can help developers to overcome their initial fear by sitting down and writing code with them.
+
+Developers will feel much more comfortable adopting a practice if they know they can count on us to pair with them.
+
+**If you want your team to behave in a certain way or adopt a technology or practice, first make sure that you can do that yourself.**
