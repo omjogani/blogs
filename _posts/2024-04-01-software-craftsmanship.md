@@ -1947,3 +1947,27 @@ Developers may reject certain practices because they are too difficult to master
 Developers will feel much more comfortable adopting a practice if they know they can count on us to pair with them.
 
 **If you want your team to behave in a certain way or adopt a technology or practice, first make sure that you can do that yourself.**
+
+#### Choose Your Battles
+
+It's common thinking that If someone has power to fire and hire anybody they want without disturbing them , they can change entire organization. but that is very naive and inefficient.
+
+While author was working for investment bank company they wanted to do the same, They wanted to make change in code here and there and rebuild entire application, fire and hire people etc. But trying to do everything at the same time wasn't just impractical but also impossible.
+
+One of their primary goal is to change the culture of the organization and for that they changes the recruitment process and made sure that any new member joined aligned to the culture they wanted to have.
+
+Second Goal was to introduce TDD & Pair Programming, that took a long time to comfortable with it.
+
+Before driving all these changes, we need to consider the impact of those changes, speak to a lot of people and prepare ourselves for the tough questions from the most varied types of skeptics.
+
+You don't get to change the software development process of an organization, large or small, if you don't prepare yourself for it.
+
+#### Iterate, Inspect and Adapt
+
+One of the easiest ways to avoid big confrontations is propose gradual changes. You propose the idea and implement at small level and let your team decide if they want to adopt that idea.
+
+We can use _iteration boundary trick_: Let's try this approach for one iteration and then we revisit.
+
+Some more skeptics arise, to target them you can say Let's try this for one iteration, on small part of software, if we don't like it, we will revert it.
+
+#### Fear and Incompetence
