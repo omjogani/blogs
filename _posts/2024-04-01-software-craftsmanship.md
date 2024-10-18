@@ -1971,3 +1971,85 @@ We can use _iteration boundary trick_: Let's try this approach for one iteration
 Some more skeptics arise, to target them you can say Let's try this for one iteration, on small part of software, if we don't like it, we will revert it.
 
 #### Fear and Incompetence
+
+Fear and incompetence are two of the culprits of bureaucracy and politics inside companies.
+
+It can be because of organizations policy, that ill-defined architecture has to be followed which is not even designed by developer of the team.
+
+Fear. Incompetence. The fear of losing our jobs. The incompetence to develop good solutions and convince our team to do something better. You knew that it's wrong but you can't really show that because He is the boss.
+
+Only incompetent people fear losing their jobs. “If I make my boss happy, I’ll get promoted. I don’t care about the company, I care about my bonus.” This is selfish, unprofessional, and immoral.
+
+Software craftsmen are in control of their jobs and careers. they have their ethics. they know they will never struggle to find a job in a place where they are valued.
+
+If you want to change thing around you, don't fear. Prepare yourself, practice, read, study and be the best you can be.
+
+#### How Do I Convince My Manager?
+
+The simple answer is you don’t. Managers want projects delivered on time, on budget, and with no bugs, and they want to make stakeholders and clients happy. Who cares if we use TDD, if we pair, or have continuous integration? Besides us, no one.
+
+We are expected to deliver quality software. We are expected to deliver good solutions. So, when it comes to TDD, pair programming, continuous integration, or any other practice you think can help you to achieve that, just do it.
+
+Testing a class and writing code for that class are not separate task, it should be consider as a one task.
+
+You don't have to point out small thing like "unit testing" on the board and asking manager to take extra hour to do that, instead you should consider coding task that include testing to work better.
+
+#### How Do I Convince My team to Do TDD?
+
+Introducing a new framework, tool, or design approach is hard.Telling other developers that they should change the way they work in order to produce better code is even harder.
+
+Asking for help is very good way to introduce TDD without much friction. Convince enthusiastic developer to test out TDD for fun, even they oppose the idea tell them, let's do for fun for one to two hours.
+
+Offer them keyboard too and have them feel the essence of TDD, gave good feeling about this practices.
+
+Introducing TDD to someone who is eager to learn it is quite easy. it can be very tricky to introduce TDD to someone who is skeptical about it.
+
+Developers are creatures of habit and are generally very opinionated. You cannot just go there and tell them what to do.
+
+### Facing the Skeptics
+
+Practicing in our spare time, preparing ourselves, and being able to demonstrate our technique can take us a long way when driving changes. We can easily inform the Uninformed, shepherd the Herd, convince the Cynic, understand where the Burned went wrong and reason with them, and reduce the team’s learning curve, which addresses the Time Crunched’s concerns.
+
+Being able to communicate well and at the right level is also important. Talk in their language such as you don't need to expose development issue to manager because they don't care.
+
+Ignore the Irrational. Besides a huge amount of stress, there is nothing to be gained discussing issues with Irrationals. Focus on interested people.
+
+Make sure you include everyone in the decision-making process. Don’t impose your opinion. Your objective is to make things better, not to become the Boss or claim the credit for all the improvements.
+
+Sharing your passion, leading by example, being honest and transparent, great confidence, and teaching what you know are the best ways to gain the trust of people around you.
+
+#### The Ivory-Tower Architect
+
+The Ivory-Tower Architect will probably be the most difficult skeptic to deal with. Architect will try to push for a big upfront design, trying to define the technology stack and general architecture even before understanding the business problems we are trying to solve. Instead Software Craftsman would consider following more of a Agile approach to software development.
+
+Architect will just draw small boxes but won't really understand what's going behind the scene. Because the Ivory-Tower Architects are not part of any development team and don’t write code, they never feel the pain caused by their ill-defined architecture decisions.
+
+##### Responsibility versus Accountability
+
+Ivory-Tower Architects feel they are responsible for all the decisions and think that developers are just a bunch of coders implementing their vision.
+
+Tower Architects become responsible for the solution while the developers are the ones who are accountable for it. They see developers as mere coders that should do whatever they are told.
+
+Author was working with large organization, the relationship between the team and the Ivory-Tower Architect got tense, here is what happened then...
+
+In the conversation, a software developer and an enterprise architect clash over the choice of a web framework. The architect insists that all projects must use the framework he recommends, claiming it ensures consistency and allows easier replacement of developers (people fungibility). The developer argues that the development team is in a better position to choose tools that meet the project's needs, especially since the business requirements are still unclear. He emphasizes that their team has already set up a system for quick changes and feedback, which is helping the business move faster.
+
+The developer challenges the architect’s authority by suggesting that if the architect wants to make all the technical decisions, he should also be accountable for any problems or delays, including explaining them to stakeholders. Faced with the possibility of being fully responsible for any project delays, the architect backs down and agrees to let the development team make decisions, as long as they document them.
+
+In the end, the development team is allowed to choose the tools they believe are best for the project, leading to successful outcomes. The architect is eventually reassigned, and the conversation highlights the importance of aligning responsibility with accountability in technical decisions.
+
+#### The Wronged
+
+The Wronged is another very difficult type to deal with. They are not against you, they are against the company. Instead of resign they still hanging there and doing poor job.
+
+There is nothing much we can do besides trying to make then excited again. The best thing is to treat the person well, do out best to integrate the person with the rest of the team.
+
+#### Should We Really Care about All That?
+
+Besides all the technical skills, a software craftsman is also a role model for less-experienced developers.
+
+They are not afraid of being honest and transparent. They don't lie and hide something to make customer happy. They take responsibility and are not afraid to fight for what is best for the project.
+
+As a software craftsman, you cannot deliver value to your customers if you work on a dysfunctional team or environment.
+
+Just writing well-crafted code is simply not enough to ensure client success.
