@@ -162,7 +162,7 @@ Coaches were selling Agile with **Toyota Dream**. How they had successfully beca
 
 Building car != building software, There is no serving in between the development. There is no interaction with company after building car (Add one more door).
 
-An important factor to Toyota’s success was, besides a good process, the focus on the **quality of their cars**.
+An important factor to Toyota's success was, besides a good process, the focus on the **quality of their cars**.
 
 Focusing purely on the process and treating software development like a production line leads to average 9-to-5 developers doing what they are told—they become factory workers.
 
@@ -423,14 +423,14 @@ The great thing about passionate developers is that they are constantly learning
 
 ### Deliberate Discovery
 
-I’m the smartest man in Athens because I know that  
+I'm the smartest man in Athens because I know that  
 I know nothing. - Socrates
 
-The biggest mistake that software professionals can make is not accepting that they don’t know what they don’t know.
+The biggest mistake that software professionals can make is not accepting that they don't know what they don't know.
 
 if we reduce the level of our ignorance as fast as we can, we can be far more productive and efficient.
 
-We should always try to create opportunities where we can learn something we don’t know. “But if I don’t know what I don’t know, how can I create opportunities to learn that?”
+We should always try to create opportunities where we can learn something we don't know. “But if I don't know what I don't know, how can I create opportunities to learn that?”
 
 eg. We have written code that we think it's the best code, and it's kind of based opinion unless we show or get it reviewed by other people. When they gives us feedback we would think of other aspects as well.
 
@@ -532,7 +532,7 @@ Under immense pressure from the business to work extra hours, including weekends
 
 As panic set in, the team explored alternative solutions. They discovered that regulators accepted manual uploads of trade reports via CSV files, a method initially dismissed due to the high volume of trades. Given the progress already made in automating most trade flows, the team re-evaluated the manual option for the remaining trades. They concluded that hiring staff to handle manual uploads was more viable than risking penalties, and this hybrid approach allowed them to meet the deadline.
 
-By saying no to unfeasible demands and being transparent, the team found a balance between automated and manual solutions, which allowed them to comply with the regulators’ requirements on time. This approach provided the necessary breathing room to automate the remaining manual processes incrementally, ensuring quality and compliance without compromising their standards.
+By saying no to unfeasible demands and being transparent, the team found a balance between automated and manual solutions, which allowed them to comply with the regulators' requirements on time. This approach provided the necessary breathing room to automate the remaining manual processes incrementally, ensuring quality and compliance without compromising their standards.
 
 ### Enlightened Manager
 
@@ -641,7 +641,7 @@ Author offered Pair after 2 days and noticed...
 
 Finally they decided to add refactoring and adding test in technical backlog.
 
-Adding items to a technical debt backlog is a way that developers have to justify the bad code they’ve written without ever feeling guilty about it.
+Adding items to a technical debt backlog is a way that developers have to justify the bad code they've written without ever feeling guilty about it.
 
 ### We want to do the right thing
 
@@ -736,7 +736,7 @@ Imagine Legacy code with no test and documentation, Of course the number of WTFs
 
 ### A Change in Attitude
 
-If you don’t like something, change it; if you can’t change it, change the way you think about it. - Mary Engelbreit
+If you don't like something, change it; if you can't change it, change the way you think about it. - Mary Engelbreit
 
 When looking at legacy code, instead of moaning and getting frustrated, we should try to understand it and make it better, constantly applying the Boy Scout rule of making it better than how we found it.
 
@@ -754,7 +754,7 @@ Refactoring code can sometimes be a lot of fun and also very addictive.
 
 The more we improve and keep the software clean, the longer the client will be able to benefit from it.
 
-**At the end of the day, it does not matter if we are working on a green- or brown-field project. It’s our attitude toward our job that will make it more or less enjoyable.**
+**At the end of the day, it does not matter if we are working on a green- or brown-field project. It's our attitude toward our job that will make it more or less enjoyable.**
 
 ## 7. Technical Practices
 
@@ -824,7 +824,7 @@ When it comes to the quality of our software and making sure we are building the
 
 Practices shouldn't be forcefully applied, then it's make no sense and doesn't guarantee success.
 
-Practices are what we consistently do on a daily basis: we either do TDD or we don’t do TDD; we either have continuous integration or we don’t have continuous integration. Some people say, “We do TDD . . . sometimes.” That doesn’t help.
+Practices are what we consistently do on a daily basis: we either do TDD or we don't do TDD; we either have continuous integration or we don't have continuous integration. Some people say, “We do TDD . . . sometimes.” That doesn't help.
 
 If Practices follows partially, it's difficult to measure what is working and what is not working.
 
@@ -870,7 +870,7 @@ When test-driving a change or a new feature, we get immediate feedback on how ma
 
 TDD offers us a quick feedback on the design, simplicity, and maintainability of our code.
 
-It provides a living and executable documentation for our applications and, as a good side effect, a rich suite of regression tests. That’s value to the business. That’s a quick and short feedback loop.
+It provides a living and executable documentation for our applications and, as a good side effect, a rich suite of regression tests. That's value to the business. That's a quick and short feedback loop.
 
 ### Continuous Integration
 
@@ -910,7 +910,7 @@ Constantly refactoring code should be second nature of the developers, if this a
 
 Refactoring without pragmatism can be a dangerous practice. We have to analyze which code to refactor, If a code which is not even touched for years, It's not good idea to refactor it. Start refactoring what changes more often.
 
-A clean and maintainable code enables developers to go fast and reduces the chances of new bugs. That’s value to the business.
+A clean and maintainable code enables developers to go fast and reduces the chances of new bugs. That's value to the business.
 
 ### Accountability
 
@@ -971,13 +971,13 @@ He finally moved to London when he was 27 years old professional software develo
 
 ### Focus and Determination
 
-There is a well said, "**_You’ve got to be careful if you don’t know where you’re going because you might not get there._**", We always values and control our careers, It may or may not lead us to mastery.
+There is a well said, "**_You've got to be careful if you don't know where you're going because you might not get there._**", We always values and control our careers, It may or may not lead us to mastery.
 
 It's obvious that we might forget long-term goals and many thing can change. but consider career as multi-year project.
 
 Once we understand the ultimate goal, we can take the most important requirements, break them down into smaller pieces and iterate, evaluating the project goals and adapting when necessary.
 
-#### But What if We Don’t Know Where We Are Going?
+#### But What if We Don't Know Where We Are Going?
 
 In this constantly evolving field, it's important to reevaluate our career decisions based on not just our passion but also all the events in our personal and professional lives.
 
@@ -1053,7 +1053,7 @@ Having proper Job Description emphasized on requirements and need of developer.
 
 When Job Description includes we want candidate with strong Java skill with concurrency, multi-threading expertise, strong academic background, Solaris, Linux and all those fancy stuff.
 
-They have far bigger problems in their projects, processes, and culture, and that’s what they are really trying to fix.
+They have far bigger problems in their projects, processes, and culture, and that's what they are really trying to fix.
 
 With this problem, Developer has previous experience working with investment bank can check all the mentioned requirements, May be possible now knowing how to do better at what they do.
 
@@ -1073,7 +1073,7 @@ Author often visits different teams in different country and main agenda for doi
 
 If Author takes name of developer they will get fired and company will hire other developers. While author was also developer they don't wanted to betray with anyone. Regardless of how good or bad they are, they didn't magically appear here. They were hired.
 
-The identity and culture of an organization are defined by its people and not by emails sent by the chief executive officer (CEO). Delegating recruitment to HR, recruitment agencies, or vendors means delegating the identity and culture of your organization to people and companies that don’t necessarily understand or care about it.
+The identity and culture of an organization are defined by its people and not by emails sent by the chief executive officer (CEO). Delegating recruitment to HR, recruitment agencies, or vendors means delegating the identity and culture of your organization to people and companies that don't necessarily understand or care about it.
 
 ### Too Busy to Interview
 
@@ -1257,7 +1257,7 @@ Single interview process states that company is in hurry and can not take the ti
 
 Questions asked in interview clearly states that what interviewer value the most and what can we expect when we join the team.
 
-It’s important to observe how the interviewer will react and respond to this question.
+It's important to observe how the interviewer will react and respond to this question.
 
 If interviewer asked predefined question from any paper that means Interviewer is not willing to explore new ideas and engage in a debate.
 
@@ -1348,7 +1348,7 @@ When Interviewer process got started there were 2 phase, Online test and Intervi
 
 Acceptance criteria was to have next round if they score 90% or more. Author scored 87% and got the response as We will reach out to you. Author made decision to not continue with that company.
 
-The pre-selection process is extremely important. That’s where you filter candidates according to your core values.
+The pre-selection process is extremely important. That's where you filter candidates according to your core values.
 
 ### Taking a Punt
 
@@ -1396,7 +1396,7 @@ Pair interviewing and rotating interviewers is a good way to keep everyone invol
 
 Sometimes, Frustrated developers were in companies where they could not choose their own teammates.
 
-Good developers don’t hire bad developers. They will try to find developers who are even better than they are; they know how important it is to have a great team—not just for the benefit of the company but for their own benefit as well.
+Good developers don't hire bad developers. They will try to find developers who are even better than they are; they know how important it is to have a great team—not just for the benefit of the company but for their own benefit as well.
 
 It's important that developers are taking interview of developers. That way it's easy to have great team spirit.
 
@@ -1420,13 +1420,13 @@ Avoid asking stupid questions that are totally unrelated to the job (Classic Apt
 
 The ability to answer these stupid brainteasers has nothing to do with writing well-crafted code, being a good team player, or having a professional attitude.
 
-### Don’t Ask Questions to Which You Don’t Know the Answers
+### Don't Ask Questions to Which You Don't Know the Answers
 
 Simply, Don't ask any question that you don't know the answer. Googling for answer and asking that question doesn't make any sense.
 
 Don' try to trick the candidate with confusing or misleading questions.
 
-### Don’t Try to Make the Candidate Look Like a Fool
+### Don't Try to Make the Candidate Look Like a Fool
 
 Author interviewed by a telecom company, they were excited because author had some previous experience working with telecom company.
 
@@ -1978,7 +1978,7 @@ It can be because of organizations policy, that ill-defined architecture has to 
 
 Fear. Incompetence. The fear of losing our jobs. The incompetence to develop good solutions and convince our team to do something better. You knew that it's wrong but you can't really show that because He is the boss.
 
-Only incompetent people fear losing their jobs. “If I make my boss happy, I’ll get promoted. I don’t care about the company, I care about my bonus.” This is selfish, unprofessional, and immoral.
+Only incompetent people fear losing their jobs. “If I make my boss happy, I'll get promoted. I don't care about the company, I care about my bonus.” This is selfish, unprofessional, and immoral.
 
 Software craftsmen are in control of their jobs and careers. they have their ethics. they know they will never struggle to find a job in a place where they are valued.
 
@@ -1986,7 +1986,7 @@ If you want to change thing around you, don't fear. Prepare yourself, practice, 
 
 #### How Do I Convince My Manager?
 
-The simple answer is you don’t. Managers want projects delivered on time, on budget, and with no bugs, and they want to make stakeholders and clients happy. Who cares if we use TDD, if we pair, or have continuous integration? Besides us, no one.
+The simple answer is you don't. Managers want projects delivered on time, on budget, and with no bugs, and they want to make stakeholders and clients happy. Who cares if we use TDD, if we pair, or have continuous integration? Besides us, no one.
 
 We are expected to deliver quality software. We are expected to deliver good solutions. So, when it comes to TDD, pair programming, continuous integration, or any other practice you think can help you to achieve that, just do it.
 
@@ -2008,13 +2008,13 @@ Developers are creatures of habit and are generally very opinionated. You cannot
 
 ### Facing the Skeptics
 
-Practicing in our spare time, preparing ourselves, and being able to demonstrate our technique can take us a long way when driving changes. We can easily inform the Uninformed, shepherd the Herd, convince the Cynic, understand where the Burned went wrong and reason with them, and reduce the team’s learning curve, which addresses the Time Crunched’s concerns.
+Practicing in our spare time, preparing ourselves, and being able to demonstrate our technique can take us a long way when driving changes. We can easily inform the Uninformed, shepherd the Herd, convince the Cynic, understand where the Burned went wrong and reason with them, and reduce the team's learning curve, which addresses the Time Crunched's concerns.
 
 Being able to communicate well and at the right level is also important. Talk in their language such as you don't need to expose development issue to manager because they don't care.
 
 Ignore the Irrational. Besides a huge amount of stress, there is nothing to be gained discussing issues with Irrationals. Focus on interested people.
 
-Make sure you include everyone in the decision-making process. Don’t impose your opinion. Your objective is to make things better, not to become the Boss or claim the credit for all the improvements.
+Make sure you include everyone in the decision-making process. Don't impose your opinion. Your objective is to make things better, not to become the Boss or claim the credit for all the improvements.
 
 Sharing your passion, leading by example, being honest and transparent, great confidence, and teaching what you know are the best ways to gain the trust of people around you.
 
@@ -2022,7 +2022,7 @@ Sharing your passion, leading by example, being honest and transparent, great co
 
 The Ivory-Tower Architect will probably be the most difficult skeptic to deal with. Architect will try to push for a big upfront design, trying to define the technology stack and general architecture even before understanding the business problems we are trying to solve. Instead Software Craftsman would consider following more of a Agile approach to software development.
 
-Architect will just draw small boxes but won't really understand what's going behind the scene. Because the Ivory-Tower Architects are not part of any development team and don’t write code, they never feel the pain caused by their ill-defined architecture decisions.
+Architect will just draw small boxes but won't really understand what's going behind the scene. Because the Ivory-Tower Architects are not part of any development team and don't write code, they never feel the pain caused by their ill-defined architecture decisions.
 
 ##### Responsibility versus Accountability
 
@@ -2034,7 +2034,7 @@ Author was working with large organization, the relationship between the team an
 
 In the conversation, a software developer and an enterprise architect clash over the choice of a web framework. The architect insists that all projects must use the framework he recommends, claiming it ensures consistency and allows easier replacement of developers (people fungibility). The developer argues that the development team is in a better position to choose tools that meet the project's needs, especially since the business requirements are still unclear. He emphasizes that their team has already set up a system for quick changes and feedback, which is helping the business move faster.
 
-The developer challenges the architect’s authority by suggesting that if the architect wants to make all the technical decisions, he should also be accountable for any problems or delays, including explaining them to stakeholders. Faced with the possibility of being fully responsible for any project delays, the architect backs down and agrees to let the development team make decisions, as long as they document them.
+The developer challenges the architect's authority by suggesting that if the architect wants to make all the technical decisions, he should also be accountable for any problems or delays, including explaining them to stakeholders. Faced with the possibility of being fully responsible for any project delays, the architect backs down and agrees to let the development team make decisions, as long as they document them.
 
 In the end, the development team is allowed to choose the tools they believe are best for the project, leading to successful outcomes. The architect is eventually reassigned, and the conversation highlights the importance of aligning responsibility with accountability in technical decisions.
 
@@ -2053,3 +2053,152 @@ They are not afraid of being honest and transparent. They don't lie and hide som
 As a software craftsman, you cannot deliver value to your customers if you work on a dysfunctional team or environment.
 
 Just writing well-crafted code is simply not enough to ensure client success.
+
+## 15. Pragmatic Craftsmanship
+
+There is an assumption that quality takes time. Managers and developers believe they need to choose between expensive well-crafted code that takes a long time to write or cheap average code that is delivered faster.
+
+### Quality Is Always Expected
+
+No manager or client expects bad-quality software. No matter what they will always expect quality even if developer tell them that quality will suffer if they want to keep the costs down but they will still expect quality.
+
+The main problem is this big and wrong assumption that cheap and average code is good enough - It could be for short term, but for mid and long term it will not work.
+
+Client will always expect quality work because at the end they don't care about software development stuff, for them software development is a service like any other service. Developers are expected to deliver good value for money.
+
+You might have a choice such as within budget, but with low quality, OR over budget with high quality.
+
+If We think from perspective of client/manager, they think even they choose tight budget and low-quality work, They will always hope for quality work. They will hop for not having problems/bugs for the service they paid for.
+
+### Busting the “Expensive and Time-Consuming Quality” Myth
+
+Software craftsmen embrace Extreme Programming (XP) practices and Agile principles. In an project developed by software craftsmen, the client will have working software from day one.
+
+Completing a new feature means, feature is deployed into production or a production like environment if company is not ready to release the software publicly.
+
+Software Craftsmen masters their practices - TDD is second nature and not something that slows them down. Because every feature is test-driven, application developed by craftsmen will always be entirely covered by tests. A big suit of automated tests in a reasonably large application, when done by craftsmen, is executed in few minutes, if not seconds, making delivery of features much faster than when done without tests.
+
+Applications developed without tests demand longer cycles of manual testing as they become bigger, making continuous deployment totally impossible.
+
+Manager and some developers says It slows down the process while following TDD and Pair Programming, we can't just say that due to these technical practices the pace is slower, instead we can say, Developers are slower than normal while learning any new technical practice.
+
+When comparing experienced software craftsmen who have mastered these technical practice with normal developer, the different might not noticeable in small piece of code, but for larger project and bigger problems software craftsmen will be way faster.
+
+Learning and mastering practices takes time and can be costly, but that doesn't mean that the practices are bad.
+
+#### Do We Need to Test-Drive Everything?
+
+A pragmatic answer would be "no". Some TDD Skeptics says "What if we need to hack something quickly so we can show it to potential investor or try out the market?".
+
+Context is more important when choosing your tools and practice.
+
+If we ask experienced XP developers, they will have some discussions around TDD a waste of time; TDD doesn't slow experienced developers down.
+
+Developers who are proficient with TDD would never say that TDD was the main reason why they could not finish something in time or that they didn't write the tests because they didn't have time.
+
+If you follow this practices regularly, you are more likely to achieve good speed and produce high quality in whatever you're delivering.
+
+### Refactoring
+
+Refactoring for the sake of refactoring is a waste of time. **The Boy Scout rule says “leave the campground cleaner than you found it,” not “clean the whole campground until it is so clean that you could lick the floor.”**
+
+Refactoring the code before adding a new feature is a good idea when the impact on the code is significant. Author would refactor their code in a way to make it compliant with the “open/closed principle” (OCP) first, and then add the new feature.
+
+Improving your system with small but constant refactoring, justified by necessary changes to the system, is a good and more pragmatic way to improve an application.
+
+### The “One Way” of Developing Software
+
+The main mission of the Software Craftsmanship movement is to raise the bar of software development.
+
+For developer starting on their journey, they should make good judgement, we recommend that they follow the practices we advocate, and as they move forward they should find better ways of doing things, exploring alternatives, trying them in real projects, and sharing experiences with the rest of community.
+
+Good practices and processes are good until we find better ones to replace them.
+
+As craftsmen, we should not believe that TDD and all the XP practices are the best practices we will ever have. At this time, they are the practices we use and advocate but that doesn't mean we should stop looking for ways to improve.
+
+Don't rush to call people unprofessional just because they don't use certain practices. Ask them what practices they use instead and then compare the benefits their practices have over the practices you use.
+
+### Helping the Business
+
+It's common to be on a project where the business doesn't really know what they want. Any Agile coach would say that in order help, developers should engage in conversations with the business, ask questions, and propose solutions.
+
+When the business is still trying to figure out what they want, and the only things they have in mind are ever-changing, half-baked ideas, the best way to help is to put something in front of them as soon as possible. We should be able to change the code almost as fast as they change their minds, giving the business an opportunity to visualize their ideas and also to get feedback from the people who will use the application.
+
+#### A Simple and Quick Solution
+
+The team was building a web application and used mockups to agree on how it should work with the business. But these mockups didn't give a real feel of how the application would work, especially for more interactive features. The business wanted to actually use the application in a safe environment, show it to others, and release new versions every month.
+
+Some features were easy to build, but others were more complicated because of rules and technical requirements. While it would take time to fully build everything, the business wanted quick feedback on how the entire system worked, not just individual parts.
+
+To move faster, the team decided to build a version where users could see all the pages, but not change any data. The data would be stored temporarily in memory, without saving it permanently. This helped them quickly show how the application would work, without dealing with complex data management. Some pages allowed limited changes to the data, but those changes wouldn't be saved.
+
+Even though they were building quickly, the team still used test-driven development (TDD) to keep the code quality high. The simple design made it easy to make changes as the business gave feedback. Over a year, they had very few bugs in testing or production, and TDD helped them release new versions quickly and confidently.
+
+The main takeaway is that the ability to handle frequent changes without breaking the software was key. TDD, continuous integration, and pair programming helped the team work fast and maintain quality, allowing them to deliver value to the business efficiently.
+
+### Software Projects Are Not about Us
+
+As professionals, we need to understand that a software project is not about us and our egos. Even if the project is about you, you should not have mindset of I-know-what-I'm-doing-and-I-don't-need-to-write-tests.
+
+It's equally important to think, who will be handling the project when we leave. If the value we add to a project is conditional to our continuous involvement in the project, it's not value. It's a point of failure.
+
+### Great Versus Mediocre
+
+Passionate developers love writing code. They enjoy creating complex solutions in order to keep themselves interested in the job.
+
+Back in the 1990s, creating complex and cryptic code was a sign of seniority. You were considered senior when you could write code that no one else could understand.
+
+Great developers write simple code that satisfies the business requirements, and less-experienced developers have no problem understanding it.
+
+Well-crafted code is simple, small, testable, easy to understand, and most important, does the job. Code is the main source of bugs and pain. The less we write it, the better.
+
+### Four Rules of Simple Design
+
+Before thinking about architecture, design patterns, generic solution, or anything else, as a rule, a software craftsman will always try to write code that satisfies the "Four Rules of Simple Design" as defined by Kent Back:
+
+1. Pass all tests
+2. Clear, Expressive and Consistent
+3. Duplicates no behavior or configuration
+4. Minimal methods, classes and modules
+
+**Four Rules by J.B. Rainsberger**
+
+1. Passes all tests
+2. Minimizes duplication
+3. Maximizes clarity
+4. Has few elements
+
+As we follow TDD, rule no 1 is obvious, hence it can be ignored, We would naturally have fewer elements, hence the fourth rule becomes irrelevant. Now we have 2 rules in mind.
+
+1. Minimizes duplication
+2. Maximize clarity
+
+We would always favor clarity over duplication, so as a guideline. in order to achieve a simple design, we focus first on good names, nice abstractions that represent business concepts. Then focus on removing duplication.
+
+When removing duplication, new structure will emerge, again we cycle through maximize clarity and then again remove duplication.
+
+Combined with the knowledge of Domain-Driven Design and the SOLID principles, this approach is normally enough to achieve well-crafted code without polluting the code with loads of design and architectural patterns.
+
+#### Design Patterns
+
+Look at all the legacy code we see out there today. It is far easier to identify the design patterns used by the developers than the actual business features they were trying to satisfy. Generic code is a great thing, but it doesn't come for free. The more generic the code is, the more complex it becomes.
+
+The Ivory-Tower Architects thinks, because of TDD we went from writing generic and future-proof code to writing specific code that satisfied our immediate need.
+
+We will pay big price in the future when it comes time to maintain.
+
+#### Refactoring to Patterns
+
+Ivory-Tower Architects are wrong to advocate for Big Design Up Front (BDUF), but correct in saying we shouldn't discard decades of design knowledge. Proficient TDDers don't start with design patterns. Instead, they write tests based on business requirements and just enough code to satisfy them, using the refactoring phase to simplify and improve the code.
+
+When requirements change, such as adding contractor payments to an existing salary system, refactoring is used to introduce necessary abstractions. This “just-in-time” design allows the code to evolve without unnecessary complexity. However, introducing abstractions prematurely adds needless complexity and confusion. Pragmatically, abstractions should only be added when truly necessary, helping keep the system simpler and easier to maintain.
+
+Design patterns are useful, but should only be applied when needed. Instead of forcing patterns early, refactor the code when necessary and introduce patterns naturally if the solution aligns with one. Specific code is simpler than generic code, and generic solutions should only be introduced when justified by the problem.
+
+In the early days, many developers, including the author, focused on architecture and patterns before understanding the problem. This highlights the immaturity of focusing on patterns first rather than addressing business needs.
+
+### Craftsmanship and Pragmatism
+
+Craftsmanship without pragmatism is not craftsmanship. A craftsman's primary focus is customer satisfaction. Besides quality, time and cost are part of this satisfaction. Code cannot be considered well-crafted code if it doesn't provide value.
+
+Regardless of how big or complex the project is, a craftsman will always produce quality code. Clean and well-crafted code is important—it gives us the ability to quickly and safely make changes according to the business needs. One of the best ways we have to help the business to achieve their goals is to be able to change the code almost as quickly as they change their minds.
