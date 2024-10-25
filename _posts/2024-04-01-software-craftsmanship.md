@@ -2202,3 +2202,103 @@ In the early days, many developers, including the author, focused on architectur
 Craftsmanship without pragmatism is not craftsmanship. A craftsman's primary focus is customer satisfaction. Besides quality, time and cost are part of this satisfaction. Code cannot be considered well-crafted code if it doesn't provide value.
 
 Regardless of how big or complex the project is, a craftsman will always produce quality code. Clean and well-crafted code is important—it gives us the ability to quickly and safely make changes according to the business needs. One of the best ways we have to help the business to achieve their goals is to be able to change the code almost as quickly as they change their minds.
+
+## 16. A Career As a Software Craftsman
+
+### Being a Craftsman
+
+Passion. That summarizes it all. Software craftsmen are passionate about software development and their profession.
+
+Software craftsmen are humble, always ready to learn from more-experienced developers, and eager to help the less experienced.
+
+We want to excel at what we are doing, either it's wiring code or delivering business value.
+
+It's a constant search for better and more efficient ways to deliver value through software.
+
+Being a craftsman means to be **curious** and experiment with new things. It is not to be dogmatic about tools, languages or frameworks.
+
+A craftsman is missed for the right reasons: insightful contributions, enthusiasm, knowledge, and, most important, being a great colleague.
+
+#### Honesty and Courage
+
+Honesty and courage are essential qualities of a software craftsman. Saying **no** if requirements are unrealistic and not going to work. Point the client in case of bad decision.
+
+However, simply saying "no" is also not a craftsman's attitude. A "no" should always be followed by a "but." "This will not work, but maybe we could try this other thing instead."
+
+The career of a craftsman is built on honesty and courage. A craftsman never hides anything from customers. Craftsmen and customers are in a partnership, where honesty, courage, and full transparency are key.
+
+### Career Progression
+
+Author was working with few teams in Eastern Europe, Their mission was to introduce Extreme Programming (XP) practices, helping developer to write better code and inject passion in the team.
+
+Once, author asked a team, "What you want to be in next few years?", after 2 minutes of silence, someone said "I want to be an architect", other said "i want to be a manager", another said "I want to be a head of product". Author asked why not developer?
+
+After 1 minute of silence, someone said if you stay developer and you cross 30, you're considered as **_failure_**. Author said "I'm 35, and I'm very proud to be a failure."
+
+From that day onward, things changed. The developers seemed happier, free and enjoying what they are doing, paring with each other etc.
+
+We still have companies that treat developers like second-class professionals, who are there just to type stuff on the keyboard. Developers, on the other hand, think that this is how things work, and they do their best to move up in their careers, away from development, so they can be treated as real professionals.
+
+#### Different Ladders
+
+Every profession has a career ladder. Software development is no different: we start at the bottom and move upward as we become more experienced.
+
+Developers who, for one reason or another, decide to take roles as managers or architects are not climbing up the software development ladder; they are switching ladders.
+
+### Roads and Milestones
+
+There is a huge difference between following a career within a company and following your own career as a software craftsman.
+
+Besides the things we are paid for, we should also invest all our dedication, passion, commitment, and knowledge we acquire outside working hours to make our workplace a better place—a place where everyone can learn and thrive.
+
+Author never looked at job description and never said "That's not my job". He always delivers more than expected hence inspire team to do the same. He wanted to have exposure in different technologies and industry.
+
+Author changed few jobs in their career where average they stay around 2 years, in one of the company they stayed for 3 months and another company for 5 years.
+
+Author chooses job carefully and never share bunch of CVs to many different company with expectation of at least one of them would make them an offer.
+
+#### Building Our Careers, One Job at a Time
+
+Before Author choose a job, they ask themselves following questions:
+
+- What do I want for my career?
+- What is the next step to achieve that?
+- Is this job aligned with my career aspirations?
+- How much value can I add to this company?
+- What is the return on my investment?
+- How long (roughly) will the duration of my investment be?
+- How would this job help me to get to where I want to be as a professional?
+- In this job, will I have autonomy, mastery, and purpose?
+- Will I have a productive partnership with my employer, where both sides will be happy with the value they are getting out of the deal?
+
+Interview process should be 2 way street, we should ask these question to determine reverence of job with us.
+
+Along the time, aspiration of author changed, according to that they changed their job, not only that they also considered personal goals to align with the decision.
+
+Companies benefit from unhappy people leaving their jobs; it creates opportunities for them to bring in new people, with fresh ideas and more energy and the willingness to challenge the status quo and do a great job. From experience, I believe that a staff turnover of 15 to 30 percent a year is very healthy for a company. New people with new ideas help the company to remain up to date, competitive, and fresh.
+
+#### What if We Don't Know Where We Want to Go?
+
+Once we accept we don't know where we are going, we can be more focused and objective in finding our way.
+
+In that case, expose yourself and start meeting people in communities, contribute to open source initiatives, etc. that will help you to bring more clarity.
+
+### Job Diversity
+
+Software development is a very diverse profession, and successful craftsmen usually have very broad experiences.
+
+Developing frameworks and tools is very different from building bespoke business applications. Developing rich web applications is very different from developing applications with no user interface.
+
+For certain applications, a bug in production can cause huge damages (millions of dollars in fines, or even endangerment of human lives), while in others, a bug in production may not be a big deal (some users may get a bit annoyed but they will get over it soon, when the bug is fixed).
+
+Working for a consultancy company can be a good way to get exposed to different types of projects and environments. you may have opportunities to work with different technologies, different types of software, different types of companies, different team dynamics, and different tools and processes.
+
+Moving from project to project, experiencing different environments, companies, industries, technologies, and approaches to software, is what I would consider to be the craftsman's journey.
+
+### The Mission
+
+Software craftsmen are on a mission. They focus on bettering themselves, constantly investing in their own careers, and learning, teaching, sharing, and delivering value to every single client. But this mission is not just about clients—that's just one part of it.
+
+Craftsmen focus on helping other developers to get better at their craft and to be proud of what they do and who they are.
+
+Being a software craftsman is about more than just waking up in the morning, going to work, and getting paid to do some *stuff.* Software craftsmen wake up in the morning to make things better and to change the world we live in. Being a software craftsman is far more than writing well-crafted code or being a software developer. It's a lifestyle—a commitment to excellence. Embrace it. Be proud of the role you play in the evolution of our society.
