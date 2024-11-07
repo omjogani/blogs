@@ -1,5 +1,5 @@
 ---
-title: Software Craftsmanship Book - Notes
+title: The Software Craftsman (Sandro Mancuso) - Notes
 date: 2024-04-01 10:00:00 -500
 categories: [book-notes, software-craftsmanship]
 tags: [software-craftsmanship]
