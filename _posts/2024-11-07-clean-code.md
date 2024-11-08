@@ -67,17 +67,47 @@ A programmer without "code-sense" will have no idea what to do when they found m
 
 #### What Is Clean Code?
 
-_I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well._ - Bjarne Stroustrup (Inventor of C++)
+Author asked to well-known and deeply experienced programmers, what they thought.
 
-- Elegant (Pleasing): Clean code is pleasing to read, it makes you smile.
-- Efficiency: Expected from inventor of C++
-- Tempts: Bad code tempts the mess to grow!
-- Error handling should be complete - Shows discipline of paying attention to details.
+- Bjarne Stroustrup (Inventor of C++)
 
-_Clean code is simple and direct. Clean code reads like well-written prose. Clean code never obscures the designer’s intent but rather is full of crisp abstractions and straightforward lines of control._ - Grady Booch (Author of Object Oriented Analysis and Design with Applications)
+_I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well._ - Elegant (Pleasing): Clean code is pleasing to read, it makes you smile. - Efficiency: Expected from inventor of C++ - Tempts: Bad code tempts the mess to grow! - Error handling should be complete - Shows discipline of paying attention to details.
 
-- Readability perspective
-- Live novel, clean code should clearly expose the tension in the problem to be solved.
-- Crisp Abstraction ("crisp" near to word concrete)
+- Grady Booch, author of *Object Oriented Analysis and Design with Applications*
 
-_Clean code can be read, and enhanced by a developer other than its original author. It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing. It has minimal dependencies, which are explicitly defined, and provides a clear and minimal API. Code should be literate since depending on the language, not all necessary information can be expressed clearly in code alone._ - ("Big" Dave Thomas, founder of OTI, godfather of the Eclipse strategy)
+_Clean code is simple and direct. Clean code reads like well-written prose. Clean code never obscures the designer’s intent but rather is full of crisp abstractions and straightforward lines of control._ - Readability perspective - Live novel, clean code should clearly expose the tension in the problem to be solved. - Crisp Abstraction ("crisp" near to word concrete)
+
+- “Big” Dave Thomas, founder of OTI, godfather of the Eclipse strategy
+
+_Clean code can be read, and enhanced by a developer other than its original author. It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing. It has minimal dependencies, which are explicitly defined, and provides a clear and minimal API. Code should be literate since depending on the language, not all necessary information can be expressed clearly in code alone._ - Desire for readability - Code without test is not clean - Minimal: Smaller code is better
+
+- Michael Feathers, author of *Working Effectively with Legacy Code*
+
+_I could list all of the qualities that I notice in clean code, but there is one overarching quality that leads to all of them. Clean code always looks like it was written by someone who cares. There is nothing obvious that you can do to make it better. All of those things were thought about by the code’s author, and if you try to imagine improvements, you’re led back to where you are, sitting in appreciation of the code someone left for you—code left by someone who cares deeply about the craft._
+
+- Ron Jeffries, author of *Extreme Programming Installed* and *Extreme Programming Adventures in C#*
+
+_In recent years I begin, and nearly end, with Beck’s rules of simple code. In priority order, simple code:_
+• *Runs all the tests;*
+• *Contains no duplication;*
+• *Expresses all the design ideas that are in the system;*
+• *Minimizes the number of entities such as classes, methods, functions, and the like.*
+Mainly his idea is to have No duplication, one thing, expressiveness, tiny abstractions.
+
+- Ward Cunningham, inventor of Wiki, inventor of Fit, coinventor of eXtreme Programming. Motive force behind Design Patterns. Smalltalk and OO thought leader. The godfather of all those who care about code.
+
+_You know you are working on clean code when each routine you read turns out to be pretty much what you expected. You can call it beautiful code when the code also makes it look like the language was made for the problem._ - He expects that when you read clean code, you won't be surprised at all. - You will read it, and it will be pretty much what you expected.
+
+### Schools of Thought
+
+Martial artists do not all agree about the best martial art, or the best technique within a martial art. Often master martial artists will form their own schools of thought and gather students to learn from them.
+
+Author mentioned that We spent more time reading the code rather writing the code. We spent around 10:1 ratio of reading:writing the code. Because this ratio is so high, we want the reading of code to be easy, even if it makes the writing harder.
+
+### The Boy Scout Rule
+
+_Leave the campground cleaner than you found it._
+
+The idea is to keep the code clean over time. We've all seen code rot and degrade as time passes. So we must take an active role in preventing this degradation.
+
+The cleanup doesn't need to be something big, Changing variable names for the better, break up code into well named functions, eliminate small bit of duplication, clean up composite `if` statement.
