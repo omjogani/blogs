@@ -73,7 +73,7 @@ Author asked to well-known and deeply experienced programmers, what they thought
 
 _I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well._ - Elegant (Pleasing): Clean code is pleasing to read, it makes you smile. - Efficiency: Expected from inventor of C++ - Tempts: Bad code tempts the mess to grow! - Error handling should be complete - Shows discipline of paying attention to details.
 
-- Grady Booch, author of *Object Oriented Analysis and Design with Applications*
+- Grady Booch, author of _Object Oriented Analysis and Design with Applications_
 
 _Clean code is simple and direct. Clean code reads like well-written prose. Clean code never obscures the designer’s intent but rather is full of crisp abstractions and straightforward lines of control._ - Readability perspective - Live novel, clean code should clearly expose the tension in the problem to be solved. - Crisp Abstraction ("crisp" near to word concrete)
 
@@ -81,17 +81,17 @@ _Clean code is simple and direct. Clean code reads like well-written prose. Clea
 
 _Clean code can be read, and enhanced by a developer other than its original author. It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing. It has minimal dependencies, which are explicitly defined, and provides a clear and minimal API. Code should be literate since depending on the language, not all necessary information can be expressed clearly in code alone._ - Desire for readability - Code without test is not clean - Minimal: Smaller code is better
 
-- Michael Feathers, author of *Working Effectively with Legacy Code*
+- Michael Feathers, author of _Working Effectively with Legacy Code_
 
 _I could list all of the qualities that I notice in clean code, but there is one overarching quality that leads to all of them. Clean code always looks like it was written by someone who cares. There is nothing obvious that you can do to make it better. All of those things were thought about by the code’s author, and if you try to imagine improvements, you’re led back to where you are, sitting in appreciation of the code someone left for you—code left by someone who cares deeply about the craft._
 
 - Ron Jeffries, author of *Extreme Programming Installed* and *Extreme Programming Adventures in C#*
 
 _In recent years I begin, and nearly end, with Beck’s rules of simple code. In priority order, simple code:_
-• *Runs all the tests;*
-• *Contains no duplication;*
-• *Expresses all the design ideas that are in the system;*
-• *Minimizes the number of entities such as classes, methods, functions, and the like.*
+• _Runs all the tests;_
+• _Contains no duplication;_
+• _Expresses all the design ideas that are in the system;_
+• _Minimizes the number of entities such as classes, methods, functions, and the like._
 Mainly his idea is to have No duplication, one thing, expressiveness, tiny abstractions.
 
 - Ward Cunningham, inventor of Wiki, inventor of Fit, coinventor of eXtreme Programming. Motive force behind Design Patterns. Smalltalk and OO thought leader. The godfather of all those who care about code.
@@ -111,3 +111,95 @@ _Leave the campground cleaner than you found it._
 The idea is to keep the code clean over time. We've all seen code rot and degrade as time passes. So we must take an active role in preventing this degradation.
 
 The cleanup doesn't need to be something big, Changing variable names for the better, break up code into well named functions, eliminate small bit of duplication, clean up composite `if` statement.
+
+## 2. Meaningful Names
+
+### Introduction
+
+Names are everywhere in software, We name our variables, functions, arguments, classes, methods etc. Because We do so much of it, We'd better do it well.
+
+### Use Intention-Revealing Name
+
+It is easy to say that names should reveal intent. Choosing good names take time but saves more than it takes.
+
+If a name requires a comment, then the name does not reveal its intent
+
+```java
+int d; // elapsed time in days
+```
+
+The name `d` reveals nothing, It doesn't evoke a sense of elapsed time, nor of days. better we should choose...
+
+```java
+int elapsedTimeInDays;
+
+int daysSinceCreation;
+
+int daysSinceModification;
+
+int fileAgeInDays;
+```
+
+What is the purpose of this code?
+
+```java
+public List<int[]> getThem() {
+	List<int[]> list1 = new ArrayList<int[]>();
+	for (int[] x : theList)
+		if (x[0] == 4)
+			list1.add(x);
+	return list1;
+}
+```
+
+The problem is not simplicity but it's **implicity** of the code, The code implicitly requires that we know the answer to question like, What kind of things are in `theList`? What is the significance of the value 4? etc.
+
+```java
+public List<int[]> getFlaggedCells() {
+	List<int[]> flaggedCells = new ArrayList<int[]>();
+	for (int[] cell : gameBoard)
+		if (cell[STATUS_VALUE] == FLAGGED)
+			flaggedCells.add(cell);
+	return flaggedCells;
+}
+```
+
+Notice that the simplicity of the code has not changed but the code has become much more explicit.
+
+We can even go further and write a simple class for cells instead of using an array of `int`s. It can include an intention-revealing function (call it `isFlagged`) to hide the magic numbers.
+
+```java
+public List<Cell> getFlaggedCells() {
+	List<Cell> flaggedCells = new ArrayList<Cell>();
+	for (Cell cell : gameBoard)
+		if (cell.isFlagged())
+			flaggedCells.add(cell);
+	return flaggedCells;
+}
+```
+
+With these simple changes, it's not difficult to understand what's going on. This is the power of choosing good names.
+
+### Avoid Disinformation
+
+Programmers must avoid leaving false clues that obscure the meaning of code. We want to avoid poor variable names such as `hp, aix, sco` etc.
+
+Do not refer to a grouping of accounts as an `accountList` unless it's actually a `List` otherwise, it may lead to false conclusions. So `accountGroup` or `bunchOfAccoutns` or just plain `accounts` would be better.
+
+Beware of using names which vary in small ways. eg. `XYZControllerForEfficientHandlingOfStrings` and `XYZControllerForEfficientStorageOfStrings`, It takes time to spot the subtle difference between both. If We're using IDE it's common mistake to write incorrect variable name while we use few letter and use auto completion.
+
+A truly awful example of disinformative names would be the lower-case `L` or uppercase `O`.
+
+```java
+int a = l;
+if ( O == l )
+	a = O1;
+else
+	l = 01;
+```
+
+### Make Meaningful Distinctions
+
+Programmer create problems for themselves when they write code solely to satisfy a compiler or interpreter.
+
+Consider naming a variable name `klass` just because `class` is used for something else. We need to make sure that if names are different then they should also mean something.
