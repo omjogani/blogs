@@ -77,7 +77,7 @@ _I like my code to be elegant and efficient. The logic should be straightforward
 
 _Clean code is simple and direct. Clean code reads like well-written prose. Clean code never obscures the designer’s intent but rather is full of crisp abstractions and straightforward lines of control._ - Readability perspective - Live novel, clean code should clearly expose the tension in the problem to be solved. - Crisp Abstraction ("crisp" near to word concrete)
 
-- “Big” Dave Thomas, founder of OTI, godfather of the Eclipse strategy
+- “Big" Dave Thomas, founder of OTI, godfather of the Eclipse strategy
 
 _Clean code can be read, and enhanced by a developer other than its original author. It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing. It has minimal dependencies, which are explicitly defined, and provides a clear and minimal API. Code should be literate since depending on the language, not all necessary information can be expressed clearly in code alone._ - Desire for readability - Code without test is not clean - Minimal: Smaller code is better
 
@@ -203,3 +203,293 @@ else
 Programmer create problems for themselves when they write code solely to satisfy a compiler or interpreter.
 
 Consider naming a variable name `klass` just because `class` is used for something else. We need to make sure that if names are different then they should also mean something.
+
+It is not sufficient to add number series or noise words, even though the compiler is satisfied.
+
+```java
+public static void copyChars(char a1[], char a2[]) {
+	for (int i = 0; i < a1.length; i++) {
+		a2[i] = a1[i];
+	}
+}
+```
+
+This function reads much better when `source` and `destination` are used for the argument names.
+
+Noise words are another meaningless distinction. Consider you have a `Product` class. If you have another called `ProductInfo` or `ProductData`, you have made the names different without making them mean anything different.
+
+There is nothing wrong in using prefix conventions like `a` and `the` so long as they make meaningful distinction.
+
+We want to avoid common given up practices, like...
+
+- avoid `variable` as variable name, `table` as table name and so on
+- avoid `nameString` as String variable name, Would a `Name` ever be a floating point number?
+- avoid naming one class as `Customer` and another as `CustomerObject`.
+
+There is an application we know of where this is illustrated, We've changed the names to protect the guilty.
+
+```java
+getActiveAccount();
+
+getActiveAccounts();
+
+getActiveAccountInfo();
+```
+
+How programmers supposed to know which one to call?
+
+Similarly, `moneyAmount` is indistinguishable from `money`, `customerInfo` is indistinguishable from `customer`, `accountData` is indistinguishable from `account`. Distinguish names in such a way that the reader knows what the differences offer.
+
+### Use Pronounceable Names
+
+Humans are good at words, and words are by definition, pronounceable.
+
+One company has `genymdhms` (generation date, year, month, day, hour, minute, and second). People were tolerating poor naming but Every new developer to have the variables explained to them.
+
+```java
+class DtaRcrd102 {
+	private Date genymdhms;
+	private Date modymdhms;
+	private final String pszqint = "102";
+	/* … */
+};
+```
+
+```java
+class Customer {
+	private Date generationTimestamp;
+	private Date modificationTimestamp;;
+	private final String recordId = "102";
+	/* … */
+};
+```
+
+Compare above 2 code blocks, with second block, intelligent conversation is not possible, everybody will sue generation timestamp in their conversation.
+
+### Use Searchable Names
+
+Single-letter names and numeric constants have a particular problem in that they are not easy to locate across a body of text.
+
+Easy to find: `MAX_CLASSES_PER_STUDENT`, but the number `7` could be more troublesome.
+
+Likewise, the name `e` is a poor choice for any variable for which a programmer might need to search, It is the most common letter in the English language and likely to show up in every passage of text in every program.
+
+Single-letter can ONLY be used as local variable inside short methods.
+
+Compare
+
+```java
+for (int j=0; j<34; j++) {
+	s += (t[j]*4)/5;
+}
+```
+
+To
+
+```java
+int realDaysPerIdealDay = 4;
+const int WORK_DAYS_PER_WEEK = 5;
+int sum = 0;
+for (int j=0; j < NUMBER_OF_TASKS; j++) {
+	int realTaskDays = taskEstimate[j] * realDaysPerIdealDay;
+	int realTaskWeeks = (realdays / WORK_DAYS_PER_WEEK);
+	sum += realTaskWeeks;
+}
+```
+
+In second block, `sum` is not particularly useful name but at least is searchable. It is more easy to search `WORK_DAYS_PER_WEEK` instead of number `5`.
+
+### Avoid Encodings
+
+We must avoid extra encoding layer on top of English language, It requires each new employee to learn yet another encoding "language" in addition to learning the body of code.
+
+#### Hungarian Notation
+
+Older programming languages (like Fortran and early BASIC) had limitations that forced programmers to use naming conventions, such as Hungarian Notation (HN), to encode variable types for easier identification.
+
+Widely used in early Windows C API development to manage variables of various types (handles, pointers, strings) when compilers couldn’t enforce type safety.
+
+Current programming languages have richer type systems and compilers that enforce types, reducing the need for such conventions.
+
+Modern IDEs and editors can detect type errors early, providing additional support to programmers.
+
+Using type encoding (like HN) today is discouraged as it complicates code maintenance, makes reading harder, and introduces potential for misinterpretation, especially with easily changeable names and types.
+
+```java
+PhoneNumber phoneString;
+// name not changed when type changed!
+```
+
+#### Member Prefixes
+
+We don't need to prefix member variable with `m_` anymore, while classes and functions should be small enough that you don't need them.
+
+We should better prefer IDE or Editor that clearly highlights or colorizes to make them distinct.
+
+```java
+public class Part {
+	private String m_dsc; // The textual description
+	void setName(String name) {
+		m_dsc = name;
+	}
+}
+
+// --------------------------------------------
+
+public class Part {
+	String description;
+	void setDescription(String description) {
+		this.description = description;
+	}
+}
+```
+
+#### Interfaces and Implementations
+
+There are sometimes a special case for encoding. For example We are building an ABSTRACT FACTORY for the creation of shapes. This factory will be an interface and will be implemented by a concrete class. What should we name them? `IShapeFactory` and `ShapeFactory`?
+
+We don't want our users knowing that I'm handling them an interface. We just want them to know that it's `ShapeFactory`.
+
+### Avoid Mental Mapping
+
+Readers should not have to mentally translate our names into other names they already know.
+
+For single-letter variable names, Certainly a loop counter may be names `i` or `j` or `k` (though never `l`!) If it's scope is very small and no other names can conflict with it.
+
+There can be no worst reason for using the name `c` then because `a` and `b` were already taken.
+
+In general programmers are pretty smart people. Smart people sometimes like to show off their smarts by demonstrating their mental juggling abilities.
+
+One difference between a smart programmer and a professional programmer is that the professional understands that *clarity is king*. Professionals use their powers for good and write code that others can understand.
+
+### Class Names
+
+Classes and objects should have noun or noun phrase names like `Customer`, `WikiPage`, `Account`, and `AddressParser`. Avoid words like `Manager`, `Processor`, `Data`, or `Info` in the name of a class. A class name should not be a verb.
+
+### Method Names
+
+Methods should have verb or verb phrase names like `postPayment`, `deletePage`, or `save`. Accessors, mutators, and predicates should be named for their value and prefixed with `get`, `set`, and `is` according to the javabean standard.
+
+### Don't Be Cute
+
+Choose clarity over entertainment value. For example, instead of choosing cute function name `HolyHandGrenade` , choose `DeleteItems`.
+
+Say what you mean, Mean what you say.
+
+### Pick One Word per Concept
+
+Pick one word for one abstract concepts and stick with it. For instance, it's confusing to have `fetch`, `retrieve`, and `get` as equivalent methods of different classes.
+
+Likewise, It's confusing to have a `controller` and a `manager` and a `driver` in the same code base. What is the essential different between a `DeviceManager` and a `Protocol-Controller`? Why are both not `controllers` or both not `managers`?
+
+A consistent lexicon is a great boon to the programmers who must use your code.
+
+### Don't Pun
+
+Avoid using the same word for two purposes. Using the same term for two different ideas is essentially a pun.
+
+Using consistent naming, like `add`, can be misleading if the method's behavior differs semantically from other `add` methods.
+
+If a new method places a single parameter into a collection, using `add` may seem consistent but is incorrect.
+
+Instead, choose names like `insert` or `append` would be more meaningful, keeping method name `add` will be pun.
+
+### Use Solution Domain Names
+
+Remember that the people who read your code will be programmers, so go head and use Computer Science terms, Algorithms names, Pattern Names, Math terms and so forth.
+
+The name `AccountVisitor` means a great deal to a programmer who is familiar with the VISITOR pattern. What programmer would not know what a `JobQueue` was?
+
+### Use Problem Domain Names
+
+When there is no "programmer-eese" for what you're doing, use the name from the problem domain. Product people and PRDs will help in-case programmer looking for context.
+
+Separating solution and problem domain concepts is part of the job of a good programmer and designer.
+
+### Add Meaningful Context
+
+There are a few names which are meaningful in and of themselves.
+
+Imagine that you have variables named `firstName`, `lastName`, `street` and `zipcode`. Taken together it's pretty clear that they form an address. But what if you saw `state` variable being used alone in a method?
+
+You can add context by using prefixes: `addrFirstName`, `addrLastName`, `addrState` and so on. Of course, a better solution is to create a class named `Address`.
+
+Take a look at this code...
+
+```java
+private void printGuessStatistics(char candidate, int count) {
+    String number;
+    String verb;
+    String pluralModifier;
+    if (count == 0) {
+        number = "no";
+        verb = "are";
+        pluralModifier = "s";
+    } else if (count == 1) {
+        number = "1";
+        verb = "is";
+        pluralModifier = "";
+    } else {
+        number = Integer.toString(count);
+        verb = "are";
+        pluralModifier = "s";
+    }
+    String guessMessage = String.format("There % s % s % s % s", verb, number, candidate, pluralModifier);
+    print(guessMessage);
+}
+```
+
+The function is a bit too long and the variables are used throughout. To split the function into smaller pieces we need to create a `GuessStatisticsMessage` class and make the three variables fields of this class. This provides a clear context for the three variables. They are *definitively* part of the `GuessStatisticsMessage`. The improvement of context also allows the algorithm to be made much cleaner by breaking it into many smaller functions.
+
+```java
+public class GuessStatisticsMessage {
+    private String number;
+    private String verb;
+    private String pluralModifier;
+
+    public String make(char candidate, int count) {
+        createPluralDependentMessageParts(count);
+        return String.format(
+            "There %s %s %s%s",
+            verb, number, candidate, pluralModifier);
+    }
+
+    private void createPluralDependentMessageParts(int count) {
+        if (count == 0) {
+            thereAreNoLetters();
+        } else if (count == 1) {
+            thereIsOneLetter();
+        } else {
+            thereAreManyLetters(count);
+        }
+    }
+
+    private void thereAreManyLetters(int count) {
+        number = Integer.toString(count);
+        verb = "are";
+        pluralModifier = "s";
+    }
+
+    private void thereIsOneLetter() {
+        number = "1";
+        verb = "is";
+        pluralModifier = "";
+    }
+
+    private void thereAreNoLetters() {
+        number = "no";
+        verb = "are";
+        pluralModifier = "s";
+    }
+}
+```
+
+### Don't Add Gratuitous Context
+
+In an imaginary application called "Gas Station Deluxe," it is a bad idea to prefix every class with `GSD`. When you type `G` it rewarded with mile-list of every class in the system.
+
+Likewise, say you invented `MailingAddress` class in `GSD`'s accounting method and named it `GSDAccountAddress`. Later you need to use for customer contact application. Do you use `GSDAccountAddress`? Does it sound like the right name? Ten of 17 characters are redundant or irrelevant.
+
+Shorter names are generally better than longer ones, so long as they are clear. Add no more context to a name than is necessary.
+
+The names `accountAddress` and `customerAddress` are fine names for instances of the class `Address` but could be poor names for classes. `Address` is a fine name for a class.
