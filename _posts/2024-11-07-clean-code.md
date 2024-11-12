@@ -360,7 +360,7 @@ There can be no worst reason for using the name `c` then because `a` and `b` wer
 
 In general programmers are pretty smart people. Smart people sometimes like to show off their smarts by demonstrating their mental juggling abilities.
 
-One difference between a smart programmer and a professional programmer is that the professional understands that *clarity is king*. Professionals use their powers for good and write code that others can understand.
+One difference between a smart programmer and a professional programmer is that the professional understands that _clarity is king_. Professionals use their powers for good and write code that others can understand.
 
 ### Class Names
 
@@ -439,7 +439,7 @@ private void printGuessStatistics(char candidate, int count) {
 }
 ```
 
-The function is a bit too long and the variables are used throughout. To split the function into smaller pieces we need to create a `GuessStatisticsMessage` class and make the three variables fields of this class. This provides a clear context for the three variables. They are *definitively* part of the `GuessStatisticsMessage`. The improvement of context also allows the algorithm to be made much cleaner by breaking it into many smaller functions.
+The function is a bit too long and the variables are used throughout. To split the function into smaller pieces we need to create a `GuessStatisticsMessage` class and make the three variables fields of this class. This provides a clear context for the three variables. They are _definitively_ part of the `GuessStatisticsMessage`. The improvement of context also allows the algorithm to be made much cleaner by breaking it into many smaller functions.
 
 ```java
 public class GuessStatisticsMessage {
@@ -493,3 +493,13 @@ Likewise, say you invented `MailingAddress` class in `GSD`'s accounting method a
 Shorter names are generally better than longer ones, so long as they are clear. Add no more context to a name than is necessary.
 
 The names `accountAddress` and `customerAddress` are fine names for instances of the class `Address` but could be poor names for classes. `Address` is a fine name for a class.
+
+## 3. Functions
+
+Dumping everything in a single function will end up code mess, There will be too many context switch in a single function and increase levels of abstractions.
+
+However, with just a few simple method extractions, some renaming and a little restructuring, It's clearly understandable with in approx 3x less time.
+
+How to make function easy to read and understand? How can we make a function communicate its intent? What attributes can we give our functions that will allow a casual reader to intuit the kind of program they live inside?
+
+### Small!
