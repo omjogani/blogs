@@ -29,7 +29,7 @@ We probably faced or write bad code, when we don't have time to do the job, the 
 
 ### The Total Cost of Owning a Mess
 
-If you have been a programmer for longer than two or three years, you have probably been slowed down by messy code. The degree of the slowdown can be significant. Teams that were moving very fast at the beginning of a project can find themselves moving at a snail’s pace. It takes time to understand any addition or modification in the code.
+If you have been a programmer for longer than two or three years, you have probably been slowed down by messy code. The degree of the slowdown can be significant. Teams that were moving very fast at the beginning of a project can find themselves moving at a snail's pace. It takes time to understand any addition or modification in the code.
 
 As the mess builds, the productivity of the team continues to decrease. They add more staff to the project in hopes of increasing productivity.
 
@@ -37,7 +37,7 @@ As the mess builds, the productivity of the team continues to decrease. They add
 
 Eventually the team rebels. They inform management that they cannot continue to develop in this odious code base but they cannot deny that productivity is terrible. Eventually lands up to redesign the system.
 
-A new tiger team is selected. Everyone wants to be on this team because it’s a green-field project. Management will not replace the old system until the new system can do everything that the old system does.
+A new tiger team is selected. Everyone wants to be on this team because it's a green-field project. Management will not replace the old system until the new system can do everything that the old system does.
 
 #### Attitude
 
@@ -49,7 +49,7 @@ It's common to blame somebody for bad design of the project, Even Mangers and ma
 
 Managers may defend the schedule and requirements with passion, but it's their job. It's our job to defend the code with equal passion.
 
-It is unprofessional for programmers to bend to the will of managers who don’t understand the risks of making messes.
+It is unprofessional for programmers to bend to the will of managers who don't understand the risks of making messes.
 
 #### The Primal Conundrum
 
@@ -75,7 +75,7 @@ _I like my code to be elegant and efficient. The logic should be straightforward
 
 - Grady Booch, author of _Object Oriented Analysis and Design with Applications_
 
-_Clean code is simple and direct. Clean code reads like well-written prose. Clean code never obscures the designer’s intent but rather is full of crisp abstractions and straightforward lines of control._ - Readability perspective - Live novel, clean code should clearly expose the tension in the problem to be solved. - Crisp Abstraction ("crisp" near to word concrete)
+_Clean code is simple and direct. Clean code reads like well-written prose. Clean code never obscures the designer's intent but rather is full of crisp abstractions and straightforward lines of control._ - Readability perspective - Live novel, clean code should clearly expose the tension in the problem to be solved. - Crisp Abstraction ("crisp" near to word concrete)
 
 - “Big" Dave Thomas, founder of OTI, godfather of the Eclipse strategy
 
@@ -83,11 +83,11 @@ _Clean code can be read, and enhanced by a developer other than its original aut
 
 - Michael Feathers, author of _Working Effectively with Legacy Code_
 
-_I could list all of the qualities that I notice in clean code, but there is one overarching quality that leads to all of them. Clean code always looks like it was written by someone who cares. There is nothing obvious that you can do to make it better. All of those things were thought about by the code’s author, and if you try to imagine improvements, you’re led back to where you are, sitting in appreciation of the code someone left for you—code left by someone who cares deeply about the craft._
+_I could list all of the qualities that I notice in clean code, but there is one overarching quality that leads to all of them. Clean code always looks like it was written by someone who cares. There is nothing obvious that you can do to make it better. All of those things were thought about by the code's author, and if you try to imagine improvements, you're led back to where you are, sitting in appreciation of the code someone left for you—code left by someone who cares deeply about the craft._
 
-- Ron Jeffries, author of *Extreme Programming Installed* and *Extreme Programming Adventures in C#*
+- Ron Jeffries, author of _Extreme Programming Installed_ and _Extreme Programming Adventures in C#_
 
-_In recent years I begin, and nearly end, with Beck’s rules of simple code. In priority order, simple code:_
+_In recent years I begin, and nearly end, with Beck's rules of simple code. In priority order, simple code:_
 • _Runs all the tests;_
 • _Contains no duplication;_
 • _Expresses all the design ideas that are in the system;_
@@ -307,7 +307,7 @@ We must avoid extra encoding layer on top of English language, It requires each 
 
 Older programming languages (like Fortran and early BASIC) had limitations that forced programmers to use naming conventions, such as Hungarian Notation (HN), to encode variable types for easier identification.
 
-Widely used in early Windows C API development to manage variables of various types (handles, pointers, strings) when compilers couldn’t enforce type safety.
+Widely used in early Windows C API development to manage variables of various types (handles, pointers, strings) when compilers couldn't enforce type safety.
 
 Current programming languages have richer type systems and compilers that enforce types, reducing the need for such conventions.
 
@@ -503,3 +503,441 @@ However, with just a few simple method extractions, some renaming and a little r
 How to make function easy to read and understand? How can we make a function communicate its intent? What attributes can we give our functions that will allow a casual reader to intuit the kind of program they live inside?
 
 ### Small!
+
+The first rule of function is that they should be small. The second rule of the function is that _they should be smaller than that_.
+
+In eighties, People used to say that a function should be no bigger than a screen full. Function should hardly ever be 20 lines long.
+
+Uncle Bob visited Kent Beck at this home. They sat down and did some programming together. Kent Beck showed the code and Uncle Bob was amazed by looking at small functions. Each function was transparently obvious.
+
+#### Blocks and Indenting
+
+This implies that the blocks within `if` statements, `else` statements, `while` statements, and so on should be one line long.
+
+This also implies that the function should not be large enough to hold nested structure. Therefore, the indent level of a function should not be greater than one or two. This, of course, makes the function easier to read and understand.
+
+### Do One Thing
+
+**_FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY._**
+
+If a function does only those steps that are one level below the stated name of the function, then the function is doing one thing. For example
+
+```java
+public static String renderPageWithSetupsAndTeardowns(
+	PageData pageData, boolean isSuite) throws Exception {
+    if (isTestPage(pageData))
+	   includeSetupAndTeardownPages(pageData, isSuite);
+    return pageData.getHtml();
+}
+```
+
+If we want to extract function again, we could extract `if` condition in above code, but that would simply restates the code without changing the level of abstraction.
+
+#### Sections within Functions
+
+```java
+import java.util.*;
+
+public class GeneratePrimes {
+    /**
+     * @param maxValue is the generation limit.
+     */
+    public static int[] generatePrimes(int maxValue) {
+        if (maxValue >= 2) // the only valid case
+        {
+            // declarations
+            int s = maxValue + 1; // size of array
+            boolean[] f = new boolean[s];
+            int i;
+            // initialize array to true.
+            for (i = 0; i < s; i++)
+                f[i] = true;
+
+            // get rid of known non-primes
+            f[0] = f[1] = false;
+
+            // sieve
+            int j;
+            for (i = 2; i < Math.sqrt(s) + 1; i++) {
+                if (f[i]) // if i is uncrossed, cross its multiples.
+                {
+                    for (j = 2 * i; j < s; j += i)
+                        f[j] = false; // multiple is not prime
+                }
+            }
+
+            // how many primes are there?
+            int count = 0;
+            for (i = 0; i < s; i++) {
+                if (f[i])
+                    count++; // bump count.
+            }
+
+            int[] primes = new int[count];
+
+            // move the primes into the result
+            for (i = 0, j = 0; i < s; i++) {
+                if (f[i]) // if prime
+                    primes[j++] = i;
+            }
+
+            return primes; // return the primes
+        } else // maxValue < 2
+            return new int[0]; // return null array if bad input.
+    }
+}
+```
+
+This is an obvious symptom of doing more than one thing. Functions that do one thing cannot be reasonably divided into sections.
+
+### One Level of Abstraction per Function
+
+In order to make sure our functions are doing **one thing**, we need to make sure that the statements within our function are all at the same level of abstraction.
+
+Mixing levels of abstraction within a function is always confusing.
+
+#### Reading Code from Top to Bottom: _The Stepdown Rule_
+
+We want the code to read like a top-down narrative. We want every function to be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. Author calls this _The Step-down Rule_.
+
+It turns out to be very difficult for programmers to learn to follow this rule and write functions that stay at a single level of abstraction. But learning this trick is also very important.
+
+It is the key to keeping functions short and making sure they do "one thing."
+
+### Switch Statements
+
+It's hard to make a small `switch` statement. It is also hard to make `switch` statement that does one thing. By their nature `switch` statement always do _N_ things.
+
+```java
+public Money calculatePay(Employee e)
+throws InvalidEmployeeType {
+    switch (e.type) {
+        case COMMISSIONED:
+            return calculateCommissionedPay(e);
+        case HOURLY:
+            return calculateHourlyPay(e);
+        case SALARIED:
+            return calculateSalariedPay(e);
+        default:
+            throw new InvalidEmployeeType(e.type);
+    }
+}
+```
+
+Potential issues with above code
+
+- It's large!
+- When new employee types are added, it will grow
+- It very clearly does more than one thing
+- It violates the Single Responsibility Principle (SRP), because there is more than one reason for it to change.
+- It violates Open Closed Principle (OCP) because it mush change whenever new types are added.
+
+Using multiple functions with a switch statement to handle different Employee types results in poor code structure.
+
+We may have similar structure for multiple methods, such as...
+
+```java
+isPayday(Employee e, Date date),
+
+// OR
+
+deliverPay(Employee e, Money pay),
+```
+
+Hide the switch statement inside an **Abstract Factory**, which handles creating appropriate Employee instances.
+
+This allows methods like `calculatePay`, `isPayday`, and `deliverPay` to be called polymorphically, improving code organization and maintainability.
+
+### Use Descriptive Names
+
+The names should describe what the function does. It is hard to overestimate the value of good names.
+
+Remember Ward's principle: "_You know you are working on clean code when each routine turns out to be pretty much what you expected._"
+
+Half the battle to achieving that principle is choosing good names for small functions that do one thing.
+
+Don't be afraid to make a name long. A long descriptive name is better than a short enigmatic name.
+
+Choosing descriptive names will clarify the design of the module in your mind and help you to improve it. Be consistent in your names. Use the same phrases, nouns, and verbs in the function names you choose for your modules.
+
+### Function Arguments
+
+The ideal number of arguments for a function is zero (niladic). Next comes one (monadic), followed closely by two (dyadic). Three arguments (triadic) should be avoided where possible. More than three (polyadic) requires very special justification—and then shouldn't be used anyway.
+
+Arguments are hard. They take a lot of conceptual power. When you are reading the story told by the module, `includeSetupPage()` is easier to understand than `includeSetupPageInto(newPage-Content)`. The argument is at a different level of abstraction than the function name and forces you to know a detail.
+
+Arguments are even harder from a testing point of view, more than 2 arguments will make testing the function hard.
+
+Output arguments are harder to understand than input arguments.
+
+#### Common Monadic Forms
+
+There are two common reasons to pass a single argument into a function:
+
+1. **To ask a question about the argument**, like in `boolean fileExists("MyFile")`, where the function checks something about the input.
+2. **To transform the argument** into something else and return the result, like `InputStream fileOpen("MyFile")`, which converts a file name into an InputStream.
+
+These are the patterns readers expect, so it's important to name functions clearly and use them consistently.
+
+A less common but useful case for single-argument functions is when they act as **events**. Here, the argument doesn't return anything but signals a state change, like `void passwordAttemptFailedNtimes(int attempts)`. This should be used carefully and should clearly indicate it's an event.
+
+Avoid confusing single-argument functions that don't fit these patterns. For example, using an argument to pass back output (instead of returning it) can make the function harder to understand. A function that transforms input should always return the transformed value rather than altering an argument directly.
+
+#### Flag Arguments
+
+Flag arguments are ugly. The function does more than one thing. It does one thing if the flag is true and another if the flag is false!
+
+The method call `render(true)` is just plain confusing to a poor reader. Mousing over the call and seeing `render(boolean isSuite)` helps a little, but not that much. We should have split the function into two: `renderForSuite()` and `renderForSingleTest()`.
+
+#### Dyadic Functions
+
+A function with two arguments is harder to understand than a monadic (single argument) function.
+
+For Example,
+
+```java
+writeField(name)
+```
+
+is easier to understand then
+
+```java
+writeField(output-stream, name)
+```
+
+It takes a pause to ignore first parameter, while we should never ignore any part of code. The parts we ignore are where the bugs will hide.
+
+There are times, of course, where two arguments are appropriate. For example, `Point p = new Point(0,0);` is perfectly reasonable.
+
+Even obvious dyadic functions like `assertEquals(expected, actual)` are problematic. How many times have you put the `actual` where the `expected` should be?
+
+#### Triads
+
+Functions that take three arguments are significantly harder to understand than dyads. The issues of ordering, pausing, and ignoring are more than doubled. Think very carefully before creating a triad.
+
+For example, consider the common overload of `assertEquals` that takes three arguments: `assertEquals(message, expected, actual)`. How many times have you read the `message` and thought it was the `expected`?
+
+#### Argument Objects
+
+When a function seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. Consider, for example...
+
+```java
+Circle makeCircle(double x, double y, double radius);
+Circle makeCircle(Point center, double radius);
+```
+
+Reducing the number of arguments by creating objects out of them may seem like cheating, but it's not.
+
+#### Argument Lists
+
+Sometimes we want to pass a variable number of arguments into a function. Consider, for example, the `String.format` method:
+
+```java
+String.format("%s worked %.2f hours.", name, hours);
+```
+
+If the variable arguments are all treated identically, as they are in the example above, then they are equivalent to a single argument of type `List`.
+
+```java
+void monad(Integer… args);
+void dyad(String name, Integer… args);
+void triad(String name, int count, Integer… args);
+```
+
+#### Verbs and Keywords
+
+Choosing good names for a function can go a long way toward explaining the intent of the function and the order and intent of the arguments.
+
+For example, `write(name)` is very evocative. Whatever this “name" thing is, it is being “written." An even better name might be `writeField(name)`, which tells us that the “name" thing is a “field."
+
+For example, `assertEquals` might be better written as `assertExpectedEqualsActual(expected,` `actual)`.
+
+### Have No Side Effects
+
+Side effects are lies. Your function promises to do one thing, but it also does other _hidden_ things.
+
+```java
+public class UserValidator {
+    private Cryptographer cryptographer;
+
+    public boolean checkPassword(String userName, String password) {
+        User user = UserGateway.findByName(userName);
+        if (user != User.NULL) {
+            String codedPhrase = user.
+            getPhraseEncodedByPassword();
+            String phrase = cryptographer.decrypt(codedPhrase, password);
+            if ("Valid Password".equals(phrase)) {
+                Session.initialize();
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+This code has side effect, calling `Session.initialize()`, The name of function doesn't implies that it's also initializing session.
+
+If this function goes out of over at abstracted level, it create side effect and it could be hard to recognize as well (hidden side effect).
+
+In this case we might rename the function `checkPasswordAndInitializeSession`, though that certainly violates “Do one thing."
+
+#### Output Arguments
+
+Apparently, We see arguments as input arguments, it's natural for all to consider argument as inputs.
+
+```java
+appendFooter(s);
+```
+
+In this code, does this function append `s` as the footer or something? Is it input argument or output argument?
+
+It doesn't take long to look at the function signature and see:
+
+```java
+public void appendFooter(StringBuffer report)
+```
+
+This clarifies the issue. Anything that forces you to check the function signature is equivalent to a double-take.
+
+it would be better for `appendFooter` to be invoked as
+
+```java
+report.appendFooter();
+```
+
+In general output arguments should be avoided. If your function must change the state of something, have it change the state of its owning object.
+
+### Command Query Separation
+
+Functions should either do something or answer something, but not both. Either your function should change the state of an object, or it should return some information about that object.
+
+```java
+public boolean set(String attribute, String value);
+```
+
+This function sets the value of ta names attribute and returns `true` if it successful and `false` if no such attribute exists. Calling this leads to odd statement like:
+
+```java
+if (set("username", "john")) {
+   ...
+}
+```
+
+The author intended `set` to be a verb, but in the context of the `if` statement it _feels_ like an adjective. We should do something like:
+
+```java
+if (attributeExists("username")) {
+    setAttribute("username", "unclebob");
+	…
+}
+```
+
+### Prefer Exceptions to Returning Error Codes
+
+Returning error codes from command functions is a subtle violation of command query separation. It promotes commands being used as expressions in the predicates of `if` statements.
+
+```java
+if (deletePage(page) == E_OK)
+```
+
+When you return an error code, you create the problem that the caller must deal with the error immediately.
+
+```java
+if (deletePage(page) == E_OK) {
+    if (registry.deleteReference(page.name) == E_OK) {
+        if (configKeys.deleteKey(page.name.makeKey()) == E_OK) {
+            logger.log("page deleted");
+        } else {
+            logger.log("configKey not deleted");
+        }
+    } else {
+        logger.log("deleteReference from registry failed");
+    }
+} else {
+    logger.log("delete failed");
+    return E_ERROR;
+}
+```
+
+On the other hand, if you use exceptions instead of returned error codes, then the error processing code can be separated from the happy path code and can be simplified:
+
+```java
+try {
+    deletePage(page);
+    registry.deleteReference(page.name);
+    configKeys.deleteKey(page.name.makeKey());
+} catch (Exception e) {
+    logger.log(e.getMessage());
+}
+```
+
+#### Extract Try/Catch Blocks
+
+Try to extract the bodies of the `try` and `catch` blocks out into functions of their own.
+
+```java
+public void delete(Page page) {
+    try {
+        deletePageAndAllReferences(page);
+    } catch (Exception e) {
+        logError(e);
+    }
+}
+
+private void deletePageAndAllReferences(Page page) throws Exception {
+    deletePage(page);
+    registry.deleteReference(page.name);
+    configKeys.deleteKey(page.name.makeKey());
+}
+
+private void logError(Exception e) {
+    logger.log(e.getMessage());
+}
+```
+
+It's easy to look at block of code and ignore, For example error handling code in this code.
+
+This provides a nice separation that makes the code easier to understand and modify.
+
+#### Error Handling Is One Thing
+
+Functions should do one thing. Error handling is one thing. Thus, a function that handles errors should do nothing else. if `try` exists in the function, it should be very first word of the function body, and there should be nothing after the `catch/finally` blocks.
+
+#### The `Error.java` Dependency Magnet
+
+Returning error codes usually implies that there is some class or `enum` in which all the error codes are defined.
+
+```java
+public enum Error {
+    OK,
+    INVALID,
+    NO_SUCH,
+    LOCKED,
+    OUT_OF_RESOURCES,
+
+    WAITING_FOR_EVENT;
+}
+```
+
+This type of classes used widely in the code, addition/modification in this classes requires rebuild and redeploy. So people reuse old error codes instead of adding new ones.
+
+When you use exceptions rather than error codes, then new exceptions are _derivatives_ of the exception class. They can be added without forcing any recompilation or redeployment.
+
+### Don't Repeat Yourself
+
+Duplication may be the root of all evil in software. Many principles and practices have been created for the purpose of controlling or eliminating it.
+
+In databases, we focus on normalization to eliminate duplication of data. Consider how Object Oriented Programming serves the concentrate code into base classes that would otherwise be redundant.
+
+### Structured Programming
+
+Dijkstra said that every function, and every block within a function, should have one entry and one exit. Following these rules means that there should only be one `return` statement in a function, no `break` or `continue` statements in a loop, and never, _ever,_ any `goto` statements.
+
+if you keep your functions small, then the occasional multiple `return`, `break`, or `continue` statement does no harm and can sometimes even be more expressive than the single-entry, single-exit rule.
+
+### How Do You Write Functions Like This?
+
+Writing software is like any other kind of writing. You thought down first before writing anything and change it until that reads better.
+
+Author writes long and complicated function and then breaks it down, break down to new classes but also He have suite of unit tests that cover every one of those lines of code. They refine the code while keeping the tests passing.
