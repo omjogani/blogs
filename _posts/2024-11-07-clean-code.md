@@ -941,3 +941,163 @@ if you keep your functions small, then the occasional multiple `return`, `break`
 Writing software is like any other kind of writing. You thought down first before writing anything and change it until that reads better.
 
 Author writes long and complicated function and then breaks it down, break down to new classes but also He have suite of unit tests that cover every one of those lines of code. They refine the code while keeping the tests passing.
+
+## 4. Comments
+
+Programming languages are descriptive enough, such that comments are mostly negligible.
+
+The proper use of comments is to compensate for our failure to express ourselves in code. Note that Author used the word *failure*.
+
+We must have them because we cannot always figure out how to express ourselves without them.
+
+So when you find yourself in a position where you need to write a comment, think it through and see whether there isn’t some way to turn the tables and express yourself in code. Every time you express yourself in code, you should pat yourself on the back. Every time you write a comment, you should feel the failure of your ability of expression.
+
+Programmers should be disciplined enough to keep the comments in a high state of repair, relevance, and accuracy. they should. But I would rather that energy go toward making the code so clear and expressive that it does not need the comments in the first place.
+
+Comments are sometimes necessary, we will expend significant energy to minimize them.
+
+### Comments Do Not Make Up for Bad Code
+
+Comments become necessity when code is bad, We better forced towards writing comment instead of cleaning the code.
+
+Clear and expressive code with few comments is far superior to cluttered and complex code with lots of comments.
+
+### Explain Yourself in Code
+
+There are certainly times when code makes a poor vehicle for explanation.
+
+```java
+// Check to see if the employee is eligible for full benefits
+if ((employee.flags & HOURLY_FLAG) &&
+	(employee.age > 65))
+```
+
+can better be
+
+```java
+if (employee.isEligibleForFullBenefits())
+```
+
+It takes only a few seconds of thought to explain most of your intent in code.
+
+### Good Comments
+
+Some comments are necessary or beneficial.
+
+#### Legal Comments
+
+Sometimes our corporate coding standards force us to write certain comments for legal reasons.
+
+```java
+// Copyright (C) 2003,2004,2005 by Object Mentor, Inc. All rights reserved.
+// Released under the terms of the GNU General Public License version 2 or later.
+```
+
+#### Informative Comments
+
+It is sometimes useful to provide basic information with a comment. For example, consider this comment that explains the return value of an abstract method:
+
+```java
+// Returns an instance of the Responder being tested.
+protected abstract Responder responderInstance();
+```
+
+A comment like this can sometimes be useful, but it is better to use the name of the function to convey the information where possible. eg. `responderBeingTested`
+
+```java
+// format matched kk:mm:ss EEE, MMM dd, yyyy
+Pattern timeMatcher = Pattern.compile(“\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*”);
+```
+
+In this case the comment lets us know that the regular expression is intended to match a time and date that were formatted with the `SimpleDateFormat.format` function using the specified format string.
+
+#### Explanation of Intent
+
+Sometimes a comment goes beyond just useful information about the implementation and provides the intent behind a decision.
+
+```java
+public int compareTo(Object o) {
+     if (o instanceof WikiPagePath) {
+         WikiPagePath p = (WikiPagePath) o;
+         String compressedName = StringUtil.join(names, “”);
+         String compressedArgumentName = StringUtil.join(p.names, “”);
+         return compressedName.compareTo(compressedArgumentName);
+     }
+     return 1; // we are greater because we are the right type.
+ }
+```
+
+You might not agree with the programmer’s solution to the problem, but at least you know what he was trying to do.
+
+#### Clarification
+
+Sometimes it is just helpful to translate the meaning of some obscure argument or return value into something that’s readable.
+
+Clarification is important but it's risky too, while someone forget to change the comment while modifying code, It's become risk.
+
+#### Warning of Consequences
+
+Sometimes it is useful to warn other programmers about certain consequences. For example, here is a comment that explains why a particular test case is turned off:
+
+```java
+// Don't run unless you
+// have some time to kill.
+public void _testWithReallyBigFile() {
+    writeLinesToFile(10000000);
+
+    response.setBody(testFile);
+    response.readyToSend(this);
+    String responseString = output.toString();
+    assertSubString("Content-Length: 1000000000", responseString);
+    assertTrue(bytesSent > 1000000000);
+}
+```
+
+Nowadays, of course, we’d turn off the test case by using the `@Ignore` attribute with an appropriate explanatory string. `@Ignore("Takes too long to run")`.
+
+Another example:
+
+```java
+public static SimpleDateFormat makeStandardHttpDateFormat() {
+    //SimpleDateFormat is not thread safe,
+    //so we need to create each instance independently.
+    SimpleDateFormat df = new SimpleDateFormat(”EEE, dd MMM yyyy HH: mm: ss z”);
+    df.setTimeZone(TimeZone.getTimeZone(”GMT”));
+    return df;
+}
+```
+
+#### TODO Comments
+
+It is sometimes reasonable to leave “To do” notes in the form of `//TODO` comments. In latest IDEs and Editors TODO comments get highlights so that people can easily recognize it.
+
+```java
+//TODO-MdM these are not needed
+// We expect this to go away when we do the checkout model
+protected VersionInfo makeVersion() throws Exception {
+    return null;
+}
+```
+
+`TODO`s are jobs that the programmer thinks should be done, but for some reason can’t do at the moment.
+
+#### Amplification
+
+A comment may be used to amplify the importance of something that may otherwise seem not so important.
+
+```java
+String listItemContent = match.group(3).trim();
+// the trim is real important.  It removes the starting
+// spaces that could cause the item to be recognized
+// as another list.
+new ListItemWidget(this, listItemContent, this.level + 1);
+return buildList(text.substring(match.end()));
+```
+
+#### Javadocs in Public APIs
+
+If you are writing a public API, then you should certainly write good javadocs for it.
+
+There is nothing quite so helpful and satisfying as a well-described public API.
+
+### Bad Comments
