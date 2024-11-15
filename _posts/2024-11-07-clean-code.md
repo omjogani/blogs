@@ -77,7 +77,7 @@ _I like my code to be elegant and efficient. The logic should be straightforward
 
 _Clean code is simple and direct. Clean code reads like well-written prose. Clean code never obscures the designer's intent but rather is full of crisp abstractions and straightforward lines of control._ - Readability perspective - Live novel, clean code should clearly expose the tension in the problem to be solved. - Crisp Abstraction ("crisp" near to word concrete)
 
-- “Big" Dave Thomas, founder of OTI, godfather of the Eclipse strategy
+- "Big" Dave Thomas, founder of OTI, godfather of the Eclipse strategy
 
 _Clean code can be read, and enhanced by a developer other than its original author. It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing. It has minimal dependencies, which are explicitly defined, and provides a clear and minimal API. Code should be literate since depending on the language, not all necessary information can be expressed clearly in code alone._ - Desire for readability - Code without test is not clean - Minimal: Smaller code is better
 
@@ -748,7 +748,7 @@ void triad(String name, int count, Integer… args);
 
 Choosing good names for a function can go a long way toward explaining the intent of the function and the order and intent of the arguments.
 
-For example, `write(name)` is very evocative. Whatever this “name" thing is, it is being “written." An even better name might be `writeField(name)`, which tells us that the “name" thing is a “field."
+For example, `write(name)` is very evocative. Whatever this "name" thing is, it is being "written." An even better name might be `writeField(name)`, which tells us that the "name" thing is a "field."
 
 For example, `assertEquals` might be better written as `assertExpectedEqualsActual(expected,` `actual)`.
 
@@ -780,7 +780,7 @@ This code has side effect, calling `Session.initialize()`, The name of function 
 
 If this function goes out of over at abstracted level, it create side effect and it could be hard to recognize as well (hidden side effect).
 
-In this case we might rename the function `checkPasswordAndInitializeSession`, though that certainly violates “Do one thing."
+In this case we might rename the function `checkPasswordAndInitializeSession`, though that certainly violates "Do one thing."
 
 #### Output Arguments
 
@@ -946,11 +946,11 @@ Author writes long and complicated function and then breaks it down, break down 
 
 Programming languages are descriptive enough, such that comments are mostly negligible.
 
-The proper use of comments is to compensate for our failure to express ourselves in code. Note that Author used the word *failure*.
+The proper use of comments is to compensate for our failure to express ourselves in code. Note that Author used the word *failure*.
 
 We must have them because we cannot always figure out how to express ourselves without them.
 
-So when you find yourself in a position where you need to write a comment, think it through and see whether there isn’t some way to turn the tables and express yourself in code. Every time you express yourself in code, you should pat yourself on the back. Every time you write a comment, you should feel the failure of your ability of expression.
+So when you find yourself in a position where you need to write a comment, think it through and see whether there isn't some way to turn the tables and express yourself in code. Every time you express yourself in code, you should pat yourself on the back. Every time you write a comment, you should feel the failure of your ability of expression.
 
 Programmers should be disciplined enough to keep the comments in a high state of repair, relevance, and accuracy. they should. But I would rather that energy go toward making the code so clear and expressive that it does not need the comments in the first place.
 
@@ -1006,10 +1006,10 @@ A comment like this can sometimes be useful, but it is better to use the name of
 
 ```java
 // format matched kk:mm:ss EEE, MMM dd, yyyy
-Pattern timeMatcher = Pattern.compile(“\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*”);
+Pattern timeMatcher = Pattern.compile("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 ```
 
-In this case the comment lets us know that the regular expression is intended to match a time and date that were formatted with the `SimpleDateFormat.format` function using the specified format string.
+In this case the comment lets us know that the regular expression is intended to match a time and date that were formatted with the `SimpleDateFormat.format` function using the specified format string.
 
 #### Explanation of Intent
 
@@ -1019,19 +1019,19 @@ Sometimes a comment goes beyond just useful information about the implementation
 public int compareTo(Object o) {
      if (o instanceof WikiPagePath) {
          WikiPagePath p = (WikiPagePath) o;
-         String compressedName = StringUtil.join(names, “”);
-         String compressedArgumentName = StringUtil.join(p.names, “”);
+         String compressedName = StringUtil.join(names, "");
+         String compressedArgumentName = StringUtil.join(p.names, "");
          return compressedName.compareTo(compressedArgumentName);
      }
      return 1; // we are greater because we are the right type.
  }
 ```
 
-You might not agree with the programmer’s solution to the problem, but at least you know what he was trying to do.
+You might not agree with the programmer's solution to the problem, but at least you know what he was trying to do.
 
 #### Clarification
 
-Sometimes it is just helpful to translate the meaning of some obscure argument or return value into something that’s readable.
+Sometimes it is just helpful to translate the meaning of some obscure argument or return value into something that's readable.
 
 Clarification is important but it's risky too, while someone forget to change the comment while modifying code, It's become risk.
 
@@ -1053,7 +1053,7 @@ public void _testWithReallyBigFile() {
 }
 ```
 
-Nowadays, of course, we’d turn off the test case by using the `@Ignore` attribute with an appropriate explanatory string. `@Ignore("Takes too long to run")`.
+Nowadays, of course, we'd turn off the test case by using the `@Ignore` attribute with an appropriate explanatory string. `@Ignore("Takes too long to run")`.
 
 Another example:
 
@@ -1061,15 +1061,15 @@ Another example:
 public static SimpleDateFormat makeStandardHttpDateFormat() {
     //SimpleDateFormat is not thread safe,
     //so we need to create each instance independently.
-    SimpleDateFormat df = new SimpleDateFormat(”EEE, dd MMM yyyy HH: mm: ss z”);
-    df.setTimeZone(TimeZone.getTimeZone(”GMT”));
+    SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy HH: mm: ss z");
+    df.setTimeZone(TimeZone.getTimeZone("GMT"));
     return df;
 }
 ```
 
 #### TODO Comments
 
-It is sometimes reasonable to leave “To do” notes in the form of `//TODO` comments. In latest IDEs and Editors TODO comments get highlights so that people can easily recognize it.
+It is sometimes reasonable to leave "To do" notes in the form of `//TODO` comments. In latest IDEs and Editors TODO comments get highlights so that people can easily recognize it.
 
 ```java
 //TODO-MdM these are not needed
@@ -1079,7 +1079,7 @@ protected VersionInfo makeVersion() throws Exception {
 }
 ```
 
-`TODO`s are jobs that the programmer thinks should be done, but for some reason can’t do at the moment.
+`TODO`s are jobs that the programmer thinks should be done, but for some reason can't do at the moment.
 
 #### Amplification
 
@@ -1101,3 +1101,366 @@ If you are writing a public API, then you should certainly write good javadocs f
 There is nothing quite so helpful and satisfying as a well-described public API.
 
 ### Bad Comments
+
+Most comments fall into this category. Usually they are excuses for poor code or justifications for insufficient decisions.
+
+#### Mumbling
+
+Plopping in a comment just because you feel you should or because the process requires it, is a hack.
+
+```java
+public void loadProperties() {
+    try {
+        String propertiesPath = propertiesLocation + "/" + PROPERTIES_FILE;
+        FileInputStream propertiesStream = new FileInputStream(propertiesPath);
+        loadedProperties.load(propertiesStream);
+    } catch (IOException e) {
+        // No properties files means all defaults are loaded
+    }
+}
+```
+
+What does that comment in the catch block mean?
+
+The author seems to be unclear about how the code handles loading default properties when an `IOException` occurs. If there's no properties file, the defaults are supposedly loaded, but it's not clear who is actually doing this.
+
+Questions arise, like: Were the defaults loaded before calling `loadProperties.load`? Did `loadProperties.load` handle the exception, load the defaults, and then let the exception go? Or did it load the defaults first, then try to load the file?
+
+There's also concern that the empty `catch` block might indicate the author intended to handle it later but never did, which is worrisome.
+
+#### Redundant Comments
+
+```java
+// Utility method that returns when this.closed is true. Throws an exception
+// if the timeout is reached.
+public synchronized void waitForClose(final long timeoutMillis)
+throws Exception {
+    if (!closed) {
+        wait(timeoutMillis);
+        if (!closed)
+            throw new Exception("MockResponseSender could not be closed");
+    }
+}
+```
+
+What purpose does this comment serve? They serve no documentary purpose at all. We want to avoid this type of redundant comment, simply because it serves no purpose.
+
+#### Misleading Comments
+
+Sometimes, with all the best intentions, a programmer makes a statement in his comments that isn't precise enough to be accurate.
+
+The method does not return *when* `this.closed` becomes `true`. It returns *if* `this.closed` is `true`; otherwise, it waits for a blind time-out and then throws an exception *if* `this.closed` is still not `true`.
+
+Misleading comments leads to long debugging session and sometimes frustrate developers.
+
+#### Mandated Comments
+
+It is just plain silly to have a rule that says that every function must have a javadoc, or every variable must have a comment.
+
+```java
+/**
+ *
+ * @param title The title of the CD
+ * @param author The author of the CD
+ * @param tracks The number of tracks on the CD
+ * @param durationInMinutes The duration of the CD in minutes
+ */
+public void addCD(String title, String author,
+    int tracks, int durationInMinutes) {
+    CD cd = new CD();
+    cd.title = title;
+    cd.author = author;
+    cd.tracks = tracks;
+    cd.duration = duration;
+    cdList.add(cd);
+}
+```
+
+This clutter adds nothing and serves only to obfuscate the code and create the potential for lies and misdirection.
+
+#### Journal Comments
+
+Sometimes people add a comment to the start of a module every time they edit it. These comments accumulate as a kind of journal, or log, of every change that has ever been made.
+
+```java
+* Changes (from 11-Oct-2001)
+    * --------------------------
+    * 11-Oct-2001 : Re-organised the class and moved it to new package
+    *               com.jrefinery.date (DG);
+    * 05-Nov-2001 : Added a getDescription() method, and eliminated NotableDate
+    *               class (DG);
+    * 12-Nov-2001 : IBD requires setDescription() method, now that NotableDate
+    *               class is gone (DG);  Changed getPreviousDayOfWeek(),
+    *               getFollowingDayOfWeek() and getNearestDayOfWeek() to correct
+    *               bugs (DG);
+    * 05-Dec-2001 : Fixed bug in SpreadsheetDate class (DG);
+    * 29-May-2002 : Moved the month constants into a separate interface
+    *               (MonthConstants) (DG);
+    * 27-Aug-2002 : Fixed bug in addMonths() method, thanks to N???levka Petr (DG);
+    * 03-Oct-2002 : Fixed errors reported by Checkstyle (DG);
+    * 13-Mar-2003 : Implemented Serializable (DG);
+    * 29-May-2003 : Fixed bug in addMonths method (DG);
+    * 04-Sep-2003 : Implemented Comparable.  Updated the isInRange javadocs (DG);
+    * 05-Jan-2005 : Fixed bug in addYears() method (1096282) (DG);
+```
+
+Long ago, We didn't have source code version system that did it for us. Nowadays, however, these long journals are just more clutter to obfuscate the module.
+
+#### Noise Comments
+
+Sometimes you see comments that are nothing but noise. They restate the obvious and provide no new information.
+
+```java
+ /**
+  * Default constructor.
+  */
+ protected AnnualDateRule() {}
+```
+
+another example could be
+
+```java
+// The day of the month.
+private int dayOfMonth;
+```
+
+These comments are so noisy that we learn to ignore them. As we read through code, our eyes simply skip over them.
+
+```java
+private void startSending() {
+    try {
+        doSending();
+    } catch (SocketException e) {
+        // normal. someone stopped the request.
+    } catch (Exception e) {
+        try {
+            response.add(ErrorResponder.makeExceptionString(e));
+            response.closeAll();
+        } catch (Exception e1) {
+            //Give me a break!
+        }
+    }
+}
+```
+
+The programmer should have recognized that his frustration could be resolved by improving the structure of his code. He should have redirected his energy to extracting that last `try`/`catch` block into a separate function such as:
+
+```java
+private void startSending() {
+    try {
+        doSending();
+    } catch (SocketException e) {
+        // normal. someone stopped the request.
+    } catch (Exception e) {
+        addExceptionAndCloseResponse(e);
+    }
+}
+
+private void addExceptionAndCloseResponse(Exception e) {
+    try {
+        response.add(ErrorResponder.makeExceptionString(e));
+        response.closeAll();
+    } catch (Exception e1) {}
+}
+```
+
+#### Scary Noise
+
+Javadocs can also be noisy. What purpose do the following Javadocs (from a well-known open-source library) serve? Answer: nothing.
+
+```java
+/** The name. */
+private String name;
+
+/** The version. */
+private String version;
+
+/** The licenceName. */
+private String licenceName;
+
+/** The version. */
+private String info;
+```
+
+If authors aren't paying attention when comments are written (or pasted), why should readers be expected to profit from them?
+
+#### Don't Use a Comment When You Can Use a Function or a Variable
+
+```java
+// does the module from the global list <mod> depend on the
+// subsystem we are part of?
+if (smodule.getDependSubsystems().contains(subSysMod.getSubSystem()))
+```
+
+This could be rephrased without the comment as:
+
+```java
+ArrayList moduleDependees = smodule.getDependSubsystems();
+String ourSubSystem = subSysMod.getSubSystem();
+if (moduleDependees.contains(ourSubSystem))
+```
+
+The author of the original code may have written the comment first (unlikely) and then written the code to fulfill the comment. However, the author should then have refactored the code, as I did, so that the comment could be removed.
+
+#### Position Markers
+
+Sometimes programmers like to mark a particular position in a source file.
+
+```java
+// Actions //////////////////////////////////
+```
+
+There are rare times when it makes sense to gather certain functions together beneath a banner like this. But in general they are clutter that should be eliminated—especially the noisy train of slashes at the end.
+
+#### Closing Brace Comments
+
+Sometimes programmers will put special comments on closing braces.
+
+```java
+public class wc {
+    public static void main(String[] args) {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        String line;
+        int lineCount = 0;
+        int charCount = 0;
+        int wordCount = 0;
+        try {
+            while ((line = in .readLine()) != null) {
+                lineCount++;
+                charCount += line.length();
+                String words[] = line.split("\\W");
+                wordCount += words.length;
+            } //while
+            System.out.println("wordCount = " + wordCount);
+            System.out.println("lineCount = " + lineCount);
+            System.out.println("charCount = " + charCount);
+        } // try
+        catch (IOException e) {
+            System.err.println("Error:" + e.getMessage());
+        } //catch
+    } //main
+}
+```
+
+If you find yourself wanting to mark your closing braces, try to shorten your functions instead.
+
+#### Attributions and Bylines
+
+```java
+/* Added by Rick */
+```
+
+Source code control systems are very good at remembering who added what, when.
+
+You might think that such comments would be useful in order to help others know who to talk to about the code. But the reality is that they tend to stay around for years and years, getting less and less accurate and relevant.
+
+#### Commented-Out Code
+
+```java
+ InputStreamResponse response = new InputStreamResponse();
+ response.setBody(formatter.getResultStream(), formatter.getByteCount());
+ // InputStream resultsStream = formatter.getResultStream();
+ // StreamReader reader = new StreamReader(resultsStream);
+ // response.setContent(reader.read(formatter.getByteCount()));
+```
+
+Others who see that commented-out code won't have the courage to delete it. They'll think it is there for a reason and is too important to delete.
+
+```java
+this.bytePos = writeBytes(pngIdBytes, 0);
+//hdrPos = bytePos;
+writeHeader();
+writeResolution();
+//dataPos = bytePos;
+if (writeImageData()) {
+    writeEnd();
+    this.pngBytes = resizeByteArray(this.pngBytes, this.maxPos);
+} else {
+    this.pngBytes = null;
+}
+return this.pngBytes;
+```
+
+Why are those two lines of code commented? Are they important, Were they left as reminder, or someone commented-out years ago and has simply not bothered to clean up.
+
+#### HTML Comments
+
+HTML in source code comments is hard to read while comments are mean to be easier to read.
+
+```java
+/**
+ * Task to run fit tests.
+ * This task runs fitnesse tests and publishes the results.
+ * <p/>
+ * <pre>
+ * Usage:
+ * &lt;taskdef name=&quot;execute-fitnesse-tests&quot;
+ *     classname=&quot;fitnesse.ant.ExecuteFitnesseTestsTask&quot;
+ *     classpathref=&quot;classpath&quot; /&gt;
+ * OR
+ * &lt;taskdef classpathref=&quot;classpath&quot;
+ *             resource=&quot;tasks.properties&quot; /&gt;
+ * <p/>
+ * &lt;execute-fitnesse-tests
+ *     suitepage=&quot;FitNesse.SuiteAcceptanceTests&quot;
+ *     fitnesseport=&quot;8082&quot;
+ *     resultsdir=&quot;${results.dir}&quot;
+ *     resultshtmlpage=&quot;fit-results.html&quot;
+ *     classpathref=&quot;classpath&quot; /&gt;
+ * </pre>
+ */
+```
+
+#### Nonlocal Information
+
+If you must write a comment, then make sure it describes the code it appears near. Don't offer systemwide information in the context of a local comment.
+
+```java
+/**
+ * Port on which fitnesse would run. Defaults to 8082.
+ *
+ * @param fitnessePort
+ */
+public void setFitnessePort(int fitnessePort) {
+    this.fitnessePort = fitnessePort;
+}
+```
+
+Aside from the fact that it is horribly redundant, it also offers information about the default port.
+
+Of course there is no guarantee that this comment will be changed when the code containing the default is changed.
+
+#### Too Much Information
+
+Don't put interesting historical discussions or irrelevant descriptions of details into your comments.
+
+```java
+/*
+	    RFC 2045 - Multipurpose Internet Mail Extensions (MIME)
+	    Part One: Format of Internet Message Bodies
+	    section 6.8.  Base64 Content-Transfer-Encoding
+		The encoding process represents 24-bit groups of input bits as output strings of 4 encoded characters. Proceeding from left to right, a 24-bit input group is formed by concatenating 3 8-bit input groups. These 24 bits are then treated as 4 concatenated 6-bit groups, each of which is translated into a single digit in the base64 alphabet. When encoding a bit stream via the base64 encoding, the bit stream must be presumed to be ordered with the most-significant-bit first. That is, the first bit in the stream will be the high-order bit in the first 8-bit byte, and the eighth bit will be the low-order bit in the first 8-bit byte, and so on.
+ */
+```
+
+#### Inobvious Connection
+
+The connection between a comment and the code it describes should be obvious. Readers should be able to understand the comments.
+
+```java
+/*
+ * start with an array that is big enough to hold all the pixels
+ * (plus filter bytes), and an extra 200 bytes for header info
+ */
+this.pngBytes = new byte[((this.width + 1) * this.height * 3) + 200];
+```
+
+What is a filter byte? Does it relate to the +1? Or to the x3? Both? Is a pixel a byte? Why 200?
+
+#### Function Headers
+
+Short functions don't need much description. A well-chosen name for a small function that does one thing is usually better than a comment header.
+
+#### Javadocs in Nonpublic Code
+
+As useful as javadocs are for public APIs, they are anathema to code that is not intended for public consumption. Generating javadoc pages for the classes and functions inside a system is not generally useful, and the extra formality of the javadoc comments amounts to little more than cruft and distraction.
