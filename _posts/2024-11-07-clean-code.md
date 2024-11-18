@@ -946,7 +946,7 @@ Author writes long and complicated function and then breaks it down, break down 
 
 Programming languages are descriptive enough, such that comments are mostly negligible.
 
-The proper use of comments is to compensate for our failure to express ourselves in code. Note that Author used the word *failure*.
+The proper use of comments is to compensate for our failure to express ourselves in code. Note that Author used the word _failure_.
 
 We must have them because we cannot always figure out how to express ourselves without them.
 
@@ -1149,7 +1149,7 @@ What purpose does this comment serve? They serve no documentary purpose at all. 
 
 Sometimes, with all the best intentions, a programmer makes a statement in his comments that isn't precise enough to be accurate.
 
-The method does not return *when* `this.closed` becomes `true`. It returns *if* `this.closed` is `true`; otherwise, it waits for a blind time-out and then throws an exception *if* `this.closed` is still not `true`.
+The method does not return _when_ `this.closed` becomes `true`. It returns _if_ `this.closed` is `true`; otherwise, it waits for a blind time-out and then throws an exception _if_ `this.closed` is still not `true`.
 
 Misleading comments leads to long debugging session and sometimes frustrate developers.
 
@@ -1464,3 +1464,31 @@ Short functions don't need much description. A well-chosen name for a small func
 #### Javadocs in Nonpublic Code
 
 As useful as javadocs are for public APIs, they are anathema to code that is not intended for public consumption. Generating javadoc pages for the classes and functions inside a system is not generally useful, and the extra formality of the javadoc comments amounts to little more than cruft and distraction.
+
+## 5. Formatting
+
+When people look under the hood, we want them to be impressed with the neatness, consistency, and attention to detail that they perceive.
+
+### The Purpose of Formatting
+
+First of all, let's be clear. Code formatting is *important*. It is too important to ignore and it is too important to treat religiously.
+
+The functionality that you create today has a good chance of changing in the next release, but the readability of your code will have a profound effect on all the changes that will ever be made.
+
+What are the formatting issues that help us to communicate best?
+
+### Vertical Formatting
+
+Let's start with vertical size. How big should a source file be? In Java, file size is closely related to class size.
+
+![vertical-formatting](https://github.com/user-attachments/assets/4a2e0821-8070-4b7f-85ab-f7b25512c8c8)
+
+The lines through the boxes show the minimum and maximum file lengths in each project. The box shows approximately one-third (one standard deviation) of the files. The middle of the box is the mean. So the average file size in the FitNesse project is about 65 lines, and about one-third of the files are between 40 and 100+ lines.
+
+The largest file in FitNesse is about 400 lines and the smallest is 6 lines.
+
+Junit, FitNesse, and Time and Money are composed of relatively small files. None are over 500 lines and most of those files are less than 200 lines. Tomcat and Ant, on the other hand, have some files that are several thousand lines long and close to half are over 200 lines.
+
+What does that mean to us? It appears to be possible to build significant systems (FitNesse is close to 50,000 lines) out of files that are typically 200 lines long, with an upper limit of 500.
+
+it should be considered very desirable. Small files are usually easier to understand than large files are.
