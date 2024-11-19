@@ -1471,7 +1471,7 @@ When people look under the hood, we want them to be impressed with the neatness,
 
 ### The Purpose of Formatting
 
-First of all, let's be clear. Code formatting is *important*. It is too important to ignore and it is too important to treat religiously.
+First of all, let's be clear. Code formatting is _important_. It is too important to ignore and it is too important to treat religiously.
 
 The functionality that you create today has a good chance of changing in the next release, but the readability of your code will have a profound effect on all the changes that will ever be made.
 
@@ -1492,3 +1492,476 @@ Junit, FitNesse, and Time and Money are composed of relatively small files. None
 What does that mean to us? It appears to be possible to build significant systems (FitNesse is close to 50,000 lines) out of files that are typically 200 lines long, with an upper limit of 500.
 
 it should be considered very desirable. Small files are usually easier to understand than large files are.
+
+#### The Newspaper Metaphor
+
+Think of a well-written newspaper article. You read it vertically. At the top you expect a headline that will tell you what the story is about and allows you to decide whether it is something you want to read. Heading just reveal the context of the story, and as you go downwards you get more details about the story.
+
+We would like a source file to be like a newspaper article. The name should be simple but explanatory. The name, by itself, should be sufficient to tell us whether we are in the right module or not.
+
+#### Vertical Openness Between Concepts
+
+Nearly all code is read left to right and top to bottom. Each line represents an expression or a clause, and each group of lines represents a complete thought.
+
+```java
+package fitnesse.wikitext.widgets;
+
+import java.util.regex.*;
+
+public class BoldWidget extends ParentWidget {
+    public static final String REGEXP = "'''. + ? '''";
+    private static final Pattern pattern = Pattern.compile("'''(. + ? )'''",
+        Pattern.MULTILINE + Pattern.DOTALL
+    );
+
+    public BoldWidget(ParentWidget parent, String text) throws Exception {
+        super(parent);
+        Matcher match = pattern.matcher(text);
+        match.find();
+        addChildWidgets(match.group(1));
+    }
+
+    public String render() throws Exception {
+        StringBuffer html = new StringBuffer(" < b > ");
+        html.append(childHtml()).append(" < /b>");
+            return html.toString();
+    }
+}
+```
+
+Consider this example, There are blank lines that separate the package declaration, the import(s), and each of the functions. This extremely simple rule has a profound effect on the visual layout of the code.
+
+Taking those blank lines out, this has a remarkably obscuring effect on the readability of the code.
+
+```java
+package fitnesse.wikitext.widgets;
+import java.util.regex.*;
+public class BoldWidget extends ParentWidget {
+    public static final String REGEXP = "'''. + ? '''";
+    private static final Pattern pattern = Pattern.compile("'''(. + ? )'''",
+        Pattern.MULTILINE + Pattern.DOTALL);
+    public BoldWidget(ParentWidget parent, String text) throws Exception {
+        super(parent);
+        Matcher match = pattern.matcher(text);
+        match.find();
+        addChildWidgets(match.group(1));
+    }
+    public String render() throws Exception {
+        StringBuffer html = new StringBuffer(" < b > ");
+        html.append(childHtml()).append(" < /b>");
+            return html.toString();
+    }
+}
+```
+
+This effect is even more pronounced when you unfocus your eyes. In the first example the different groupings of lines pop out at you, whereas the second example looks like a muddle.
+
+#### Vertical Density
+
+If openness separates concepts, then vertical density implies close association, If lines are together we think it's related and mean to be kept together.
+
+```java
+public class ReporterConfig {
+
+    /**
+     * The class name of the reporter listener
+     */
+    private String m_className;
+
+    /**
+     * The properties of the reporter listener
+     */
+    private List < Property > m_properties = new ArrayList < Property > ();
+
+    public void addProperty(Property property) {
+        m_properties.add(property);
+    }
+}
+```
+
+Below code is much easier to read, It fits in an "eye-full". While above code requires some time to realize that it has 2 variables and a method.
+
+```java
+public class ReporterConfig {
+    private String m_className;
+    private List < Property > m_properties = new ArrayList < Property > ();
+
+    public void addProperty(Property property) {
+        m_properties.add(property);
+    }
+}
+```
+
+#### Vertical Distance
+
+It's common that we have to go through classes and functions in different files, scrolling up and down to understand what the code is doing. It's frustrating because you're trying to understand what they system does, but you're spending your time and mental energy on trying to locate and remember where the pieces are.
+
+Concepts that are closely related should be kept vertically close to each other. Clearly this rule doesn't work for concepts that belong in separate files. But then closely related concepts should not be separated into different files unless you have a very good reason.
+
+We want to avoid out readers to hop around our source file to understand what it does.
+
+**Variable Declarations.** Variables should be declared as close to their usage as possible. Because our functions are very short, local variables should appear at the top of each function
+
+```java
+private static void readPreferences() {
+    InputStream is = null;
+    try {
+        is = new FileInputStream(getPreferencesFile());
+        setPreferences(new Properties(getPreferences()));
+        getPreferences().load(is);
+    } catch (IOException e) {
+        try {
+            if (is != null)
+                is.close();
+        } catch (IOException e1) {}
+    }
+}
+```
+
+Control variables for loops should usually be declared within the loop statement, as in this cute little function from the same source.
+
+```java
+public int countTestCases() {
+    int count = 0;
+    for (Test each: tests)
+        count += each.countTestCases();
+    return count;
+}
+```
+
+In rare cases a variable might be declared at the top of a block or just before a loop in a long-ish function. You can see such a variable in this snippet from the midst of a very long function in TestNG.
+
+```java
+for (XmlTest test: m_suite.getTests()) {
+    TestRunner tr = m_runnerFactory.newTestRunner(this, test); // here
+    tr.addListener(m_textReporter);
+    m_testRunners.add(tr);
+
+    invoker = tr.getInvoker();
+
+    for (ITestNGMethod m: tr.getBeforeSuiteMethods()) {
+        beforeSuiteMethods.put(m.getMethod(), m);
+    }
+
+    for (ITestNGMethod m: tr.getAfterSuiteMethods()) {
+        afterSuiteMethods.put(m.getMethod(), m);
+    }
+}
+```
+
+**Instance variables,** on the other hand, should be declared at the top of the class. This should not increase the vertical distance of these variables, because in a well-designed class, they are used by many, if not all, of the methods of the class.
+
+Consider, for example the strange case of the `TestSuite` class in JUnit 4.3.1. Someone reading this code would have to stumble across the declarations by accident.
+
+```java
+public class TestSuite implements Test {
+    static public Test createTest(Class << ? extends TestCase > theClass,
+        String name) {…}
+
+    public static Constructor << ? extends TestCase >
+        getTestConstructor(Class << ? extends TestCase > theClass)
+    throws NoSuchMethodException {…}
+
+    public static Test warning(final String message) {…}
+
+    private static String exceptionToString(Throwable t) {…}
+
+    private String fName;
+
+    private Vector < Test > fTests = new Vector < Test > (10);
+
+    public TestSuite() {}
+
+    public TestSuite(final Class << ? extends TestCase > theClass) {…}
+
+    public TestSuite(Class << ? extends TestCase > theClass, String name) {…}
+}
+```
+
+**Dependent Functions.** If one function calls another, they should be vertically close, and the caller should be above the callee, if at all possible.
+
+the snippet from FitNesse below. Notice how the topmost function calls those below it and how they in turn call those below them. This makes it easy to find the called functions and greatly enhances the readability of the whole module.
+
+```java
+public class WikiPageResponder implements SecureResponder {
+    protected WikiPage page;
+    protected PageData pageData;
+    protected String pageTitle;
+    protected Request request;
+    protected PageCrawler crawler;
+
+    public Response makeResponse(FitNesseContext context, Request request)
+    throws Exception {
+        String pageName = getPageNameOrDefault(request, "FrontPage");
+        loadPage(pageName, context);
+        if (page == null)
+            return notFoundResponse(context, request);
+        else
+            return makePageResponse(context);
+    }
+
+    private String getPageNameOrDefault(Request request, String defaultPageName) {
+        String pageName = request.getResource();
+        if (StringUtil.isBlank(pageName))
+            pageName = defaultPageName;
+
+        return pageName;
+    }
+
+    protected void loadPage(String resource, FitNesseContext context)
+    throws Exception {
+        WikiPagePath path = PathParser.parse(resource);
+        crawler = context.root.getPageCrawler();
+        crawler.setDeadEndStrategy(new VirtualEnabledPageCrawler());
+        page = crawler.getPage(context.root, path);
+        if (page != null)
+            pageData = page.getData();
+    }
+
+    private Response notFoundResponse(FitNesseContext context, Request request)
+    throws Exception {
+        return new NotFoundResponder().makeResponse(context, request);
+    }
+
+    private SimpleResponse makePageResponse(FitNesseContext context)
+    throws Exception {
+        pageTitle = PathParser.render(crawler.getFullPath(page));
+        String html = makeHtml(context);
+
+        SimpleResponse response = new SimpleResponse();
+        response.setMaxAge(0);
+        response.setContent(html);
+        return response;
+    }
+}
+```
+
+The "`FrontPage`" constant could have been buried in the `getPageNameOrDefault` function, but that would have hidden a well-known and expected constant in an inappropriately low-level function. It was better to pass that constant down from the place where it makes sense to know it to the place that actually uses it.
+
+**Conceptual Affinity.** Certain bits of code *want* to be near other bits. They have a certain conceptual affinity. Consider this example from Junit 4.3.1.
+
+```java
+public class Assert {
+    static public void assertTrue(String message, boolean condition) {
+        if (!condition)
+            fail(message);
+    }
+
+    static public void assertTrue(boolean condition) {
+        assertTrue(null, condition);
+    }
+
+    static public void assertFalse(String message, boolean condition) {
+        assertTrue(message, !condition);
+    }
+
+    static public void assertFalse(boolean condition) {
+        assertFalse(null, condition);
+    }
+}
+```
+
+These functions have a strong conceptual affinity because they share a common naming scheme and perform variations of the same basic task.
+
+#### Vertical Ordering
+
+In general, we want function call ordering, the function should be below the caller function. it helps to build nice flow down the source code.
+
+This is exact opposite of language like Pascal, C and C++, In newspaper, we want important concepts to come first and we expect them to be expressed with the least amount of polluting detail. We except the low-level details to come last.
+
+### Horizontal Formatting
+
+How wide should a line be? To answer that, let's look at how wide lines are in typical programs.
+![horizontal-formatting](https://github.com/user-attachments/assets/59d22158-e907-46df-b636-6b096039253c)
+
+
+The regularity is impressive, especially right around 45 characters. Indeed, every size from 20 to 60 represents about 1 percent of the total number of lines. That's 40 percent! Perhaps another 30 percent are less than 10 characters wide. Remember this is a log scale, so the linear appearance of the drop-off above 80 characters is really very significant. Programmers clearly prefer short lines.
+
+This suggests that we should strive to keep our lines short. Author used to keep line as short as readers don't have to scroll right.
+
+#### Horizontal Openness and Density
+
+We use horizontal white space to associate things that are strongly related and disassociate things that are more weakly related.
+
+```java
+private void measureLine(String line) {
+    lineCount++;
+    int lineSize = line.length();
+    totalChars += lineSize;
+    lineWidthHistogram.addLine(lineSize, lineCount);
+    recordWidestLine(lineSize);
+}
+```
+
+It is surrounded the assignment operators with white space to show separation obvious.
+
+Another example of spaces could be:
+
+```java
+public class Quadratic {
+    public static double root1(double a, double b, double c) {
+        double determinant = determinant(a, b, c);
+        return (-b + Math.sqrt(determinant)) / (2*a);
+    }
+
+    public static double root2(int a, int b, int c) {
+        double determinant = determinant(a, b, c);
+        return (-b - Math.sqrt(determinant)) / (2*a);
+    }
+
+    private static double determinant(double a, double b, double c) {
+        return b*b - 4*a*c;
+    }
+}
+```
+
+Notice how nicely the equations read. The factors have no white space between them because they are high precedence. The terms are separated by white space because addition and subtraction are lower precedence.
+
+#### Horizontal Alignment
+
+```java
+public class FitNesseExpediter implements ResponseSender {
+    private   Socket           socket;
+    private   InputStream     input;
+    private   OutputStream     output;
+    private   Request         request;
+    private   Response         response;
+    private   FitNesseContext context;
+    protected long            requestParsingTimeLimit;
+    private   long            requestProgress;
+    private   long            requestParsingDeadline;
+    private   boolean          hasError;
+
+    public FitNesseExpediter(Socket s, FitNesseContext context) throws Exception {
+	    this.context =            context;
+	    socket =                  s;
+	    input =                   s.getInputStream();
+	    output =                  s.getOutputStream();
+	    requestParsingTimeLimit = 10000;
+    }
+}
+```
+
+This kind of alignment is not useful the alignment seems to emphasize the wrong things and leads eye away from the true intent.
+
+If we want to align lists that is long, _the problem is the length of the lists_ not the lack of alignment. above example can be done better:
+
+```java
+public class FitNesseExpediter implements ResponseSender {
+    private Socket socket;
+    private InputStream input;
+    private OutputStream output;
+    private Request request;
+
+    private Response response;
+    private FitNesseContext context;
+    protected long requestParsingTimeLimit;
+    private long requestProgress;
+    private long requestParsingDeadline;
+    private boolean hasError;
+
+    public FitNesseExpediter(Socket s, FitNesseContext context) throws Exception {
+        this.context = context;
+        socket = s;
+        input = s.getInputStream();
+        output = s.getOutputStream();
+        requestParsingTimeLimit = 10000;
+    }
+}
+```
+
+#### Indentation
+
+A source file is organized in a structure similar to an outline, with different layers of information. It starts with details relevant to the whole file, then narrows down to individual classes, methods within those classes, and blocks within the methods. Each of these layers represents a distinct scope where names and statements are defined and interpreted.
+
+To make this hierarchy of scopes visible, we indent the lines of source code in proportion to their position in the hierarchy.
+
+Programmers rely heavily on this indentation scheme. They visually line up lines on the left to see what scope they appear in.
+
+Consider the following programs that are syntactically and semantically identical:
+
+```java
+public class FitNesseServer implements SocketServer { private FitNesseContext
+   context; public FitNesseServer(FitNesseContext context) { this.context =
+   context; } public void serve(Socket s) { serve(s, 10000); } public void
+   serve(Socket s, long requestTimeout) { try { FitNesseExpediter sender = new
+   FitNesseExpediter(s, context);
+   sender.setRequestParsingTimeLimit(requestTimeout); sender.start(); }
+   catch(Exception e) { e.printStackTrace(); } } }
+
+   -----
+
+
+   public class FitNesseServer implements SocketServer {
+     private FitNesseContext context;
+     public FitNesseServer(FitNesseContext context) {
+       this.context = context;
+     }
+
+     public void serve(Socket s) {
+       serve(s, 10000);
+     }
+
+     public void serve(Socket s, long requestTimeout) {
+       try {
+         FitNesseExpediter sender = new FitNesseExpediter(s, context);
+         sender.setRequestParsingTimeLimit(requestTimeout);
+         sender.start();
+       }
+       catch (Exception e) {
+         e.printStackTrace();
+       }
+    }
+}
+```
+
+Your eye can rapidly discern the structure of the indented file. You can almost instantly spot the variables, constructors, accessors, and methods. It takes just a few seconds to realize that this is some kind of simple front end to a socket, with a time-out.
+
+**Breaking Indentation.** It is sometimes tempting to break the indentation rule for short `if` statements, short `while` loops, or short functions.
+
+```java
+public class CommentWidget extends TextWidget
+{
+    public static final String REGEXP = "^#[^\r\n]*(?:(?:\r\n)|\n|\r)?";
+
+    public CommentWidget(ParentWidget parent, String text){super(parent, text);}
+    public String render() throws Exception {return ""; }
+}
+```
+
+Author prefers to expand and indent the scopes instead, like this:
+
+```java
+public class CommentWidget extends TextWidget {
+    public static final String REGEXP = " ^ #[ ^ \r\ n] * ( ? : ( ? : \r\ n) | \n | \r) ? ";
+
+    public CommentWidget(ParentWidget parent, String text) {
+        super(parent, text);
+    }
+
+    public String render() throws Exception {
+        return"";
+    }
+}
+```
+
+#### Dummy Scopes
+
+Sometimes the body of a `while` or `for` statement is a dummy, as shown below.
+
+```java
+while (dis.read(buf, 0, readBufferSize) != -1)
+	;
+```
+
+When this type of dummy body is not avoided, we should make sure that it's properly indented and surrounded by braces.
+
+### Team Rules
+
+The title of this section is a play on words. Every programmer has his own favorite formatting rules, but if he works in a team, then the team rules.
+
+A team of developers should agree upon a single formatting style, and then every member of that team should use that style. We want the software to have a consistent style.
+
+When author started FitNesse project back in 2002, he set down with the team to work out a coding style, it took around 10 minutes to decide how they will name a classes, methods and variables, what would be indent size, etc.
+
+Remember, a good software system is composed of a set of documents that read nicely. They need to have a consistent and smooth style.
