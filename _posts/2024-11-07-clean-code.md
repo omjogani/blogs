@@ -1738,7 +1738,7 @@ public class WikiPageResponder implements SecureResponder {
 
 The "`FrontPage`" constant could have been buried in the `getPageNameOrDefault` function, but that would have hidden a well-known and expected constant in an inappropriately low-level function. It was better to pass that constant down from the place where it makes sense to know it to the place that actually uses it.
 
-**Conceptual Affinity.** Certain bits of code *want* to be near other bits. They have a certain conceptual affinity. Consider this example from Junit 4.3.1.
+**Conceptual Affinity.** Certain bits of code _want_ to be near other bits. They have a certain conceptual affinity. Consider this example from Junit 4.3.1.
 
 ```java
 public class Assert {
@@ -1773,7 +1773,6 @@ This is exact opposite of language like Pascal, C and C++, In newspaper, we want
 
 How wide should a line be? To answer that, let's look at how wide lines are in typical programs.
 ![horizontal-formatting](https://github.com/user-attachments/assets/59d22158-e907-46df-b636-6b096039253c)
-
 
 The regularity is impressive, especially right around 45 characters. Indeed, every size from 20 to 60 represents about 1 percent of the total number of lines. That's 40 percent! Perhaps another 30 percent are less than 10 characters wide. Remember this is a log scale, so the linear appearance of the drop-off above 80 characters is really very significant. Programmers clearly prefer short lines.
 
@@ -1965,3 +1964,274 @@ A team of developers should agree upon a single formatting style, and then every
 When author started FitNesse project back in 2002, he set down with the team to work out a coding style, it took around 10 minutes to decide how they will name a classes, methods and variables, what would be indent size, etc.
 
 Remember, a good software system is composed of a set of documents that read nicely. They need to have a consistent and smooth style.
+
+## 6. Objects and Data Structures
+
+There is a reason that we keep our variables private. We don't want anyone else to depend on them.
+
+### Data Abstraction
+
+Consider these code snippets, both represent the data of a point on the Cartesian plan. And yet one exposes its implementation and other completely hides it.
+
+```java
+public class Point {
+    public double x;
+    public double y;
+}
+```
+
+```java
+public interface Point {
+    double getX();
+    double getY();
+    void setCartesian(double x, double y);
+    double getR();
+    double getTheta();
+    void setPolar(double r, double theta);
+}
+```
+
+In above code snippet, It represents more than just a data structure. The methods enforce an access policy. You can read the individual coordinates independently, but you must set the coordinates together as an atomic operation.
+
+On the other hand (first code snippet), is very clearly implemented in rectangular coordinates, and it forces us to manipulate those coordinates independently. This exposes implementation. Indeed, it would expose implementation even if the variables were private and we were using single variable getters and setters.
+
+Hiding implementation is about abstractions! A class does not simply push its variables out through getters and setters. Rather it exposes abstract interfaces that allow its users to manipulate the *essence* of the data, without having to know its implementation.
+
+Consider these snippets, First code snippet uses concrete terms to communication hence clearly reflect accessors of variables, while second code snippet uses abstraction hence you have no clue at all about the form of the data.
+
+```java
+public interface Vehicle {
+	double getFuelTankCapacityInGallons();
+	double getGallonsOfGasoline();
+}
+```
+
+```java
+public interface Vehical {
+	double getPercentFuelRemaining();
+}
+```
+
+In both of above cases the second option is preferable. We don't want to expose the details of our data. Rather we want to expose our data in abstracted form.
+
+### Data/Object Anti-Symmetry
+
+Objects hide their data behind abstractions and expose functions that operate on that data. Data structure expose their data and have no meaningful functions.
+
+Consider this example, `Geometry` classes contain the behavior and Shape classes is just data structure without behavior.
+
+```java
+public class Square {
+    public Point topLeft;
+    public double side;
+}
+
+public class Rectangle {
+    public Point topLeft;
+    public double height;
+    public double width;
+}
+
+public class Circle {
+    public Point center;
+    public double radius;
+}
+
+public class Geometry {
+    public final double PI = 3.141592653589793;
+
+    public double area(Object shape) throws NoSuchShapeException {
+        if (shape instanceof Square) {
+            Square s = (Square) shape;
+            return s.side * s.side;
+        } else if (shape instanceof Rectangle) {
+            Rectangle r = (Rectangle) shape;
+            return r.height * r.width;
+        } else if (shape instanceof Circle) {
+            Circle c = (Circle) shape;
+            return PI * c.radius * c.radius;
+        }
+        throw new NoSuchShapeException();
+    }
+}
+```
+
+Consider what would happen if a `perimeter()` function were added to `Geometry`. The shape classes would be unaffected! Any other classes that depended upon the shapes would also be unaffected! On the other hand, if we add a new shape, We must change all the functions in `Geometry` to deal with it.
+
+Consider this object-oriented solution, where the `area()` method is polymorphic. No `Geometry` class is necessary.So if I add a new shape, none of the existing *functions* are affected, but if I add a new function all of the *shapes* must be changed!
+
+```java
+public class Square implements Shape {
+    private Point topLeft;
+    private double side;
+
+    public double area() {
+        return side * side;
+    }
+}
+
+public class Rectangle implements Shape {
+    private Point topLeft;
+    private double height;
+    private double width;
+
+    public double area() {
+        return height * width;
+    }
+}
+
+public class Circle implements Shape {
+    private Point center;
+    private double radius;
+    public final double PI = 3.141592653589793;
+
+    public double area() {
+        return PI * radius * radius;
+    }
+}
+```
+
+This exposes the fundamental difference between objects and data structures:
+
+_Procedural code (code using data structures) makes it easy to add new functions without changing the existing data structures. OO code, on the other hand, makes it easy to add new classes without changing existing functions._
+
+The complement is also true:
+
+_Procedural code makes it hard to add new data structures because all the functions must change. OO code makes it hard to add new functions because all the classes must change._
+
+In any complex system there are going to be times where
+
+- If we want to add new data types rather than new functions (New Shape) - Objects and OO are most appropriate
+- If we wants to add new functions as opposed to data types (New Method) - Procedural Code and data structures will be more appropriate.
+
+### The Law of Demeter
+
+There is a well-known heuristic called the *Law of Demeter_2 that says a module should not know about the innards of the _objects* it manipulates.
+
+Objects should not expose its internal structure through accessors.
+
+In simpler terms, think of it like this: when you ask a friend for something, you should only speak to your friend directly and not to your friend's acquaintances. If your friend has to get something from someone else, let your friend do it and give you the result, instead of you reaching out to the third person.
+
+Consider this example that violate the Law of Demeter:
+
+```java
+final String outputDir = ctxt.getOptions().getScratchDir().getAbsolutePath();
+```
+
+Here is why?
+
+- `ctxt` is calling `getOptions()`, which gives you an object.
+- Then, on that returned object, `getScratchDir()` is called.
+- Finally, `getAbsolutePath()` is called on the result of `getScratchDir()`.
+
+#### Train Wrecks
+
+This kind of code is often called a *train wreck* because it look like a bunch of coupled train cars. It is usually best to split them up:
+
+```java
+Options opts = ctxt.getOptions();
+File scratchDir = opts.getScratchDir();
+final String outputDir = scratchDir.getAbsolutePath();
+```
+
+Whether this is a violation of Demeter depends on whether or not `ctxt, Options`, and `ScratchDir` are objects or data structures.
+
+- If they are objects then their internal structure should be hidden rather than exposed.
+- If they are data structures with no behavior, then they naturally expose their internal structure, and so Demeter does not apply.
+
+We won't think about Demeter if code was:
+
+```java
+final String outputDir = ctxt.options.scratchDir.absolutePath;
+```
+
+#### Hybrids
+
+This confusion sometimes leads to unfortunate hybrid structures that are half object and half data structure.
+
+Hybrids make it hard to add new functions but also make it hard to add new data structures.
+
+#### Hiding Structure
+
+What if `ctxt, options`, and `scratchDir` are objects with real behavior? Consider these code snippets:
+
+```java
+ctxt.getAbsolutePathOfScratchDirectoryOption();
+```
+
+```java
+ctx.getScratchDirectoryOption().getAbsolutePath();
+```
+
+The first option could lead to an explosion of methods in the `ctxt` object. The second presumes that `getScratchDirectoryOption()` returns a data structure, not an object. Neither option is good.
+
+If `ctxt` is an object, we should not ask for it's internal implementation. Consider this code snippet:
+
+```java
+String outFile = outputDir + "/" + className.replace(".", "/") + ".class";
+FileOutputStream fout = new FileOutputStream(outFile);
+BufferedOutputStream bos = new BufferedOutputStream(fout);
+```
+
+Ignoring dots and file extension, intent of this code to create a scratch file at absolute path.
+
+We should better call it as:
+
+```java
+BufferedOutputStream bos = ctxt.createScratchFileStream(classFileName);
+```
+
+That seems like a reasonable thing for an object to do! This allows `ctxt` to hide its internals and prevents the current function from having to violate the Law of Demeter by navigating through objects it shouldn't know about.
+
+### Data Transfer Objects
+
+The data structure class, with public variables and no functions. This is sometimes called a data transfer object or DTO.
+
+They are useful and comes handy when converting raw data in a database into objects in the application code.
+
+```java
+public class Address {
+    private String street;
+    private String streetExtra;
+    private String city;
+    private String state;
+    private String zip;
+
+    public Address(String street, String streetExtra,
+        String city, String state, String zip) {
+        this.street = street;
+        this.streetExtra = streetExtra;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getStreetExtra() {
+        return streetExtra;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+}
+```
+
+#### Active Record
+
+Active Records are special forms of DTOs. They are data structures with public variables. Typically these Active Records are direct translations from database tables, or other data sources.
+
+It contains the methods such as `save`, `find` etc. but including business logic into Active Records is bad idea and leads to hybrid structure.
+
+We should treat the Active Record as a data structure and to create separate objects that contain the business rules and that hide their internal data.
