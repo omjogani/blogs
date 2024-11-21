@@ -1995,7 +1995,7 @@ In above code snippet, It represents more than just a data structure. The method
 
 On the other hand (first code snippet), is very clearly implemented in rectangular coordinates, and it forces us to manipulate those coordinates independently. This exposes implementation. Indeed, it would expose implementation even if the variables were private and we were using single variable getters and setters.
 
-Hiding implementation is about abstractions! A class does not simply push its variables out through getters and setters. Rather it exposes abstract interfaces that allow its users to manipulate the *essence* of the data, without having to know its implementation.
+Hiding implementation is about abstractions! A class does not simply push its variables out through getters and setters. Rather it exposes abstract interfaces that allow its users to manipulate the _essence_ of the data, without having to know its implementation.
 
 Consider these snippets, First code snippet uses concrete terms to communication hence clearly reflect accessors of variables, while second code snippet uses abstraction hence you have no clue at all about the form of the data.
 
@@ -2058,7 +2058,7 @@ public class Geometry {
 
 Consider what would happen if a `perimeter()` function were added to `Geometry`. The shape classes would be unaffected! Any other classes that depended upon the shapes would also be unaffected! On the other hand, if we add a new shape, We must change all the functions in `Geometry` to deal with it.
 
-Consider this object-oriented solution, where the `area()` method is polymorphic. No `Geometry` class is necessary.So if I add a new shape, none of the existing *functions* are affected, but if I add a new function all of the *shapes* must be changed!
+Consider this object-oriented solution, where the `area()` method is polymorphic. No `Geometry` class is necessary.So if I add a new shape, none of the existing _functions_ are affected, but if I add a new function all of the _shapes_ must be changed!
 
 ```java
 public class Square implements Shape {
@@ -2106,7 +2106,7 @@ In any complex system there are going to be times where
 
 ### The Law of Demeter
 
-There is a well-known heuristic called the *Law of Demeter_2 that says a module should not know about the innards of the _objects* it manipulates.
+There is a well-known heuristic called the _Law of Demeter_2 that says a module should not know about the innards of the \_objects_ it manipulates.
 
 Objects should not expose its internal structure through accessors.
 
@@ -2124,9 +2124,17 @@ Here is why?
 - Then, on that returned object, `getScratchDir()` is called.
 - Finally, `getAbsolutePath()` is called on the result of `getScratchDir()`.
 
+Another example could be:
+
+```java
+Expenses expenses = new Expenses(100, 10); 
+Employee employee = new Employee(); 
+employee.getDepartment().getManager().approveExpense(expenses);
+```
+
 #### Train Wrecks
 
-This kind of code is often called a *train wreck* because it look like a bunch of coupled train cars. It is usually best to split them up:
+This kind of code is often called a _train wreck_ because it look like a bunch of coupled train cars. It is usually best to split them up:
 
 ```java
 Options opts = ctxt.getOptions();
@@ -2235,3 +2243,345 @@ Active Records are special forms of DTOs. They are data structures with public v
 It contains the methods such as `save`, `find` etc. but including business logic into Active Records is bad idea and leads to hybrid structure.
 
 We should treat the Active Record as a data structure and to create separate objects that contain the business rules and that hide their internal data.
+
+## 7. Error Handling
+
+Error handling is important, *but if it obscures logic, it's wrong*.
+
+### Use Exceptions Rather Than Return Codes
+
+Back in the past, some languages doesn't have exceptions. We used to return error code or set an error flag at that time. Here is how:
+
+```java
+public class DeviceController {
+    // …
+    public void sendShutDown() {
+        DeviceHandle handle = getHandle(DEV1);
+        // Check the state of the device
+        if (handle != DeviceHandle.INVALID) {
+            // Save the device status to the record field
+            retrieveDeviceRecord(handle);
+            // If not suspended, shut down
+            if (record.getStatus() != DEVICE_SUSPENDED) {
+                pauseDevice(handle);
+                clearDeviceWorkQueue(handle);
+                closeDevice(handle);
+            } else {
+                logger.log("Device suspended.  Unable to shut down");
+            }
+        } else {
+            logger.log("Invalid handle for: " + DEV1.toString());
+        }
+    }
+    // …
+}
+```
+
+The problem with these approaches is that they clutter the caller. The caller must check for errors immediately after the call.
+
+To solve this problem it's better throw an exception when you encounter an error. Here is how:
+
+```java
+public class DeviceController {
+    // …
+
+    public void sendShutDown() {
+        try {
+            tryToShutDown();
+        } catch (DeviceShutDownError e) {
+            logger.log(e);
+        }
+    }
+
+    private void tryToShutDown() throws DeviceShutDownError {
+        DeviceHandle handle = getHandle(DEV1);
+        DeviceRecord record = retrieveDeviceRecord(handle);
+
+        pauseDevice(handle);
+        clearDeviceWorkQueue(handle);
+        closeDevice(handle);
+    }
+
+    private DeviceHandle getHandle(DeviceID id) {
+        // …
+        throw new DeviceShutDownError("Invalid handle
+            for: "+id.toString());
+        // …
+    }
+
+    //     …
+}
+```
+
+In this code, the algorithm for device shutdown and error handling, are now separated.
+
+### Write Your `Try-Catch-Finally` Statement First
+
+One of the most interesting things about exceptions is that they *define a scope* within your program. When you use `Try-Catch-Finally` you can start execution and abort at any point and then resume at the `catch`.
+
+In a way, `try` blocks are like transactions, Your `catch` has to leave your program in a consistent state, no matter what happens in the `try`.
+
+Let's look at an example. We need to write some code that accesses a file and reads some serialized objects.
+
+We start with a unit test that shows that we'll get an exception when the file doesn't exist:
+
+```java
+@Test(expected = StorageException.class)
+public void retrieveSectionShouldThrowOnInvalidFileName() {
+    sectionStore.retrieveSection("invalid - file");
+}
+```
+
+The test drives us to create this stub:
+
+```java
+public List<RecordedGrip> retrieveSection(String sectionName) {
+    // dummy return until we have a real implementation
+    return new ArrayList<RecordedGrip>();
+}
+```
+
+Out test will fail, because it doesn't throw an exception. Now, we modify our code to access invalid file and throw exceptions:
+
+```java
+public List<RecordedGrip> retrieveSection(String sectionName) {
+    try {
+        FileInputStream stream = new FileInputStream(sectionName)
+    } catch (Exception e) {
+        throw new StorageException("retrieval error", e);
+    }
+    return new ArrayList<RecordedGrip>();
+}
+```
+
+Now, our test will pass, and we can refactor. We can use specific exception instead of `Exception`.
+
+```java
+public List<RecordedGrip> retrieveSection(String sectionName) {
+    try {
+        FileInputStream stream = new FileInputStream(sectionName);
+        stream.close();
+    } catch (FileNotFoundException e) {
+        throw new StorageException("retrieval error", e);
+    }
+    return new ArrayList<RecordedGrip> ();
+}
+```
+
+Now, we can add logic in this code with following TDD. Our test should force us to have exceptions.
+
+### Use Unchecked Exceptions
+
+When Java introduced checked exception, It seemed like a great idea and beneficial. Turns out it wasn't. Now, It is clean that they aren't necessary for the production of robust software.
+
+C#, C++, Python and even Ruby doesn't have checked exceptions. Still it is possible to write robust software in all mentioned languages.
+
+Checked Exception is a Open/Close Principle violation. If you throw a checked exception from a method in your code and the `catch` is three level above, _you must declare that exception in the signature of each method between you and the `catch`_.
+
+Consider the calling hierarchy of a large system. Function at the top call functions below them, which call more functions below them and so on.
+
+Suppose, bottom most function modified that in a way that throw exception. We need to replicate the changes to all above functions with `throws` clause to its signature and so on.
+
+Encapsulation is broken because all functions in the path of a throw must know about details of that low-level exception.
+
+Checked exceptions can sometimes be useful if you are writing a critical library: You must catch them. But in general application development the dependency costs outweigh the benefits.
+
+### Provide Context with Exceptions
+
+Each exception that you throw should provide enough context to determine the source and location of an error. It can help in the stack trace but won't tell you the intent of the operation that failed.
+
+Create informative message and pass them along with your exception. Mention the operation and type of failure and add the same in logging if you're using.
+
+### Define Exception Classes in Terms of a Caller's Needs
+
+There are many ways to classify errors. We can classify with their source (Did they come from one component or another) or their type (network failure, programming error etc.).
+
+Example of poor exception classification:
+
+```java
+ACMEPort port = new ACMEPort(12);
+
+try {
+    port.open();
+} catch (DeviceResponseException e) {
+    reportPortError(e);
+    logger.log("Device response exception", e);
+} catch (ATM1212UnlockedException e) {
+    reportPortError(e);
+    logger.log("Unlock exception", e);
+} catch (GMXError e) {
+    reportPortError(e);
+    logger.log("Device response exception");
+} finally {…}
+```
+
+That statement contains a lot of duplication. The main idea is We have to record an error and make sure that we can proceed.
+
+we can simplify our code considerably by wrapping the API that we are calling and making sure that it returns a common exception type:
+
+```java
+LocalPort port = new LocalPort(12);
+try {
+    port.open();
+} catch (PortDeviceFailure e) {
+    reportError(e);
+    logger.log(e.getMessage(), e);
+} finally {…}
+```
+
+Our `LocalPort` class is just a simple wrapper that catches and translates exceptions thrown by the `ACMEPort` class:
+
+```java
+public class LocalPort {
+    private ACMEPort innerPort;
+
+    public LocalPort(int portNumber) {
+        innerPort = new ACMEPort(portNumber);
+    }
+
+    public void open() {
+        try {
+            innerPort.open();
+        } catch (DeviceResponseException e) {
+            throw new PortDeviceFailure(e);
+        } catch (ATM1212UnlockedException e) {
+            throw new PortDeviceFailure(e);
+        } catch (GMXError e) {
+            throw new PortDeviceFailure(e);
+        }
+    }
+    //…
+}
+```
+
+Wrappers like the one we defined for `ACMEPort` can be very useful. In fact, wrapping third-party APIs is a best practice. It helps to minimize your dependencies upon it, easier to mock out third-party calls in testing.
+
+One final advantage of wrapping is that you aren't tied to a particular vendor's API design choices.
+
+### Define the Normal Flow
+
+If we keep separation between error handling and actual business login or algorithm, It helps to maintain clean code.
+
+You wrap external APIs so that you can throw your own exceptions. and you define a handler above your code so that you can deal with any aborted computation. Most of the time this is a great approach, but there are some times when you may not want to abort.
+
+Let's take a look at an example. Here is some awkward code that sums expenses in a billing application:
+
+```java
+try {
+    MealExpenses expenses = expenseReportDAO.getMeals(employee.getID());
+    m_total += expenses.getTotal();
+} catch (MealExpensesNotFound e) {
+    m_total += getMealPerDiem();
+}
+```
+
+In this business, if mean are expensed, they become part of the total. If they aren't, the employee gets a meal *per diem* amount for that day. The exception clutters the logic.
+
+We can change the `ExpenseReportDAO` so that it always returns a `MealExpense` object. If there are no meal expenses, it returns a `MealExpense` object that returns the *per diem* as its total:
+
+```java
+public class PerDiemMealExpenses implements MealExpenses {
+	public int getTotal() {
+		// return the per diem default
+	}
+}
+```
+
+You create a class or configure an object so that it handles a special case for you.
+
+### Don't Return Null
+
+We're more likely returning `null` in any such cases where we're blank, and we keep checking condition with `null` Here is the example:
+
+```java
+public void registerItem(Item item) {
+    if (item != null) {
+        ItemRegistry registry = peristentStore.getItemRegistry();
+        if (registry != null) {
+            Item existing = registry.getItem(item.getID());
+            if (existing.getBillingPeriod().hasRetailOwner()) {
+                existing.register(item);
+            }
+        }
+    }
+}
+```
+
+Whenever we're returning null, we're creating problems for our callers. All it takes is one missing `null` check to send an application spinning out of control. (CrowdStrike bug recently).
+
+In above code what if `persistentStore` is null, We would have `NullPointerException` at runtime. We could have easily solved problem by adding a null check, but the problem is there are too many.
+
+You're tempted to return `null` from a method, consider throwing exception rather.
+
+Another example:
+
+```java
+List < Employee > employees = getEmployees();
+if (employees != null) {
+    for (Employee e: employees) {
+        totalPay += e.getPay();
+    }
+}
+```
+
+`getEmployees()` can return null, but we can change it to return empty list instead of null.
+
+```java
+public List < Employee > getEmployees() {
+    if (..there are no employees..) {
+        return Collections.emptyList();
+	}
+}
+```
+
+Now, you minimized the chance of `NullpointerExceptions` and your code will be cleaner.
+
+### Don't Pass Null
+
+Returning `null` from methods is bad, but passing `null` into methods is worse.
+
+```java
+public class MetricsCalculator {
+    public double xProjection(Point p1, Point p2) {
+		return (p2.x - p1.x) * 1.5;
+    }
+}
+```
+
+What happens when someone passes `null` as an argument?
+
+```java
+calculator.xProjection(null, new Point(12, 13));
+```
+
+We'll get a `NullPointerException`, of course. How can we fix it?
+
+```java
+public class MetricsCalculator {
+    public double xProjection(Point p1, Point p2) {
+        if (p1 == null || p2 == null) {
+            throw InvalidArgumentException("Invalid argument
+                for MetricsCalculator.xProjection");
+        }
+        return (p2.x - p1.x) * 1.5;
+    }
+}
+```
+
+It might be little better than `Null` pointer exception. but remember, we have to define a handler for `InvalidArgumentException`.
+
+Here is another alternative:
+
+```java
+public class MetricsCalculator {
+    public double xProjection(Point p1, Point p2) {
+        assert p1 != null: "p1 should not be null";
+        assert p2 != null: "p2 should not be null";
+        return (p2.x - p1.x) * 1.5;
+    }
+}
+```
+
+It's good documentation, but it doesn't solve the problem. If someone passes `null`, we'll still have a runtime error.
+
+In most programming languages there is no good way to deal with a `null` that is passed by a caller accidentally.
