@@ -2127,8 +2127,8 @@ Here is why?
 Another example could be:
 
 ```java
-Expenses expenses = new Expenses(100, 10); 
-Employee employee = new Employee(); 
+Expenses expenses = new Expenses(100, 10);
+Employee employee = new Employee();
 employee.getDepartment().getManager().approveExpense(expenses);
 ```
 
@@ -2246,7 +2246,7 @@ We should treat the Active Record as a data structure and to create separate obj
 
 ## 7. Error Handling
 
-Error handling is important, *but if it obscures logic, it's wrong*.
+Error handling is important, _but if it obscures logic, it's wrong_.
 
 ### Use Exceptions Rather Than Return Codes
 
@@ -2317,7 +2317,7 @@ In this code, the algorithm for device shutdown and error handling, are now sepa
 
 ### Write Your `Try-Catch-Finally` Statement First
 
-One of the most interesting things about exceptions is that they *define a scope* within your program. When you use `Try-Catch-Finally` you can start execution and abort at any point and then resume at the `catch`.
+One of the most interesting things about exceptions is that they _define a scope_ within your program. When you use `Try-Catch-Finally` you can start execution and abort at any point and then resume at the `catch`.
 
 In a way, `try` blocks are like transactions, Your `catch` has to leave your program in a consistent state, no matter what happens in the `try`.
 
@@ -2475,9 +2475,9 @@ try {
 }
 ```
 
-In this business, if mean are expensed, they become part of the total. If they aren't, the employee gets a meal *per diem* amount for that day. The exception clutters the logic.
+In this business, if mean are expensed, they become part of the total. If they aren't, the employee gets a meal _per diem_ amount for that day. The exception clutters the logic.
 
-We can change the `ExpenseReportDAO` so that it always returns a `MealExpense` object. If there are no meal expenses, it returns a `MealExpense` object that returns the *per diem* as its total:
+We can change the `ExpenseReportDAO` so that it always returns a `MealExpense` object. If there are no meal expenses, it returns a `MealExpense` object that returns the _per diem_ as its total:
 
 ```java
 public class PerDiemMealExpenses implements MealExpenses {
@@ -2585,3 +2585,180 @@ public class MetricsCalculator {
 It's good documentation, but it doesn't solve the problem. If someone passes `null`, we'll still have a runtime error.
 
 In most programming languages there is no good way to deal with a `null` that is passed by a caller accidentally.
+
+## 8. Boundaries
+
+We seldom control all the software in our system. Sometimes we buy third-party packages or use open source or depends on internal team.
+
+### Using Third-Party Code
+
+There is a natural tension between provider of an interface and user of an interface. Provider focuses on multiple environment so that all users can satisfied, on the other hand, one wants an interface for their specific need.
+
+Consider the example of `java.util.Map`, Assume that We want to build up a `Map` and pass it around, Out intention might be that none of the recipients of our `Map` delete anything in the map. But `java.util.Map` has method `clear()`. Any User of the `Map` has the power to clear it.
+
+Consider this example
+
+```java
+Map sensors = new HashMap();
+```
+
+Then when some other part of the code needs to access the sensor, you see this code:
+
+```java
+Sensor s = (Sensor)sensors.get(sensorId);
+```
+
+The client of this code carries the responsibility of getting an `Object` from the `Map` and casting it to the right type.
+
+The readability of this code can be greatly improved by using generics:
+
+```java
+Map<Sensor> sensors = new HashMap<Sensor>();
+
+Sensor s = sensors.get(sensorId);
+```
+
+A cleaner way to use `Map` might look like following. No user of Sensors would care one bit if generics were used or not.
+
+```java
+public class Sensors {
+    private Map sensors = new HashMap();
+
+    public Sensor getById(String id) {
+        return (Sensor) sensors.get(id);
+    }
+}
+```
+
+Now, it doesn't required to change everywhere sensors is used. We are not suggesting that you not to pass `Map`s around your system. If you use a boundary interface like `Map`, keep it inside the class, or close family of classes, Where it is used.
+
+### Exploring and Learning Boundaries
+
+Third-party code helps us get more functionality delivered in less time. It's not our job to test third-party code but it's best interest to write tests for the third-party code we use.
+
+It takes time to understand and might cause long debugging session. Learning the third-party code is hard. Integrating the third-party code is hard too. Doing both at the same time is doubly-hard.
+
+In learning tests we call the third-party API, as we expect to use it in our application. We're essentially doing controlled experiments that check our understanding of that API. The tests focus on what we want out of the API.
+
+### Learning `log4j`
+
+Consider we want to use `log4j`, we download it and open introductory documentation page.
+
+Without thinking much we write our first test case, expecting it to write
+"Hello World" to the console:
+
+```java
+@Test
+public void testLogCreate() {
+    Logger logger = Logger.getLogger("MyLogger");
+    logger.info("hello");
+}
+```
+
+It gives error that tells us we need something called an `Appender`. Form Docs we find `ConsoleAppender`:
+
+```java
+@Test
+public void testLogAddAppender() {
+    Logger logger = Logger.getLogger("MyLogger");
+    ConsoleAppender appender = new ConsoleAppender();
+    logger.addAppender(appender);
+    logger.info("hello");
+}
+```
+
+This time we find that the `Appender` has no output stream. We might google the solution and come up with following:
+
+```java
+@Test
+public void testLogAddAppender() {
+    Logger logger = Logger.getLogger("MyLogger");
+    logger.removeAllAppenders();
+    logger.addAppender(new ConsoleAppender(
+        new PatternLayout(" % p % t % m % n"),
+        ConsoleAppender.SYSTEM_OUT));
+    logger.info("hello");
+}
+```
+
+That worked; a log message that include "hello" came out the console!
+
+Turns out when we remove `ConsoleAppender.SystemOut`, it's still working, but if we remove the pattern it once again complains about the lack of output stream.
+
+Looking a little more carefully at the documentation, we see that the default `ConsoleAppender` constructor is not configured.
+
+A bit more googling, reading and testing and we eventually wind up with:
+
+```java
+public class LogTest {
+    private Logger logger;
+
+    @Before
+    public void initialize() {
+        logger = Logger.getLogger("logger");
+        logger.removeAllAppenders();
+        Logger.getRootLogger().removeAllAppenders();
+    }
+
+    @Test
+    public void basicLogger() {
+        BasicConfigurator.configure();
+        logger.info("basicLogger");
+    }
+
+    @Test
+    public void addAppenderWithStream() {
+        logger.addAppender(new ConsoleAppender(
+            new PatternLayout(" % p % t % m % n"),
+            ConsoleAppender.SYSTEM_OUT));
+        logger.info("addAppenderWithStream");
+    }
+
+    @Test
+    public void addAppenderWithoutStream() {
+        logger.addAppender(new ConsoleAppender(
+            new PatternLayout(" % p % t % m % n")));
+        logger.info("addAppenderWithoutStream");
+    }
+}
+```
+
+Now we know hot to get a simple console logger initialized, and we can encapsulate that knowledge into our own logger class so that the rest of our application is isolated from the `log4j` boundary interface.
+
+### Learning Tests Are Better Than Free
+
+The learning tests end up costing nothing. We had to learn the API anyway, and writing those tests was an easy and isolated way to get that knowledge. The learning tests were precise experiments that helped increase our understanding.
+
+Not only are learning tests free, they have a positive return on investment.
+
+- We have more knowledge about third-party packages
+- We can identify the behavioral differences
+- We can match our expectation with third-party packages
+- We can test new change to third-party packages based on tests we wrote for our expectation
+
+Whether you need the learning provided by the learning tests or not, a clean boundary should be supported by a set of outbound tests that exercise the interface the same way the production code does.
+
+### Using Code That Does Not Yet Exist
+
+There are often places in the code where our knowledge seems to drop off the edge.
+
+While working on the project, the author encountered a boundary where the system needed to interact with an undefined API. To avoid delays, the author created a placeholder interface called **Transmitter**, with a method `transmit` that represented the desired functionality: transmitting data on a specific frequency.
+
+By defining this interface, the author maintained control, kept the code clear and focused on its purpose, and ensured progress could continue without waiting for the final API design.
+
+![using-code-that-is-not-exist](https://github.com/user-attachments/assets/dbd97c44-907a-4905-b9a7-2a7f9b597439)
+
+
+They kept `TransmitterAdapter` that encapsulated the interaction with the API and provides a single place to change when the API evolves.
+
+This design also gives us a very convenient seam in the code for testing. Using a suitable `FakeTransmitter`, we can test the `CommunicationsController` classes.
+
+We can also create boundary tests once we have the `TransmitterAPI` that make sure we are using the API correctly.
+
+### Clean Boundaries
+
+Interesting things happen at boundaries. Change is one of those things. Good software designs accommodate change without huge investments and rework.
+
+Code at the boundaries needs clear separation and tests that define expectations. It's better to depend on something you control than on something you don't control.
+
+Either way our code speaks to us better, promotes internally consistent usage across the boundary, and has fewer maintenance points when the third-party code changes.
