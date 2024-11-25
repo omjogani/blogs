@@ -2507,7 +2507,7 @@ public void registerItem(Item item) {
 }
 ```
 
-Whenever we're returning null, we're creating problems for our callers. All it takes is one missing `null` check to send an application spinning out of control. (CrowdStrike bug recently).
+Whenever we're returning null, we're creating problems for our callers. All it takes is one missing `null` check to send an application spinning out of control.
 
 In above code what if `persistentStore` is null, We would have `NullPointerException` at runtime. We could have easily solved problem by adding a null check, but the problem is there are too many.
 
@@ -2748,7 +2748,6 @@ By defining this interface, the author maintained control, kept the code clear a
 
 ![using-code-that-is-not-exist](https://github.com/user-attachments/assets/dbd97c44-907a-4905-b9a7-2a7f9b597439)
 
-
 They kept `TransmitterAdapter` that encapsulated the interaction with the API and provides a single place to change when the API evolves.
 
 This design also gives us a very convenient seam in the code for testing. Using a suitable `FakeTransmitter`, we can test the `CommunicationsController` classes.
@@ -2762,3 +2761,300 @@ Interesting things happen at boundaries. Change is one of those things. Good sof
 Code at the boundaries needs clear separation and tests that define expectations. It's better to depend on something you control than on something you don't control.
 
 Either way our code speaks to us better, promotes internally consistent usage across the boundary, and has fewer maintenance points when the third-party code changes.
+
+## 9. Unit Tests
+
+Typically Unit Tests would involve some kind of simple driver program that would allow us to manually interact with the program we had written.
+
+We write test that make sure that every nook and cranny of the code worked as per our expectation.
+
+The Agile and TDD movements have encouraged many programmers to write automated unit tests and more are joining their ranks every day.
+
+### The Three Laws of TDD
+
+By now everyone knows that TDD asks us to write unit tests first, before we write production code.
+
+- **First Law** You may not write production code until you have written a failing unit test.
+- **Second Law** You may not write more of a unit test than is sufficient to fail, and not compiling is failing.
+- **Third Law** You may not write more production code than is sufficient to pass the currently failing test.
+
+The tests and the production code are written together. with the tests just a few seconds ahead of the production code.
+
+If we work this way, we will write dozens of tests every day, hundreds of tests every month, and thousands of tests every year and it cover all our production code.
+
+### Keeping Tests Clean
+
+Author asked to coach a team who had explicitly decided that their test code _should not be_ maintained. Everyone allowed to break rules and not having clear variables names and descriptive functions.
+
+Team thoughts as long as it's covering production code, it's good enough. What this team did not realize was that having dirty tests is equivalent to, if not worse than having no tests. Tests should be flexible enough to change as production code changes, or requirements changes.
+
+The dirtier the tests, the harder they are to change. As you modify the production code, old tests start to fail, and the mess in the test code makes it hard to get those tests to pass again.
+
+From release to release the cost of maintaining test suite rose. Eventually it became the single biggest complaint among the developers.
+
+But, without a test suite they lost the ability to make sure that changes to their code base worked as expected. Without a test suite they could not ensure that changes to one part of their system did not break other parts of their system.
+
+Ultimately, their testing effort had failed them. But it was their decision to allow the tests to be messy that was the seed of that failure.
+
+The moral of the story is simple: *Test code is just as important as production code.* It is not a second-class citizen.
+
+#### Tests Enable the -ilities
+
+If you don't keep your tests clean, you will lose them. And without them, you lose the very thing that keeps your production code flexible. It is *unit tests* that keep our code flexible, maintainable, and reusable.
+
+Without tests, you will be in feat to make changes, cleaning the code, but with tests that fear virtually disappears. The higher your test coverage, the less your fear.
+
+So having an automated suite of unit tests that cover the production code is the key to keeping your design and architecture as clean as possible.
+
+### Clean Tests
+
+What makes a clean test? Three things. Readability, readability, and readability. Readability is perhaps even more important in unit tests than it is in production code.
+
+Consider this example: These three tests are difficult to understand and can certainly be improved. There is a terrible amount of duplicate code in the repeated call to `addPage` and `assertSubString`.
+
+```java
+public void testGetPageHieratchyAsXml() throws Exception {
+
+     crawler.addPage(root, PathParser.parse("PageOne"));
+     crawler.addPage(root, PathParser.parse("PageOne.ChildOne"));
+     crawler.addPage(root, PathParser.parse("PageTwo"));
+
+     request.setResource("root");
+     request.addInput("type", "pages");
+     Responder responder = new SerializedPageResponder();
+     SimpleResponse response =
+       (SimpleResponse) responder.makeResponse(
+          new FitNesseContext(root), request);
+     String xml = response.getContent();
+
+     assertEquals("text/xml", response.getContentType());
+     assertSubString("<name>PageOne</name>", xml);
+     assertSubString("<name>PageTwo</name>", xml);
+     assertSubString("<name>ChildOne</name>", xml);
+}
+
+public void testGetPageHieratchyAsXmlDoesntContainSymbolicLinks()
+   throws Exception {
+
+     WikiPage pageOne = crawler.addPage(root, PathParser.parse("PageOne"));
+     crawler.addPage(root, PathParser.parse("PageOne.ChildOne"));
+     crawler.addPage(root, PathParser.parse("PageTwo"));
+
+     PageData data = pageOne.getData();
+     WikiPageProperties properties = data.getProperties();
+     WikiPageProperty symLinks = properties.set(SymbolicPage.PROPERTY_NAME);
+     symLinks.set("SymPage", "PageTwo");
+     pageOne.commit(data);
+
+     request.setResource("root");
+     request.addInput("type", "pages");
+     Responder responder = new SerializedPageResponder();
+     SimpleResponse response =
+       (SimpleResponse) responder.makeResponse(
+          new FitNesseContext(root), request);
+     String xml = response.getContent();
+
+     assertEquals("text/xml", response.getContentType());
+     assertSubString("<name>PageOne</name>", xml);
+     assertSubString("<name>PageTwo</name>", xml);
+     assertSubString("<name>ChildOne</name>", xml);
+     assertNotSubString("SymPage", xml);
+}
+
+public void testGetDataAsHtml() throws Exception  {
+     crawler.addPage(root, PathParser.parse("TestPageOne"), "test page");
+
+     request.setResource("TestPageOne");
+     request.addInput("type", "data");
+     Responder responder = new SerializedPageResponder();
+     SimpleResponse response =
+       (SimpleResponse) responder.makeResponse(
+          new FitNesseContext(root), request);
+     String xml = response.getContent();
+
+     assertEquals("text/xml", response.getContentType());
+     assertSubString("test page", xml);
+     assertSubString("<Test", xml);
+}
+```
+
+For example, look at the `PathParser` call. They transform string into `PagePath` instance used by the crawlers. This transformation is completely irrelevant to the test at hand and serves only to obfuscate the intent.
+
+The details surrounding the creation of the `responder` and the gathering and casting of the `response` are also just noise.
+
+Here is improved version of the same code:
+
+```java
+public void testGetPageHierarchyAsXml() throws Exception {
+    makePages("PageOne", "PageOne.ChildOne", "PageTwo");
+
+    submitRequest("root", "type: pages");
+
+    assertResponseIsXML();
+    assertResponseContains(" < name > PageOne < /name>", "<name>PageTwo</name > ", " < name > ChildOne < /name>");
+}
+
+public void testSymbolicLinksAreNotInXmlPageHierarchy() throws Exception {
+    WikiPage page = makePage("PageOne");
+    makePages("PageOne.ChildOne", "PageTwo");
+
+    addLinkTo(page, "PageTwo", "SymPage");
+
+    submitRequest("root", "type: pages");
+
+    assertResponseIsXML();
+    assertResponseContains(" < name > PageOne < /name>", "<name>PageTwo</name > ", " < name > ChildOne < /name>");
+    assertResponseDoesNotContain("SymPage");
+}
+
+public void testGetDataAsXml() throws Exception {
+    makePageWithContent("TestPageOne", "test page");
+
+    submitRequest("TestPageOne", "type: data");
+
+    assertResponseIsXML();
+    assertResponseContains("test page", " < Test");
+}
+```
+
+The **Build-Operate-Check** pattern is made obvious by the structure of these tests. Each of the test is clearly split into three parts. The first part builds up the test data, the second part operates on that test data, and the third part checks that the operation yielded the expected results.
+
+#### Domain-Specific Testing Language
+
+The tests above (Clean Test) demonstrate the technique of building a domain-specific language for your tests. we build up a set of functions and utilities that make use of those APIs and that make the tests more convenient to write and easier to read.
+
+This testing API is not designed up front; rather it evolves from the continued refactoring of test code that has gotten too tainted by obfuscating detail.
+
+#### A Dual Standard
+
+The code within the testing API should have different set of engineering standards than production code. It must still be simple, succinct and expressive, but it need not be as efficient as production code.
+
+Consider this example: You can easily tell it's working without even looking at it's implementation.
+
+```java
+@Test
+public void turnOnLoTempAlarmAtThreashold() throws Exception {
+    hw.setTemp(WAY_TOO_COLD);
+    controller.tic();
+    assertTrue(hw.heaterState());
+    assertTrue(hw.blowerState());
+    assertFalse(hw.coolerState());
+    assertFalse(hw.hiTempAlarm());
+    assertTrue(hw.loTempAlarm());
+}
+```
+
+There are of course questions such as What is `tic()` function doing, but You won't worry about it when reading for the first time.
+
+Still your eye needs to bounce back and forth between the names of state being checked, for example, You see `heaterState` , and then your eye bounce to `assertTrue` and so on. It makes the test hard to read.
+
+```java
+@Test
+public void turnOnLoTempAlarmAtThreshold() throws Exception {
+    wayTooCold();
+    assertEquals("HBchL", hw.getState());
+}
+```
+
+It hides the details of the `tic` function by creating `wayTooCold` function. But the thing to note is the strange string in the `assertEquals`. Upper case means "on," lower case means "off," and the letters are always in the following order: `{heater, blower, cooler, hi-temp-alarm, lo-temp-alarm}`.
+
+Even though this is close to a violation of the rule about mental mapping, It seems appropriate in this case.
+
+Avoid mental mapping:
+
+```java
+@Test
+public void turnOnCoolerAndBlowerIfTooHot() throws Exception {
+    tooHot();
+    assertEquals("hBChl", hw.getState());
+}
+
+@Test
+public void turnOnHeaterAndBlowerIfTooCold() throws Exception {
+    tooCold();
+    assertEquals("HBchl", hw.getState());
+}
+
+@Test
+public void turnOnHiTempAlarmAtThreshold() throws Exception {
+    wayTooHot();
+    assertEquals("hBCHl", hw.getState());
+}
+@Test
+public void turnOnLoTempAlarmAtThreshold() throws Exception {
+    wayTooCold();
+    assertEquals("HBchL", hw.getState());
+}
+```
+
+The `getState` function is now very efficient code. To make it efficient, I probably should have used a `StringBuffer`.
+
+```java
+public String getState() {
+    String state = "";
+    state += heater ? "H" : "h";
+    state += blower ? "B" : "b";
+    state += cooler ? "C" : "c";
+    state += hiTempAlarm ? "H" : "h";
+    state += loTempAlarm ? "L" : "l";
+    return state;
+}
+```
+
+### One Assert per Test
+
+There is a school of thoughts, that says that every test function in JUnit test should have one and only one assert statement.
+
+```java
+public void testGetPageHierarchyAsXml() throws Exception {
+    givenPages("PageOne", "PageOne.ChildOne", "PageTwo");
+
+    whenRequestIsIssued("root", "type: pages");
+
+    thenResponseShouldBeXML();
+}
+public void testGetPageHierarchyHasRightTags() throws Exception {
+    givenPages("PageOne", "PageOne.ChildOne", "PageTwo");
+
+    whenRequestIsIssued("root", "type: pages");
+
+    thenResponseShouldContain(" < name > PageOne < /name>", "<name>PageTwo</name > ", " < name > ChildOne < /name>");
+}
+```
+
+Notice that names of the functions are following **given-when-then** convention. Unfortunately, splitting the tests as shown in above code results in lot of duplicate code.
+
+#### Single Concept per Test
+
+Consider the example below: This test should be split up into three independent tests because it tests three independent things.
+
+```java
+/**
+ * Miscellaneous tests for the addMonths() method.
+ */
+public void testAddMonths() {
+    SerialDate d1 = SerialDate.createInstance(31, 5, 2004);
+
+    SerialDate d2 = SerialDate.addMonths(1, d1);
+    assertEquals(30, d2.getDayOfMonth());
+    assertEquals(6, d2.getMonth());
+    assertEquals(2004, d2.getYYYY());
+
+    SerialDate d3 = SerialDate.addMonths(2, d1);
+    assertEquals(31, d3.getDayOfMonth());
+    assertEquals(7, d3.getMonth());
+    assertEquals(2004, d3.getYYYY());
+
+    SerialDate d4 = SerialDate.addMonths(1, SerialDate.addMonths(1, d1));
+    assertEquals(30, d4.getDayOfMonth());
+    assertEquals(7, d4.getMonth());
+    assertEquals(2004, d4.getYYYY());
+}
+```
+
+The three test functions probably ought to be like this:
+• *Given* the last day of a month with 31 days (like May):
+**1.** *When* you add one month, such that the last day of that month is the 30th (like June), *then* the date should be the 30th of that month, not the 31st.
+**2.** *When* you add two months to that date, such that the final month has 31 days, *then* the date should be the 31st.
+• *Given* the last day of a month with 30 days in it (like June):
+**1.** *When* you add one month such that the last day of that month has 31 days, *then* the date should be the 30th, not the 31st.
