@@ -2796,11 +2796,11 @@ But, without a test suite they lost the ability to make sure that changes to the
 
 Ultimately, their testing effort had failed them. But it was their decision to allow the tests to be messy that was the seed of that failure.
 
-The moral of the story is simple: *Test code is just as important as production code.* It is not a second-class citizen.
+The moral of the story is simple: _Test code is just as important as production code._ It is not a second-class citizen.
 
 #### Tests Enable the -ilities
 
-If you don't keep your tests clean, you will lose them. And without them, you lose the very thing that keeps your production code flexible. It is *unit tests* that keep our code flexible, maintainable, and reusable.
+If you don't keep your tests clean, you will lose them. And without them, you lose the very thing that keeps your production code flexible. It is _unit tests_ that keep our code flexible, maintainable, and reusable.
 
 Without tests, you will be in feat to make changes, cleaning the code, but with tests that fear virtually disappears. The higher your test coverage, the less your fear.
 
@@ -3053,8 +3053,25 @@ public void testAddMonths() {
 ```
 
 The three test functions probably ought to be like this:
-• *Given* the last day of a month with 31 days (like May):
-**1.** *When* you add one month, such that the last day of that month is the 30th (like June), *then* the date should be the 30th of that month, not the 31st.
-**2.** *When* you add two months to that date, such that the final month has 31 days, *then* the date should be the 31st.
-• *Given* the last day of a month with 30 days in it (like June):
-**1.** *When* you add one month such that the last day of that month has 31 days, *then* the date should be the 30th, not the 31st.
+
+• _Given_ the last day of a month with 31 days (like May):
+
+**1.** _When_ you add one month, such that the last day of that month is the 30th (like June), _then_ the date should be the 30th of that month, not the 31st.
+
+**2.** _When_ you add two months to that date, such that the final month has 31 days, _then_ the date should be the 31st.
+
+• _Given_ the last day of a month with 30 days in it (like June):
+
+**1.** _When_ you add one month such that the last day of that month has 31 days, _then_ the date should be the 30th, not the 31st.
+
+### F.I.R.S.T.
+
+**Fast** Tests should be fast. They should run quickly. When tests run slow, you won't want to run them frequently.
+
+**Independent** Tests should not depend on each other. One test should not set up the conditions for the next test.
+
+**Repeatable** Tests should be repeatable in any environment. You should be able to run the tests in the production environment, in the QA environment, and on your laptop while riding home on the train without a network.
+
+**Self-Validating** The tests should have a boolean output. Either they pass or fail. You should not have to manually verify it.
+
+**Timely** The tests need to be written in a timely fashion. Unit tests should be written _just before_ the production code that makes them pass.
