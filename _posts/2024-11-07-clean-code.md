@@ -3075,3 +3075,505 @@ The three test functions probably ought to be like this:
 **Self-Validating** The tests should have a boolean output. Either they pass or fail. You should not have to manually verify it.
 
 **Timely** The tests need to be written in a timely fashion. Unit tests should be written _just before_ the production code that makes them pass.
+
+## 10. Classes
+
+So far we saw how to write lines and blocks of code well. Now, We will see how to write clean classes.
+
+### Class Organization
+
+Following the standard Java Convention, a class should begin with:
+
+- Public static constants
+- Private static variables
+- Private instance variables
+- Public variable (not preferable)
+
+Public functions should follow the list of variables, We like to put the private utilities called by a public function right after the public function itself. Now, Program read like a newspaper article.
+
+#### Encapsulation
+
+We like to keep our variables and utility functions private. Sometimes we need to make a variable or utility function protected so that it can be accessed by a test. We're not likely break encapsulation.
+
+### Classes Should Be Small!
+
+The first rule of classes is that they should be small. The second rule of classes is that they should be smaller than that.
+
+Consider the class `SuperDashboard` which consist of 70 public methods. Most developer consider it as "**God Class**".
+
+```java
+public class SuperDashboard extends JFrame implements MetaDataUser {
+    public String getCustomizerLanguagePath()
+    public void setSystemConfigPath(String systemConfigPath)
+    public String getSystemConfigDocument()
+    public void setSystemConfigDocument(String systemConfigDocument)
+    public boolean getGuruState()
+    public boolean getNoviceState()
+    // ... 64 more methods ...
+}
+```
+
+What if `SuperDashboard` contained only the method shown below:
+
+```java
+public class SuperDashboard extends JFrame implements MetaDataUser {
+    public Component getLastFocusedComponent()
+    public void setLastFocused(Component lastFocused)
+    public int getMajorVersionNumber()
+    public int getMinorVersionNumber()
+    public int getBuildNumber()
+}
+```
+
+Despite its small number of methods, `SuperDashboard` has too many responsibilities.
+
+The name of a class should describe what responsibilities it fulfills. In fact, naming is probably the first way of helping determine class size. For example, class names including weasel words like `Processor` or `Manager` or `Super` often hint at unfortunate aggregation of responsibilities.
+
+We should also be able to write a brief description of the class in about 25 words, without using the words “if," “and," “or," or “but." for example: “The `SuperDashboard` provides access to the component that last held the focus, and it also allows us to track the version and build numbers."
+
+#### The Single Responsibility Principle
+
+The Single Responsibility Principle (SRP) states that a class or module should have one, and only one, *reason to change*.
+
+In above example: We can easily extract all three `SuperDashboard` methods that deal with version information into a separate class named `Version`.
+
+```java
+public class Version {
+    public int getMajorVersionNumber()
+    public int getMinorVersionNumber()
+    public int getBuildNumber()
+}
+```
+
+SRP is one of the more important concept in OO design. It's also one of the simpler concepts to understand and adhere to. It's most abusive too. Why?
+
+Getting software to work and making software clean are two very different activities. Most of us have limited room in our heads, so we focus on getting our code to work more than organization and cleanliness.
+
+The problem is that too many of us think that we are done once the program works. We jump on the next task instead of making current one better.
+
+Many developers fear that a large number of small, single-purpose classes makes it more difficult to understand the bigger picture. However, a system with many small classes has no more moving parts than a system with a few large classes. So the question is: Do you want your tools organized into toolboxes with many small drawers each containing well-defined and well-labeled components? Or do you want a few drawers that you just toss everything into?
+
+We want our systems to be composed of many small classes, not a few large ones. Each small class encapsulates a single responsibility, has a single reason to change, and collaborates with a few others to achieve the desired system behaviors.
+
+#### Cohesion
+
+Classes should have a small number of instance variables. Each of the methods of a class should manipulate one or more of those variables. Each of the methods of a class should manipulate one or more of those variables. In general the more variables a method manipulates the more cohesive that method is to its class.
+
+Consider high cohesive example:
+
+```java
+public class Stack {
+    private int topOfStack = 0;
+    List < Integer > elements = new LinkedList < Integer > ();
+
+    public int size() {
+        return topOfStack;
+    }
+
+    public void push(int element) {
+        topOfStack++;
+        elements.add(element);
+    }
+
+    public int pop() throws PoppedWhenEmpty {
+        if (topOfStack == 0)
+            throw new PoppedWhenEmpty();
+        int element = elements.get(--topOfStack);
+        elements.remove(topOfStack);
+        return element;
+    }
+}
+```
+
+#### Maintaining Cohesion Results in Many Small Classes
+
+Consider a large function with many variables and you want to extract function out of that function. If there are many variables, you're required to pass in arguments. If we promote those variables as instance variables we can make it work without passing any variables at all.
+
+Now, This will break cohesion, but if there are less function to deal with those variables then Of course it make sense. When classes lose cohesion, split them!
+
+Consider the example of breaking big functions into smaller functions:
+
+```java
+package literatePrimes;
+
+public class PrintPrimes {
+    public static void main(String[] args) {
+        final int M = 1000;
+        final int RR = 50;
+        final int CC = 4;
+        final int WW = 10;
+        final int ORDMAX = 30;
+        int P[] = new int[M + 1];
+        int PAGENUMBER;
+        int PAGEOFFSET;
+        int ROWOFFSET;
+        int C;
+
+        int J;
+        int K;
+        boolean JPRIME;
+        int ORD;
+        int SQUARE;
+        int N;
+        int MULT[] = new int[ORDMAX + 1];
+
+        J = 1;
+        K = 1;
+        P[1] = 2;
+        ORD = 2;
+        SQUARE = 9;
+
+        while (K < M) {
+            do {
+                J = J + 2;
+                if (J == SQUARE) {
+                    ORD = ORD + 1;
+                    SQUARE = P[ORD] * P[ORD];
+                    MULT[ORD - 1] = J;
+                }
+                N = 2;
+                JPRIME = true;
+                while (N < ORD && JPRIME) {
+                    while (MULT[N] < J)
+                        MULT[N] = MULT[N] + P[N] + P[N];
+                    if (MULT[N] == J)
+                        JPRIME = false;
+                    N = N + 1;
+                }
+            } while (!JPRIME);
+            K = K + 1;
+            P[K] = J;
+        } {
+            PAGENUMBER = 1;
+            PAGEOFFSET = 1;
+            while (PAGEOFFSET <= M) {
+                System.out.println("The First" + M + "Prime Numbers-- - Page" + PAGENUMBER);
+                System.out.println("");
+                for (ROWOFFSET = PAGEOFFSET; ROWOFFSET < PAGEOFFSET + RR; ROWOFFSET++) {
+                    for (C = 0; C < CC; C++)
+                        if (ROWOFFSET + C * RR <= M)
+                            System.out.format(" % 10 d", P[ROWOFFSET + C * RR]);
+                    System.out.println("");
+                }
+                System.out.println("\f");
+                PAGENUMBER = PAGENUMBER + 1;
+                PAGEOFFSET = PAGEOFFSET + RR * CC;
+            }
+        }
+    }
+}
+```
+
+This program, written as a single function, is a mess. This is how it should be:
+
+```java
+package literatePrimes;
+
+public class PrimePrinter {
+    public static void main(String[] args) {
+        final int NUMBER_OF_PRIMES = 1000;
+        int[] primes = PrimeGenerator.generate(NUMBER_OF_PRIMES);
+
+        final int ROWS_PER_PAGE = 50;
+        final int COLUMNS_PER_PAGE = 4;
+        RowColumnPagePrinter tablePrinter =
+            new RowColumnPagePrinter(ROWS_PER_PAGE,
+                COLUMNS_PER_PAGE, "The First" + NUMBER_OF_PRIMES + "Prime Numbers");
+        tablePrinter.print(primes);
+    }
+
+}
+```
+
+`RowColumnPagePrinter.java`
+
+```java
+package literatePrimes;
+
+import java.io.PrintStream;
+
+public class RowColumnPagePrinter {
+    private int rowsPerPage;
+    private int columnsPerPage;
+    private int numbersPerPage;
+    private String pageHeader;
+    private PrintStream printStream;
+
+    public RowColumnPagePrinter(int rowsPerPage,
+        int columnsPerPage,
+        String pageHeader) {
+        this.rowsPerPage = rowsPerPage;
+        this.columnsPerPage = columnsPerPage;
+        this.pageHeader = pageHeader;
+        numbersPerPage = rowsPerPage * columnsPerPage;
+        printStream = System.out;
+    }
+
+    public void print(int data[]) {
+        int pageNumber = 1;
+        for (int firstIndexOnPage = 0; firstIndexOnPage < data.length; firstIndexOnPage += numbersPerPage) {
+            int lastIndexOnPage =
+                Math.min(firstIndexOnPage + numbersPerPage - 1,
+                    data.length - 1);
+            printPageHeader(pageHeader, pageNumber);
+            printPage(firstIndexOnPage, lastIndexOnPage, data);
+            printStream.println("\f");
+            pageNumber++;
+        }
+    }
+
+    private void printPage(int firstIndexOnPage,
+        int lastIndexOnPage,
+        int[] data) {
+        int firstIndexOfLastRowOnPage =
+            firstIndexOnPage + rowsPerPage - 1;
+        for (int firstIndexInRow = firstIndexOnPage; firstIndexInRow <= firstIndexOfLastRowOnPage; firstIndexInRow++) {
+            printRow(firstIndexInRow, lastIndexOnPage, data);
+            printStream.println("");
+        }
+    }
+
+    private void printRow(int firstIndexInRow,
+        int lastIndexOnPage,
+        int[] data) {
+        for (int column = 0; column < columnsPerPage; column++) {
+            int index = firstIndexInRow + column * rowsPerPage;
+            if (index <= lastIndexOnPage)
+                printStream.format(" % 10 d", data[index]);
+        }
+    }
+
+    private void printPageHeader(String pageHeader,
+        int pageNumber) {
+        printStream.println(pageHeader + " -- - Page" + pageNumber);
+        printStream.println("");
+    }
+
+    public void setOutput(PrintStream printStream) {
+        this.printStream = printStream;
+    }
+}
+```
+
+`PrimeGenerator.java`
+
+```java
+package literatePrimes;
+
+import java.util.ArrayList;
+
+public class PrimeGenerator {
+    private static int[] primes;
+    private static ArrayList < Integer > multiplesOfPrimeFactors;
+
+    protected static int[] generate(int n) {
+        primes = new int[n];
+        multiplesOfPrimeFactors = new ArrayList < Integer > ();
+        set2AsFirstPrime();
+        checkOddNumbersForSubsequentPrimes();
+        return primes;
+    }
+
+    private static void set2AsFirstPrime() {
+        primes[0] = 2;
+        multiplesOfPrimeFactors.add(2);
+    }
+
+    private static void checkOddNumbersForSubsequentPrimes() {
+        int primeIndex = 1;
+        for (int candidate = 3; primeIndex < primes.length; candidate += 2) {
+            if (isPrime(candidate))
+                primes[primeIndex++] = candidate;
+        }
+    }
+
+    private static boolean isPrime(int candidate) {
+        if (isLeastRelevantMultipleOfNextLargerPrimeFactor(candidate)) {
+            multiplesOfPrimeFactors.add(candidate);
+            return false;
+        }
+        return isNotMultipleOfAnyPreviousPrimeFactor(candidate);
+    }
+
+    private static boolean
+    isLeastRelevantMultipleOfNextLargerPrimeFactor(int candidate) {
+        int nextLargerPrimeFactor = primes[multiplesOfPrimeFactors.size()];
+        int leastRelevantMultiple = nextLargerPrimeFactor * nextLargerPrimeFactor;
+        return candidate == leastRelevantMultiple;
+    }
+
+    private static boolean
+    isNotMultipleOfAnyPreviousPrimeFactor(int candidate) {
+        for (int n = 1; n < multiplesOfPrimeFactors.size(); n++) {
+            if (isMultipleOfNthPrimeFactor(candidate, n))
+                return false;
+        }
+        return true;
+    }
+
+    private static boolean
+    isMultipleOfNthPrimeFactor(int candidate, int n) {
+        return
+        candidate == smallestOddNthMultipleNotLessThanCandidate(candidate, n);
+    }
+
+    private static int
+    smallestOddNthMultipleNotLessThanCandidate(int candidate, int n) {
+        int multiple = multiplesOfPrimeFactors.get(n);
+        while (multiple < candidate)
+            multiple += 2 * primes[n];
+        multiplesOfPrimeFactors.set(n, multiple);
+        return multiple;
+    }
+}
+```
+
+Length of code is increased now due to several reasons:
+
+- Refactored the code
+- Gave meaningful and descriptive names of variables and functions
+- Add white spaces and formatting techniques to keep the program readable
+
+The main program is contained in the `PrimePrinter` class all by itself. Its responsibility is to handle the execution environment.
+
+The `RowColumnPagePrinter` knows all about how to format a list of numbers into pages with a certain number of rows and columns.
+The `PrimeGenerator` class knows how to generate a list prime numbers. Notice that it is not meant to be instantiated as an object. This class will change if the algorithm for computing prime numbers changes.
+
+### Organizing for Change
+
+Every change subjects us to the risk that the remainder of the system no longer works as intended. In a clean system we organize our classes so as to reduce the risk of change.
+
+Consider the code: The `Sql` class is used to generate properly formed SQL strings given appropriate metadata. This doesn't support `update` operation, when it's required we opens up this class and that introduce risk.
+
+```java
+public class Sql {
+    public Sql(String table, Column[] columns)
+    public String create()
+    public String insert(Object[] fields)
+    public String selectAll()
+    public String findByKey(String keyColumn, String keyValue)
+    public String select(Column column, String pattern)
+    public String select(Criteria criteria)
+    public String preparedInsert()
+    private String columnList(Column[] columns)
+    private String valuesList(Object[] fields, final Column[] columns)
+    private String selectWithCriteria(String criteria)
+    private String placeholderList(Column[] columns)
+}
+```
+
+The `Sql` class must change when we add a new type of statement. If we need to modify the `select` functionality, There are now two reason to change mean that the `Sql` class violates the SRP.
+
+If we don't want to support `update` like new operation then we should keep `Sql` along. Otherwise we should go with something like:
+
+```java
+abstract public class Sql {
+    public Sql(String table, Column[] columns)
+    abstract public String generate();
+}
+
+public class CreateSql extends Sql {
+    public CreateSql(String table, Column[] columns)
+    @Override public String generate()
+}
+
+public class SelectSql extends Sql {
+    public SelectSql(String table, Column[] columns)
+    @Override public String generate()
+}
+
+public class InsertSql extends Sql {
+    public InsertSql(String table, Column[] columns, Object[] fields)
+    @Override public String generate()
+    private String valuesList(Object[] fields, final Column[] columns)
+}
+
+public class SelectWithCriteriaSql extends Sql {
+    public SelectWithCriteriaSql(
+        String table, Column[] columns, Criteria criteria)
+    @Override public String generate()
+}
+
+public class SelectWithMatchSql extends Sql {
+    public SelectWithMatchSql(
+        String table, Column[] columns, Column column, String pattern)
+    @Override public String generate()
+}
+
+public class FindByKeySql extends Sql {
+    public FindByKeySql(
+        String table, Column[] columns, String keyColumn, String keyValue)
+    @Override public String generate()
+}
+
+public class PreparedInsertSql extends Sql {
+    public PreparedInsertSql(String table, Column[] columns)
+    @Override public String generate() {
+        private String placeholderList(Column[] columns)
+    }
+
+    public class Where {
+        public Where(String criteria)
+        public String generate()
+    }
+
+    public class ColumnList {
+        public ColumnList(Column[] columns)
+        public String generate()
+    }
+}
+```
+
+The code in each class becomes excruciatingly simple. Our required comprehension time to understand any class decreases to almost nothing. The risk that one function could break another becomes vanishingly small. From a test standpoint, it becomes an easier task to prove all bits of logic in this solution.
+
+It supports the SRP. It also supports another key OO class design principle known as the Open-Closed Principle. We simply drop our `UpdateSql` class in place.
+
+#### Isolating from Change
+
+Needs will change, therefore code will change.
+
+Dependencies upon concrete details create challenges for testing our system. If we're building a `Portfolio` class and it depends upon an external `TokyoStockExchange` API to derive the portfolio's value, our test cases are impacted by the volatility of such a lookup. It's hard to write a test when we get a different answer every five minutes!
+
+Instead of designing `Portfolio` so that it directly depends upon `TokyoStockExchange`, we create an interface, `StockExchange`, that declares a single method:
+
+```java
+public interface StockExchange {
+	Money currentPrice(String symbol);
+}
+```
+
+We design `TokyoStockExchange` to implement this interface. We also make sure that the constructor of `Portfolio` takes a `StockExchange` reference as an argument:
+
+```java
+public Portfolio {
+	private StockExchange exchange;
+	public Portfolio(StockExchange exchange) {
+		this.exchange = exchange;
+	}
+	// …
+}
+```
+
+Now our test can create a testable implementation of the `StockExchange` interface that emulates the `TokyoStockExchange`. This test implementation will fix the current value for any symbol we use in testing.
+
+```java
+public class PortfolioTest {
+    private FixedStockExchangeStub exchange;
+    private Portfolio portfolio;
+
+    @Before
+    protected void setUp() throws Exception {
+        exchange = new FixedStockExchangeStub();
+        exchange.fix("MSFT", 100);
+        portfolio = new Portfolio(exchange);
+    }
+
+    @Test
+    public void GivenFiveMSFTTotalShouldBe500() throws Exception {
+        portfolio.add(5, "MSFT");
+        Assert.assertEquals(500, portfolio.value());
+    }
+}
+```
+
+Instead of being dependent upon the implementation details of the `TokyoStockExchange` class, Our `Portfolio` class is now dependent upon the `StockExchange` interface. The `StockExchange` interface represents the abstract concept of asking for the current price of a symbol.
